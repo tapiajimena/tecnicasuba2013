@@ -6,13 +6,12 @@ public class Sucursal {
 	
 	private Oferta chainOferta;
 	
-	public Sucursal(Oferta oferta){
-		this.chainOferta = oferta;
+	public Sucursal(Oferta chain){
+		chainOferta = chain;
 	}
-	
+
 	public void CalcularDescuentos(Compra compra)
 	{
-		chainOferta.CalcularDescuentos(compra);
+		chainOferta.calcularDescuentos(compra);
 	}
-	
 }

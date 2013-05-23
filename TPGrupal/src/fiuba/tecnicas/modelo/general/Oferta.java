@@ -1,10 +1,18 @@
 package fiuba.tecnicas.modelo.general;
 
-public class Oferta {
+public abstract class Oferta {
 
-	public void CalcularDescuentos(Compra compra) {
-		// TODO Auto-generated method stub
+	private Oferta oferta;
+	
+	public void calcularDescuentos(Compra compra) {
 		
+		// Aplico el descuento de este eslabon.
+		doCalcularDescuetos(compra);
+
+		// Continuo la cadena.
+		oferta.calcularDescuentos(compra);
 	}
+	
+	public abstract void doCalcularDescuetos(Compra compra);
 
 }
