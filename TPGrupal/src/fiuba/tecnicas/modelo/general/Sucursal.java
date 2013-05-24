@@ -1,6 +1,5 @@
 package fiuba.tecnicas.modelo.general;
 
-import java.util.ArrayList;
 
 public class Sucursal {
 	

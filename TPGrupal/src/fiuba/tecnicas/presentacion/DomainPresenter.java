@@ -1,5 +1,8 @@
 package fiuba.tecnicas.presentacion;
 
+import fiuba.tecnicas.modelo.general.command.AbrirCajaCommand;
+import fiuba.tecnicas.modelo.general.command.ICommand;
+
 public class DomainPresenter {
 
 	private IConsoleView view;
@@ -21,5 +24,10 @@ public class DomainPresenter {
 	
 	public double calcularMontoTotalCompra() {
 		return 0;
+	}
+
+	public ICommand getCommand(String input) {
+		
+		return new AbrirCajaCommand();
 	}
 }

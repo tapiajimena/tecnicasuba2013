@@ -39,15 +39,16 @@ public class ConsoleView implements IConsoleView{
 	public void setMensaje(String mensaje) {
 		this.mensaje = mensaje;
 	}
+	
+	
 
 	@Override
 	public void run() {
-		inicializarCaja();
+		System.out.print(presenter.getCommand("AbrirCaja").execute("").getMensaje());
 		cargarItemsCompra(null);
 		System.out.print(getMontoTotalCompra());
 		
 	}
-
 	@Override
 	public DomainPresenter getPresenter() {
 		
