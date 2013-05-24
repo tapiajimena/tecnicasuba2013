@@ -48,4 +48,10 @@ public class ConsoleView implements IConsoleView{
 		
 	}
 
+	@Override
+	public DomainPresenter getPresenter() {
+		
+		return this.presenter;
+	}
+
 }

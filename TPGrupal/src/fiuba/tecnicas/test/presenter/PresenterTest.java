@@ -14,10 +14,13 @@ public class PresenterTest {
 	@Test
 	public void testAbrirCajaMuestraEstadoCaja() {
 		IConsoleView consola = new ConsoleView();
-		DomainPresenter presenter = new DomainPresenter(consola);
+		DomainPresenter presenter = consola.getPresenter();
+		
 		presenter.abrirCaja();
 		assertEquals(consola.getMensaje(),"Bienvenido!");
 	}
+	
+	
 	
 	public void testCargarProductos(){
 		IView consola = new ConsoleView();
