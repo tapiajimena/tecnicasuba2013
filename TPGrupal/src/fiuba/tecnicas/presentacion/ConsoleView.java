@@ -22,7 +22,6 @@ public class ConsoleView implements IConsoleView{
 
 	@Override
 	public void cargarItemsCompra(List<ItemCompra> items) {
-		presenter.calcularMontoTotalCompra();
 		
 	}
 
