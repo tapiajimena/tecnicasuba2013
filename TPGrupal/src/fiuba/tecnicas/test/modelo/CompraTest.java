@@ -17,12 +17,12 @@ public class CompraTest {
 	{
 		// Contexto
 		Sucursal sucursal = SucursalFactory.SucursalUno();
-		Compra compra = new Compra(sucursal);
+		//Compra compra = new Compra(sucursal);
 		ItemCompra  item = new ItemCompra(new Producto(10, "Chandon"),5);
-		compra.addItem(item);
+		Compra.getInstance().addItem(item);
 		
 		// Calculo
-		compra.CalcularTotal();
+		Compra.getInstance().CalcularTotal();
 		
 				
 		Assert.assertEquals(item.getPrecioFinal(), 10);

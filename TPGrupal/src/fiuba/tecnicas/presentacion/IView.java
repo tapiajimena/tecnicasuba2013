@@ -9,6 +9,6 @@ public interface IView {
 	public String inicializarCaja();
 	public void cargarItemsCompra(List<ItemCompra> items);
 	public double getMontoTotalCompra();
-	public void run();
+	public void run(String command);
 	public DomainPresenter getPresenter();
 }

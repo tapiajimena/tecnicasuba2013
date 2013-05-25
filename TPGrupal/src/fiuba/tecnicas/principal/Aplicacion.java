@@ -14,7 +14,7 @@ public class Aplicacion {
 	 */
 	public static void main(String[] args) {
 		IView consola = new ConsoleView();
-		consola.run();
+		consola.run("AbrirCaja");
 
 	}
 }

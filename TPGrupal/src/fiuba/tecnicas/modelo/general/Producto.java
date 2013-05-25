@@ -9,6 +9,14 @@ public class Producto {
 	private String descripcion;
 	
 	
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
+	}
+
 	public Producto(double precio, String descripcion){
 		this.categorias = new ArrayList<Categoria>();
 		this.precio = precio;

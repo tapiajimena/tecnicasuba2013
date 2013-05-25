@@ -42,8 +42,8 @@ public class ConsoleView implements IConsoleView{
 	
 
 	@Override
-	public void run() {
-		System.out.print(presenter.getCommand("AbrirCaja").execute("").getMensaje());
+	public void run(String command) {
+		System.out.print(presenter.getCommand(command).execute("").getMensaje());
 		cargarItemsCompra(null);
 		System.out.print(getMontoTotalCompra());
 		
