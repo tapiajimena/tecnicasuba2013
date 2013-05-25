@@ -1,6 +1,8 @@
 package fiuba.tecnicas.modelo.general;
 
-import fiuba.tecnicas.modelo.concreto.OfertaGenerica;
+import java.util.Iterator;
+
+import fiuba.tecnicas.modelo.concreto.Oferta10porciento;
 
 
 public class Sucursal {
@@ -10,13 +12,16 @@ public class Sucursal {
 	public void setNext(Oferta oferta){
 		this.chainOferta = oferta;
 	}
-	public Sucursal(Oferta chain){
-		chainOferta = chain;
-	}
+	public Sucursal(){}
 
 	public void CalcularDescuentos(Compra compra){
-		OfertaGenerica ofG = new OfertaGenerica();
-		this.setNext(ofG);
+// Setteo todos los precios iniciales de cada item y luego aplico las ofertas.
+		Iterator<ItemCompra> it = compra.iterator();
+		ItemCompra item;
+		while(it.hasNext()){
+			item = it.next();	
+			item.setPrecioFinal(item.getProducto().getPrecio()*item.getCantidad());
+		}
 		chainOferta.calcularDescuentos(compra);
 	}
 	

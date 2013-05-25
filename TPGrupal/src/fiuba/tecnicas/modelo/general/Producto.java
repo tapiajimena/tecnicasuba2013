@@ -6,6 +6,10 @@ public class Producto {
 
 	private ArrayList<Categoria> categorias;
 	private double precio;
+	public double getPrecio() {
+		return precio;
+	}
+
 	private String descripcion;
 	
 	

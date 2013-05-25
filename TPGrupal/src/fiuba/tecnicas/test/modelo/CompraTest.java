@@ -19,13 +19,15 @@ public class CompraTest {
 		Sucursal sucursal = SucursalFactory.SucursalUno();
 		//Compra compra = new Compra(sucursal);
 		ItemCompra  item = new ItemCompra(new Producto(10, "Chandon"),5);
+		Compra compra = Compra.getInstance();
+		compra.inicializarCompra(sucursal);
 		Compra.getInstance().addItem(item);
 		
 		// Calculo
-		Compra.getInstance().CalcularTotal();
-		
-				
-		Assert.assertEquals(item.getPrecioFinal(), 10);
+		double totalCompra = Compra.getInstance().CalcularTotal();
+		System.out.println(totalCompra);
+		Assert.assertEquals(item.getPrecioFinal(), 50.0);
+
 		
 	}
 }

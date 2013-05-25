@@ -3,7 +3,7 @@ package fiuba.tecnicas.modelo.general.command;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
-import fiuba.tecnicas.modelo.concreto.OfertaGenerica;
+import fiuba.tecnicas.modelo.concreto.Oferta10porciento;
 import fiuba.tecnicas.modelo.general.Oferta;
 import fiuba.tecnicas.modelo.general.Sucursal;
 

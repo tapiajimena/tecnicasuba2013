@@ -53,9 +53,9 @@ public class Compra implements Iterator<ItemCompra>{
 		return INSTANCE;
 	}
 
-	public void inicializarCompra(Sucursal sucursal, MedioDePago medioDePago){
+	public void inicializarCompra(Sucursal sucursal){
+		this.posicionArray = 0;
 		this.setSucursal(sucursal);
-		this.setMedioDePago(medioDePago);
 		items = new ArrayList<ItemCompra>();
 	}
 
@@ -77,5 +77,9 @@ public class Compra implements Iterator<ItemCompra>{
 
 	public void remove(){
 		throw new UnsupportedOperationException("No soportado.");
+	}
+	
+	public void setPosicionArray(int posicionArray) {
+		this.posicionArray = posicionArray;
 	}
 }

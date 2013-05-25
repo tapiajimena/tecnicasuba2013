@@ -5,7 +5,7 @@ import fiuba.tecnicas.modelo.general.Compra;
 import fiuba.tecnicas.modelo.general.Oferta;
 import fiuba.tecnicas.modelo.general.ItemCompra;
 
-public class OfertaGenerica extends Oferta {
+public class Oferta20porciento extends Oferta {
 
 	private Oferta next;
 
@@ -16,13 +16,18 @@ public class OfertaGenerica extends Oferta {
 
 	@Override
 	public void calcularDescuentos (Compra compra){
+		compra.setPosicionArray(0);
 		Iterator<ItemCompra> it = compra.iterator();
+		ItemCompra item;
 		while(it.hasNext()){
-			if (it.next().getProducto().getDescripcion() == "choclo") {
-				it.next().setPrecioFinal(it.next().getPrecioFinal() - 0.1*it.next().getPrecioFinal());
-			}else if (this.next != null){ 
-				next.calcularDescuentos(compra); 
-			}
+			item = it.next();	
+			if ( item.getProducto().getDescripcion() == "cafe") {
+				item.setPrecioFinal((item.getProducto().getPrecio() - 0.2*item.getProducto().getPrecio())*item.getCantidad());
+			} 
+		}
+		
+		if (this.next != null){ 
+			next.calcularDescuentos(compra);
 		}
 	}
 
