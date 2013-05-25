@@ -3,7 +3,7 @@ package fiuba.tecnicas.modelo.general;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
-import fiuba.tecnicas.modelo.concreto.Oferta10porcientoFarmacia;
+import fiuba.tecnicas.modelo.concreto.OfertaGenerica;
 
 public class OfertaFactory {
 
@@ -27,7 +27,7 @@ public class OfertaFactory {
 	
 	public static Oferta ConstruiOferta(Sucursal sucursal)
 	{
-		return (Oferta) BEAN_FACTORY.getBean("Oferta10porcientoFarmacia");
+		return (Oferta) BEAN_FACTORY.getBean("OfertaGenerica");
 	}
 	
 	public Oferta ConstruiOferta(String nombre)
