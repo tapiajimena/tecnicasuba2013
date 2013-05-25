@@ -17,5 +17,4 @@ public class Aplicacion {
 		consola.run();
 
 	}
-
 }
