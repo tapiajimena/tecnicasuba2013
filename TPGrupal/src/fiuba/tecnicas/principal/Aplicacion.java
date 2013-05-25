@@ -24,8 +24,8 @@ public class Aplicacion {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		IView consola = new ConsoleView();
-//		consola.run("AbrirCaja");
+		IView consola = new ConsoleView();
+		consola.run();
 
 
 		// Contexto

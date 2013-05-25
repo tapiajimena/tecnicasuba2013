@@ -1,5 +1,6 @@
 package fiuba.tecnicas.presentacion;
 
+import fiuba.tecnicas.modelo.comun.Mensaje;
 import fiuba.tecnicas.modelo.general.command.CommandFactory;
 import fiuba.tecnicas.modelo.general.command.ICommand;
 
@@ -9,17 +10,20 @@ public class DomainPresenter {
 	
 	public interface IConsoleView extends IView {
 		//Agrego componentes especificos de la vista de consola
-		void setMensaje(String mensaje);
-		String getMensaje();
+		public String getCommandFromInput();
 	}
 	
 	public DomainPresenter(IConsoleView view) {
 		this.view = view;
 	}
 	
+	public String getMensajeBienvenida() {
+		return Mensaje.getMensaje("mensaje_Bienvenida");
+	}
+	
 	public void abrirCaja() {
 		//InicializoCaja
-		view.setMensaje("Bienvenido!");
+		//view.setMensaje("Bienvenido!");
 	}
 	
 	public double calcularMontoTotalCompra() {

@@ -1,57 +1,41 @@
 package fiuba.tecnicas.presentacion;
 
-import java.util.List;
-
-import fiuba.tecnicas.modelo.general.ItemCompra;
 import fiuba.tecnicas.presentacion.DomainPresenter.IConsoleView;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class ConsoleView implements IConsoleView{
 	private DomainPresenter presenter;
-	private String mensaje;
 	
 	public ConsoleView() {
 		presenter = new DomainPresenter(this);
 	}
 
 	@Override
-	public String inicializarCaja() {
-		presenter.abrirCaja();
-		System.out.print(mensaje);
-		return null;
-	}
-
-	@Override
-	public void cargarItemsCompra(List<ItemCompra> items) {
-		
-	}
-
-	@Override
-	public double getMontoTotalCompra() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	public String getMensaje() {
-		return mensaje;
-	}
-
-	public void setMensaje(String mensaje) {
-		this.mensaje = mensaje;
-	}
-	
-	
-
-	@Override
-	public void run(String command) {
-		System.out.print(presenter.getCommand(command).execute("").getMensaje());
-		cargarItemsCompra(null);
-		System.out.print(getMontoTotalCompra());
-		
-	}
-	@Override
-	public DomainPresenter getPresenter() {
-		
+	public DomainPresenter getPresenter() {		
 		return this.presenter;
+	}
+	
+	@Override
+	public String getCommandFromInput() {
+		String aux = "";
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("--> ");
+        try {
+			aux = br.readLine();
+		} catch (IOException e) {
+			aux= "commandDefault";
+			e.printStackTrace();
+		}
+        return aux;
+	}
+	
+
+	@Override
+	public void run() {
+		System.out.println(presenter.getMensajeBienvenida());
+		System.out.print(presenter.getCommand(getCommandFromInput()).execute("").getMensaje());
 	}
 
 }
