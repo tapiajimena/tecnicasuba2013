@@ -19,9 +19,7 @@ public class PresenterTest {
 		presenter.abrirCaja();
 		assertEquals(consola.getMensaje(),"Bienvenido!");
 	}
-	
-	
-	
+
 	public void testCargarProductos(){
 		IView consola = new ConsoleView();
 		String[] productos = { "1", "2", "3"};

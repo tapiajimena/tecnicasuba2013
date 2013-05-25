@@ -1,6 +1,6 @@
 package fiuba.tecnicas.presentacion;
 
-import fiuba.tecnicas.modelo.general.command.AbrirCajaCommand;
+import fiuba.tecnicas.modelo.general.command.CommandFactory;
 import fiuba.tecnicas.modelo.general.command.ICommand;
 
 public class DomainPresenter {
@@ -27,7 +27,6 @@ public class DomainPresenter {
 	}
 
 	public ICommand getCommand(String input) {
-		
-		return new AbrirCajaCommand();
+		return (ICommand) CommandFactory.getInstance().getCommand(input);
 	}
 }
