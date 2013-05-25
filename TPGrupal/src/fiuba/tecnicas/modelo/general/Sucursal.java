@@ -2,9 +2,6 @@ package fiuba.tecnicas.modelo.general;
 
 import java.util.Iterator;
 
-import fiuba.tecnicas.modelo.concreto.Oferta10porciento;
-
-
 public class Sucursal {
 	
 	private Oferta chainOferta;

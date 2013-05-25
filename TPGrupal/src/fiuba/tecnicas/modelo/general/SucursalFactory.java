@@ -1,6 +1,6 @@
 package fiuba.tecnicas.modelo.general;
 
-import fiuba.tecnicas.modelo.concreto.Oferta10porciento;
+import fiuba.tecnicas.modelo.concreto.Oferta10porcientoFarmacia;
 import fiuba.tecnicas.modelo.concreto.Oferta20porciento;
 
 public class SucursalFactory {
@@ -10,7 +10,7 @@ public class SucursalFactory {
 		// Inyectar ofertas genericas
 
 		Sucursal sucursal = new Sucursal();
-		Oferta10porciento ofG10 = new Oferta10porciento();
+		Oferta10porcientoFarmacia ofG10 = new Oferta10porcientoFarmacia();
 		sucursal.setNext(ofG10);
 		
 		Oferta20porciento ofG20 = new Oferta20porciento();

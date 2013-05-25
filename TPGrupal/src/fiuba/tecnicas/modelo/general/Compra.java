@@ -53,8 +53,9 @@ public class Compra implements Iterator<ItemCompra>{
 		return INSTANCE;
 	}
 
-	public void inicializarCompra(Sucursal sucursal){
+	public void inicializarCompra(Sucursal sucursal, MedioDePago medio_de_pago){
 		this.posicionArray = 0;
+		this.setMedioDePago(medio_de_pago);
 		this.setSucursal(sucursal);
 		items = new ArrayList<ItemCompra>();
 	}

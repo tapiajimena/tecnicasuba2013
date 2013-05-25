@@ -5,7 +5,7 @@ import fiuba.tecnicas.modelo.general.Compra;
 import fiuba.tecnicas.modelo.general.Oferta;
 import fiuba.tecnicas.modelo.general.ItemCompra;
 
-public class Oferta10porciento extends Oferta {
+public class Oferta10porcientoFarmacia extends Oferta {
 
 	private Oferta next;
 
@@ -35,5 +35,4 @@ public class Oferta10porciento extends Oferta {
 	public Oferta getNext(){
 		return this.next;
 	}
-
 }
