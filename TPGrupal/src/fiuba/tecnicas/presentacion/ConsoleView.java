@@ -37,7 +37,7 @@ public class ConsoleView implements IConsoleView{
 	private String[] splitInput(String input) {
 		String[] parametros = {"",""};
 		if (!input.isEmpty()) {
-			parametros=input.split("\\s+");
+			parametros=input.split("/");
 		}
 		return parametros;
 	}
