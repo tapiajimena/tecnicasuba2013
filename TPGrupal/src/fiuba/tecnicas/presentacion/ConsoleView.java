@@ -8,8 +8,6 @@ import java.util.List;
 
 public class ConsoleView implements IConsoleView{
 	private DomainPresenter presenter;
-	private String command;
-	private String parametros;
 	
 	public ConsoleView() {
 		presenter = new DomainPresenter(this);
