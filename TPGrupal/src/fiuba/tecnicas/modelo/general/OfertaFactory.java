@@ -32,6 +32,18 @@ public class OfertaFactory {
 	
 	public Oferta ConstruiOferta(String nombre)
 	{
-		return (Oferta)BEAN_FACTORY.getBean(nombre);
+		Oferta o;
+		try
+		{
+			o = (Oferta)BEAN_FACTORY.getBean(nombre);
+		}
+		catch(Exception e)
+		{
+			o = null;
+		}
+		
+		return o;
 	}
+	
+
 }

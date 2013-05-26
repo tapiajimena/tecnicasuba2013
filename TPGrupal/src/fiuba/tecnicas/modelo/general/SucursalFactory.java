@@ -10,8 +10,10 @@ public class SucursalFactory {
 		// Inyectar ofertas genericas
 
 		Sucursal sucursal = new Sucursal();
-		Oferta10porcientoFarmacia ofG10 = new Oferta10porcientoFarmacia();
-		sucursal.setNext(ofG10);
+		
+				
+		Oferta o = OfertaFactory.getInstance().ConstruiOferta("Oferta10porcientoFarmacia");
+		sucursal.setNext(o);
 
 		return sucursal;
 	}
