@@ -13,6 +13,7 @@ import fiuba.tecnicas.modelo.general.SucursalFactory;
 import fiuba.tecnicas.modelo.general.TipoPago;
 import fiuba.tecnicas.presentacion.ConsoleView;
 import fiuba.tecnicas.presentacion.IView;
+import fiuba.tecnicas.test.modelo.CompraTest;
 
 public class Aplicacion {
 
@@ -26,8 +27,10 @@ public class Aplicacion {
 	public static void main(String[] args) {
 		IView consola = new ConsoleView();
 		consola.run();
-
-
+		CompraTest compra = new CompraTest();
+		//compra.TestCompraDescuentoTarjeta10PorCien();
+		compra.TestCompra2x1();
+/*
 		// Contexto
 //		Sucursal sucursal = new Sucursal();
 //		//Compra compra = new Compra(sucursal);
@@ -47,6 +50,6 @@ public class Aplicacion {
 //		Compra.getInstance().addItem(new ItemCompra(new Producto(30, "cafe"),1));
 		// Calculo
 		double totalCompra = Compra.getInstance().CalcularTotal();
-		System.out.println(totalCompra);
+		System.out.println(totalCompra);*/
 	}
 }

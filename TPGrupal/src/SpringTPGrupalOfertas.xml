@@ -10,4 +10,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 	class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoFarmacia" >
 	<property name="next"><ref bean="OfertaGenerica"/></property>
 </bean>
+
+<bean id="Oferta2x1"
+	class="fiuba.tecnicas.modelo.concreto.Oferta2x1" >
+	<property name="next"><ref bean="OfertaGenerica"/></property>
+</bean>
 </beans>

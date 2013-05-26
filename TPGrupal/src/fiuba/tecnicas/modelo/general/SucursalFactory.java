@@ -14,7 +14,16 @@ public class SucursalFactory {
 				
 		Oferta o = OfertaFactory.getInstance().ConstruiOferta("Oferta10porcientoFarmacia");
 		sucursal.setNext(o);
-
+		
+		return sucursal;
+	}
+	
+	public static Sucursal SucursalDos(){
+		Sucursal sucursal = new Sucursal();
+		
+		Oferta oferta = OfertaFactory.getInstance().ConstruiOferta("Oferta2x1");
+		sucursal.setNext(oferta);
+		
 		return sucursal;
 	}
 }

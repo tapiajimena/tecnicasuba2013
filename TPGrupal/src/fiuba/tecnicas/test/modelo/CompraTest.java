@@ -15,7 +15,7 @@ import fiuba.tecnicas.modelo.general.TipoPago;
 
 public class CompraTest {
 
-	@Test
+	@Test 
 	public void TestCompraDescuentoTarjeta10PorCien() 
 	{
 		// Contexto
@@ -29,8 +29,19 @@ public class CompraTest {
 		// Calculo
 		double totalCompra = Compra.getInstance().CalcularTotal();
 		System.out.println(totalCompra);
-		Assert.assertEquals(item.getPrecioFinal(), 50.0);
-
-		
+		Assert.assertEquals(item.getPrecioFinal(), 50.0);	
 	}
+	
+	@Test
+	public void TestCompra2x1(){
+		Sucursal sucursal = SucursalFactory.SucursalDos();
+		ItemCompra item = new ItemCompra(new Producto(5,"Coca","Coca Cola",Categoria.BEBIDAS),2);
+		Compra compra = Compra.getInstance();
+		compra.inicializarCompra(sucursal, new MedioDePago(TipoPago.EFECTIVO,""));
+		Compra.getInstance().addItem(item);
+		
+		double totalCompra = Compra.getInstance().CalcularTotal();
+		System.out.println("Total sin descuentos: "+totalCompra);
+		Assert.assertEquals(item.getPrecioFinal(), 5.0);
+	}	
 }
