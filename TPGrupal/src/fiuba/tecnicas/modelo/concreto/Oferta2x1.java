@@ -22,8 +22,10 @@ public class Oferta2x1 extends Oferta{
 		while(it.hasNext()){
 			item = it.next();	
 			if ( item.getProducto().getDescripcion() == "Coca") {
-				item.setPrecioFinal((item.getCantidad()/2)* item.getProducto().getPrecio());
-				//item.setPrecioFinal((item.getProducto().getPrecio() - 0.1*item.getProducto().getPrecio())*item.getCantidad());
+				double precioPares = (int)item.getCantidad()/2 * item.getProducto().getPrecio();
+				double precioImpares = item.getProducto().getPrecio() * (item.getCantidad() - 2 * ((int) item.getCantidad()/2));
+				
+				item.setPrecioFinal(precioPares + precioImpares);				
 			}
 		}
 	
