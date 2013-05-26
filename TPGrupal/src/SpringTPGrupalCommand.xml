@@ -9,5 +9,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 <bean id="nullcommand"
 	class="fiuba.tecnicas.modelo.general.command.NullCommand" />
 
-
+<bean id ="agregarproductos"
+	class="fiuba.tecnicas.modelo.generla.command.AgregarProductosCommand" />
+	
 </beans>

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Producto {
 
+	private String codigo_producto;
 	private Categoria categorias;
 	private double precio;
 	private String marca;
@@ -58,5 +59,11 @@ public class Producto {
 	public void setCategorias(Categoria categorias) {
 		this.categorias = categorias;
 	}
+	public String getCodigo_producto() {
+		return codigo_producto;
+	}
 
+	public void setCodigo_producto(String codigoProducto) {
+		codigo_producto = codigoProducto;
+	}
 }

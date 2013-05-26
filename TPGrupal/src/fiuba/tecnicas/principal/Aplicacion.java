@@ -1,6 +1,6 @@
 package fiuba.tecnicas.principal;
 
-import java.util.Locale.Category;
+
 
 import junit.framework.Assert;
 import fiuba.tecnicas.modelo.general.Categoria;
