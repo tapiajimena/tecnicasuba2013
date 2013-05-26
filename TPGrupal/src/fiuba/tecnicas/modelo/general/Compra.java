@@ -1,18 +1,20 @@
 package fiuba.tecnicas.modelo.general;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Iterator;
 /**
  *	La Compra es un Singleton
  */
 public class Compra implements Iterator<ItemCompra>{
-
 	private static Compra INSTANCE;
 	private ArrayList<ItemCompra> items;
 	private MedioDePago medioDePago;
 	private Sucursal sucursal;
 	private double totalCompra;
 	protected int posicionArray;
+	private int diaDeCompra;  //1: Domingo   2: Lunes....
 	
 	private void setSucursal(Sucursal sucursal){
 		this.sucursal = sucursal;
@@ -22,7 +24,8 @@ public class Compra implements Iterator<ItemCompra>{
 		this.medioDePago = medioDePago;
 	}	
 	
-	private Compra(){}
+	private Compra(){
+	}
 
 	private double getTotalCompra(){
 		Iterator<ItemCompra> it = this.iterator();
@@ -40,6 +43,10 @@ public class Compra implements Iterator<ItemCompra>{
 		return items;
 	}
 
+	public int getDiaDeCompra(){
+		return this.diaDeCompra;
+	}
+	
 	public void addItem(ItemCompra item){
 		// Ojo prodria calcular el descuento aca
 		items.add(item);
@@ -58,6 +65,18 @@ public class Compra implements Iterator<ItemCompra>{
 		return INSTANCE;
 	}
 
+	public void setDiaCompra(Calendar fechaCompra){
+		this.diaDeCompra = fechaCompra.DAY_OF_WEEK;
+	}
+	
+	public void inicializarCompra(Sucursal sucursal, MedioDePago medio_de_pago, Calendar fechaCompra){
+		this.posicionArray = 0;
+		this.setMedioDePago(medio_de_pago);
+		this.setSucursal(sucursal);
+		this.setDiaCompra(fechaCompra);
+		items = new ArrayList<ItemCompra>();
+	}
+	
 	public void inicializarCompra(Sucursal sucursal, MedioDePago medio_de_pago){
 		this.posicionArray = 0;
 		this.setMedioDePago(medio_de_pago);
