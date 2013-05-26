@@ -3,6 +3,7 @@ package fiuba.tecnicas.modelo.general.command;
 import java.util.ArrayList;
 import java.util.Iterator;
 
+import fiuba.tecnicas.modelo.comun.Mensaje;
 import fiuba.tecnicas.modelo.comun.Resultado;
 import fiuba.tecnicas.modelo.general.Compra;
 import fiuba.tecnicas.modelo.general.ItemCompra;
@@ -32,6 +33,6 @@ public class AgregarProductosCommand implements ICommand {
 				compra.addItem(new ItemCompra(p, 1));
 			}
 		}
-		return new Resultado("Productos agregados a la compra");
+		return new Resultado(Mensaje.getMensaje("mensaje_AgregarProducto"));
 	}
 }

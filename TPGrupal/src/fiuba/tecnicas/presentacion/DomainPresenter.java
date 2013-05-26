@@ -10,7 +10,9 @@ public class DomainPresenter {
 	
 	public interface IConsoleView extends IView {
 		//Agrego componentes especificos de la vista de consola
-		public String getCommandFromInput();
+		public String getCommandFromInput(String input);
+		public String getParametersFromInput(String input);
+		public String getInput();
 	}
 	
 	public DomainPresenter(IConsoleView view) {

@@ -16,11 +16,11 @@ public class ViewTest {
 		//Mockeo la consola
 		IConsoleView consola = mock(IConsoleView.class);		
 		when(consola.getPresenter()).thenReturn(new DomainPresenter(consola));
-		when(consola.getCommandFromInput()).thenReturn("comandoInvalido");
+		when(consola.getCommandFromInput("")).thenReturn("comandoInvalido");
 		
 		DomainPresenter presenter = consola.getPresenter();
 		
-		assertEquals(presenter.getCommand(consola.getCommandFromInput()).execute("").getMensaje(),Mensaje.getMensaje("mensaje_ComandoInvalido"));
+		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute("").getMensaje(),Mensaje.getMensaje("mensaje_ComandoInvalido"));
 	}
 	
 	@Test
@@ -28,11 +28,11 @@ public class ViewTest {
 		//Mockeo la consola
 		IConsoleView consola = mock(IConsoleView.class);		
 		when(consola.getPresenter()).thenReturn(new DomainPresenter(consola));
-		when(consola.getCommandFromInput()).thenReturn("Abrir Caja");
+		when(consola.getCommandFromInput("")).thenReturn("Abrir Caja");
 		
 		DomainPresenter presenter = consola.getPresenter();
 		
-		assertEquals(presenter.getCommand(consola.getCommandFromInput()).execute("").getMensaje(),Mensaje.getMensaje("mensaje_AbrirCaja"));
+		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute("").getMensaje(),Mensaje.getMensaje("mensaje_AbrirCaja"));
 	}
 
 }

@@ -22,7 +22,7 @@ public class PresenterTest {
 		//Mockeo la consola
 		IConsoleView consola = mock(IConsoleView.class);		
 		when(consola.getPresenter()).thenReturn(new DomainPresenter(consola));
-		when(consola.getCommandFromInput()).thenReturn("Abrir caja");
+		when(consola.getInput()).thenReturn("Abrir caja");
 		
 		DomainPresenter presenter = consola.getPresenter();
 		presenter.abrirCaja();
