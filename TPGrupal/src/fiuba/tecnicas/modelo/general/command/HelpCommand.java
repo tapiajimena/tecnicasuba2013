@@ -5,6 +5,10 @@ import fiuba.tecnicas.modelo.comun.Resultado;
 
 import fiuba.tecnicas.modelo.general.Compra;
 
+/**
+ * Comando que muestra los comandos disponibles
+ *
+ */
 public class HelpCommand implements ICommand {
 
 	@Override

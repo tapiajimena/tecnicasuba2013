@@ -2,8 +2,12 @@ package fiuba.tecnicas.modelo.general.command;
 
 import fiuba.tecnicas.modelo.comun.Mensaje;
 import fiuba.tecnicas.modelo.comun.Resultado;
-import fiuba.tecnicas.modelo.general.Caja;
 
+
+/**
+ * Comando Inexistente
+ *
+ */
 public class NullCommand implements ICommand {
 
 	@Override

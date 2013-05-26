@@ -1,6 +1,5 @@
 package fiuba.tecnicas.modelo.general.command;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import fiuba.tecnicas.modelo.comun.Mensaje;
@@ -10,6 +9,11 @@ import fiuba.tecnicas.modelo.general.ItemCompra;
 import fiuba.tecnicas.modelo.general.Producto;
 import fiuba.tecnicas.modelo.general.ProductoFactory;
 
+/**
+ * Comando para agregar productos
+ * Agrega los productos correspondientes a una compra.
+ *
+ */
 public class AgregarProductosCommand implements ICommand {
 
 	@Override
@@ -21,7 +25,7 @@ public class AgregarProductosCommand implements ICommand {
 		Iterator<ItemCompra> it = compra.iterator();
 		boolean isagregado = false;
 		for (int x=0;x<listaCodigos.length;x++){
-			Producto p = pf.getProducto(listaCodigos[x]);
+			Producto p = pf.getProducto(listaCodigos[x].trim());
 			while (it.hasNext() && !isagregado){
 				ItemCompra item = it.next(); 
 				if (item.getProducto().getCodigo_producto() == p.getCodigo_producto()){

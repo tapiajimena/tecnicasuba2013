@@ -1,4 +1,4 @@
-package fiuba.tecnicas.test.presenter;
+package fiuba.tecnicas.test.presentacion;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;

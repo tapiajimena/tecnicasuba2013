@@ -3,16 +3,31 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-<bean id="abrircajacommand"
-	class="fiuba.tecnicas.modelo.general.command.AbrirCajaCommand" />
-	
 <bean id="nullcommand"
 	class="fiuba.tecnicas.modelo.general.command.NullCommand" />
 
+<bean id="abrircajacommand"
+	class="fiuba.tecnicas.modelo.general.command.AbrirCajaCommand" />
+	
 <bean id ="agregarproductoscommand"
 	class="fiuba.tecnicas.modelo.general.command.AgregarProductosCommand" />
 	
 <bean id ="helpcommand"
 	class="fiuba.tecnicas.modelo.general.command.HelpCommand" />
+
+<bean id ="iniciarcompracommand"
+	class="fiuba.tecnicas.modelo.general.command.IniciarCompraCommand" />
+
+<bean id ="vertotalcommand"
+	class="fiuba.tecnicas.modelo.general.command.VerTotalCommand" />
+	
+<bean id ="verdescuentoscommand"
+	class="fiuba.tecnicas.modelo.general.command.VerDescuentosCommand" />
+	
+<bean id ="mediodepagocommand"
+	class="fiuba.tecnicas.modelo.general.command.MedioDePagoCommand" />
+
+<bean id ="cerrarcajacommand"
+	class="fiuba.tecnicas.modelo.general.command.CerrarCajaCommand" />
 
 </beans>

@@ -43,13 +43,13 @@ public class ConsoleView implements IConsoleView{
 	@Override
 	public String getCommandFromInput(String input) {
 		String[] aux = splitInput(input);
-		return aux.length > 0? aux[0] : "";
+		return aux.length > 0? aux[0].trim() : "";
 	}
 	
 	@Override
 	public String getParametersFromInput(String input) {
 		String[] aux = splitInput(input);
-		return aux.length > 1? aux[1] : "";
+		return aux.length > 1? aux[1].trim() : "";
 	}
 	
 	@Override

@@ -3,35 +3,30 @@ package fiuba.tecnicas.modelo.general;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
-import fiuba.tecnicas.modelo.general.command.CommandFactory;
-import fiuba.tecnicas.modelo.general.command.ICommand;
-
-
-
 public class ProductoFactory {
 
-	private static ProductoFactory INSTANCE;
-	private static XmlBeanFactory BEAN_FACTORY;
+	private static ProductoFactory INSTANCE_ProdutoFactory;
+	private static XmlBeanFactory PRODUCTO_FACTORY;
 	
 	private ProductoFactory()
 	{
 		ClassPathResource c = new ClassPathResource("SpringTPGrupalProducto.xml");
-		BEAN_FACTORY = new XmlBeanFactory(c);
+		PRODUCTO_FACTORY = new XmlBeanFactory(c);
 	}
 	
 	public static ProductoFactory getInstance()
 	{
-		if(INSTANCE == null)
-			INSTANCE = new ProductoFactory();
+		if(INSTANCE_ProdutoFactory == null)
+			INSTANCE_ProdutoFactory = new ProductoFactory();
 		
-		return INSTANCE;
+		return INSTANCE_ProdutoFactory;
 		
 	}
 	
 	public Producto getProducto(String codigo)
 	{
 		Producto producto;
-		producto = (Producto)BEAN_FACTORY.getBean(codigo);
+		producto = (Producto)PRODUCTO_FACTORY.getBean(codigo);
 		return producto;
 	}
 	

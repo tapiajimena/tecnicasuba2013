@@ -5,16 +5,15 @@ import fiuba.tecnicas.modelo.comun.Resultado;
 import fiuba.tecnicas.modelo.general.Caja;
 
 /**
- * Comando para Abrir la Caja
- * Inicializa la caja.
+ * TODO: que carajo hace este command? ademas de cerrar la caja
  *
  */
-public class AbrirCajaCommand implements ICommand {
+public class CerrarCajaCommand implements ICommand {
 
 	@Override
 	public Resultado execute(String input) {
-		Caja.getInstance().abrir();
-		return new Resultado(Mensaje.getMensaje("mensaje_AbrirCaja"));
+		Caja.getInstance().cerrar();
+		return new Resultado(Mensaje.getMensaje("mensaje_cerrarCaja"));
 	}
 
 }
