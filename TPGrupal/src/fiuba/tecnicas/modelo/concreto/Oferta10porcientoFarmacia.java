@@ -1,6 +1,7 @@
 package fiuba.tecnicas.modelo.concreto;
 import java.util.Iterator;
 
+import fiuba.tecnicas.modelo.general.Categoria;
 import fiuba.tecnicas.modelo.general.Compra;
 import fiuba.tecnicas.modelo.general.Oferta;
 import fiuba.tecnicas.modelo.general.ItemCompra;
@@ -21,7 +22,7 @@ public class Oferta10porcientoFarmacia extends Oferta {
 		ItemCompra item;
 		while(it.hasNext()){
 			item = it.next();	
-			if ( item.getProducto().getDescripcion() == "choclo") {
+			if ( item.getProducto().getCategorias().equals(Categoria.FARMACIA)) {
 				item.setPrecioFinal((item.getProducto().getPrecio() - 0.1*item.getProducto().getPrecio())*item.getCantidad());
 			}
 		}

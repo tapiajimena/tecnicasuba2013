@@ -21,6 +21,7 @@ public class Compra implements Iterator<ItemCompra>{
 	private void setMedioDePago(MedioDePago medioDePago){
 		this.medioDePago = medioDePago;
 	}	
+	
 	private Compra(){}
 
 	private double getTotalCompra(){
@@ -31,6 +32,10 @@ public class Compra implements Iterator<ItemCompra>{
 		return this.totalCompra;
 	}
 
+	public MedioDePago getMedioDePago(){
+		return this.medioDePago;
+	}
+	
 	public ArrayList<ItemCompra> getItems() {
 		return items;
 	}

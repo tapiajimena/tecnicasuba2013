@@ -29,7 +29,9 @@ public class Aplicacion {
 		consola.run();
 		CompraTest compra = new CompraTest();
 		//compra.TestCompraDescuentoTarjeta10PorCien();
-		compra.TestCompra2x1();
+		//compra.TestCompra2x1();
+		//compra.TestCompraTarjeta10Porciento();
+		compra.TestCompra10PorcientoFarmacia();
 /*
 		// Contexto
 //		Sucursal sucursal = new Sucursal();

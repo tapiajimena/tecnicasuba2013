@@ -16,20 +16,23 @@ import fiuba.tecnicas.modelo.general.TipoPago;
 public class CompraTest {
 
 	@Test 
-	public void TestCompraDescuentoTarjeta10PorCien() 
+	public void TestCompra10PorcientoFarmacia() 
 	{
 		// Contexto
 		Sucursal sucursal = SucursalFactory.SucursalUno();
 		//Compra compra = new Compra(sucursal);
-		ItemCompra  item = new ItemCompra(new Producto(10, "Champagne Extra Brut", "Chandon", Categoria.BEBIDAS),5);
+		ItemCompra  itemConDescuento = new ItemCompra(new Producto(10, "Ibuprofeno", "Ibupirac", Categoria.FARMACIA),5);
 		Compra compra = Compra.getInstance();
 		compra.inicializarCompra(sucursal, new MedioDePago(TipoPago.EFECTIVO, ""));
-		Compra.getInstance().addItem(item);
+		Compra.getInstance().addItem(itemConDescuento);
+		
+		ItemCompra itemSinDescuento = new ItemCompra(new Producto(1,"Coca","Coca Cola",Categoria.BEBIDAS),10);
+		compra.getInstance().addItem(itemSinDescuento);
 		
 		// Calculo
 		double totalCompra = Compra.getInstance().CalcularTotal();
 		System.out.println(totalCompra);
-		Assert.assertEquals(item.getPrecioFinal(), 50.0);	
+		Assert.assertEquals(totalCompra, 55.0);	
 	}
 	
 	@Test
@@ -44,4 +47,17 @@ public class CompraTest {
 		System.out.println("Total sin descuentos: "+totalCompra);
 		Assert.assertEquals(item.getPrecioFinal(), 6.0);
 	}	
+	
+	@Test
+	public void TestCompraTarjeta10Porciento(){
+		Sucursal sucursal = SucursalFactory.SucursalTres();
+		ItemCompra  item = new ItemCompra(new Producto(10, "Champagne Extra Brut", "Chandon", Categoria.BEBIDAS),5);
+		Compra compra = Compra.getInstance();
+		compra.inicializarCompra(sucursal, new MedioDePago(TipoPago.TARJETA, "XYZ"));
+		Compra.getInstance().addItem(item);
+		
+		double totalCompra = Compra.getInstance().CalcularTotal();
+		System.out.println(totalCompra);
+		Assert.assertEquals(totalCompra, 45.0);
+	}
 }

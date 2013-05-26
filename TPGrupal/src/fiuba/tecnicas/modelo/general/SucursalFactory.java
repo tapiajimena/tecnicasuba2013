@@ -26,4 +26,13 @@ public class SucursalFactory {
 		
 		return sucursal;
 	}
+	
+	public static Sucursal SucursalTres(){
+		Sucursal sucursal = new Sucursal();
+		
+		Oferta oferta = OfertaFactory.getInstance().ConstruiOferta("Oferta10porcientoTarjeta");
+		sucursal.setNext(oferta);
+		
+		return sucursal;
+	}
 }
