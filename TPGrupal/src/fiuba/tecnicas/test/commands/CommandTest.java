@@ -14,7 +14,7 @@ import fiuba.tecnicas.modelo.general.command.ICommand;
 public class CommandTest {
 
 	@Test 
-	public void testCommandAbrirCajaInicializaCaja() 
+	public void testCommandAbrirCajaInicializaFechaDeCaja() 
 	{
 		ICommand command = new AbrirCajaCommand();
 		command.execute("");
