@@ -1,5 +1,7 @@
 package fiuba.tecnicas.test.modelo;
 
+import java.util.Calendar;
+
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -54,6 +56,19 @@ public class CompraTest {
 		ItemCompra  item = new ItemCompra(new Producto(10, "Champagne Extra Brut", "Chandon", Categoria.BEBIDAS),5);
 		Compra compra = Compra.getInstance();
 		compra.inicializarCompra(sucursal, new MedioDePago(TipoPago.TARJETA, "XYZ"));
+		Compra.getInstance().addItem(item);
+		
+		double totalCompra = Compra.getInstance().CalcularTotal();
+		System.out.println(totalCompra);
+		Assert.assertEquals(totalCompra, 45.0);
+	}
+	
+	@Test
+	public void TestCompraTarjeta10PorcientoJueves(){
+		Sucursal sucursal = SucursalFactory.SucursalCuatro();
+		ItemCompra  item = new ItemCompra(new Producto(10, "Champagne Extra Brut", "Chandon", Categoria.BEBIDAS),5);
+		Compra compra = Compra.getInstance();
+		compra.inicializarCompra(sucursal, new MedioDePago(TipoPago.TARJETA, "XYZ"),Calendar.getInstance());
 		Compra.getInstance().addItem(item);
 		
 		double totalCompra = Compra.getInstance().CalcularTotal();

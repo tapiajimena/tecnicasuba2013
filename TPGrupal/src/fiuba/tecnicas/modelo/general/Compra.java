@@ -13,6 +13,7 @@ public class Compra implements Iterator<ItemCompra>{
 	private MedioDePago medioDePago;
 	private Sucursal sucursal;
 	private double totalCompra;
+	private ArrayList<Descuento> descuentos;
 	protected int posicionArray;
 	private int diaDeCompra;  //1: Domingo   2: Lunes....
 	
@@ -43,6 +44,10 @@ public class Compra implements Iterator<ItemCompra>{
 		return items;
 	}
 
+	public ArrayList<Descuento> getDescuentos(){
+		return descuentos;
+	}
+	
 	public int getDiaDeCompra(){
 		return this.diaDeCompra;
 	}
@@ -50,6 +55,10 @@ public class Compra implements Iterator<ItemCompra>{
 	public void addItem(ItemCompra item){
 		// Ojo prodria calcular el descuento aca
 		items.add(item);
+	}
+	
+	public void addDescuento(Descuento descuento){
+		descuentos.add(descuento);
 	}
 
 	public double CalcularTotal()
@@ -66,7 +75,8 @@ public class Compra implements Iterator<ItemCompra>{
 	}
 
 	public void setDiaCompra(Calendar fechaCompra){
-		this.diaDeCompra = fechaCompra.DAY_OF_WEEK;
+		//this.diaDeCompra = fechaCompra.DAY_OF_WEEK;
+		this.diaDeCompra = 5;
 	}
 	
 	public void inicializarCompra(Sucursal sucursal, MedioDePago medio_de_pago, Calendar fechaCompra){
@@ -75,6 +85,7 @@ public class Compra implements Iterator<ItemCompra>{
 		this.setSucursal(sucursal);
 		this.setDiaCompra(fechaCompra);
 		items = new ArrayList<ItemCompra>();
+		descuentos = new ArrayList<Descuento>();
 	}
 	
 	public void inicializarCompra(Sucursal sucursal, MedioDePago medio_de_pago){
@@ -82,6 +93,7 @@ public class Compra implements Iterator<ItemCompra>{
 		this.setMedioDePago(medio_de_pago);
 		this.setSucursal(sucursal);
 		items = new ArrayList<ItemCompra>();
+		descuentos = new ArrayList<Descuento>();
 	}
 
 	public Iterator<ItemCompra> iterator() {

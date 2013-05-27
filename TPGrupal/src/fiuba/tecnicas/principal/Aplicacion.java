@@ -2,9 +2,12 @@ package fiuba.tecnicas.principal;
 
 
 
+import java.util.Calendar;
+
 import junit.framework.Assert;
 import fiuba.tecnicas.modelo.general.Categoria;
 import fiuba.tecnicas.modelo.general.Compra;
+import fiuba.tecnicas.modelo.general.Descuento;
 import fiuba.tecnicas.modelo.general.ItemCompra;
 import fiuba.tecnicas.modelo.general.Producto;
 import fiuba.tecnicas.modelo.general.MedioDePago;
@@ -24,15 +27,15 @@ public class Aplicacion {
 	/**
 	 * @param args
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args){
 		IView consola = new ConsoleView();
 		consola.run();
-		CompraTest compra = new CompraTest();
+		//CompraTest compra = new CompraTest();
 		//compra.TestCompraDescuentoTarjeta10PorCien();
 		//compra.TestCompra2x1();
 		//compra.TestCompraTarjeta10Porciento();
-		compra.TestCompra10PorcientoFarmacia();
-/*
+		//compra.TestCompra10PorcientoFarmacia();
+
 		// Contexto
 //		Sucursal sucursal = new Sucursal();
 //		//Compra compra = new Compra(sucursal);
@@ -43,15 +46,16 @@ public class Aplicacion {
 //		// Calculo
 //		double totalCompra = Compra.getInstance().CalcularTotal();
 //		System.out.println(totalCompra);
-		Sucursal sucursal = SucursalFactory.SucursalUno();
+		Sucursal sucursal = SucursalFactory.SucursalCuatro();
 		//Compra compra = new Compra(sucursal);
 		Compra compra = Compra.getInstance();
-		compra.inicializarCompra(sucursal, new MedioDePago(TipoPago.EFECTIVO, ""));
+		compra.inicializarCompra(sucursal, new MedioDePago(TipoPago.TARJETA, ""),Calendar.getInstance());
 		Compra.getInstance().addItem(new ItemCompra(new Producto(10, "Champagne Extra Brut", "Chandon", Categoria.BEBIDAS),5));
-//		Compra.getInstance().addItem(new ItemCompra(new Producto(10, "choclo"),5));
-//		Compra.getInstance().addItem(new ItemCompra(new Producto(30, "cafe"),1));
-		// Calculo
+		Compra.getInstance().addItem(new ItemCompra(new Producto(10, "Ibuprofeno", "Ibupirac", Categoria.FARMACIA),5));
+		Compra.getInstance().addItem(new ItemCompra(new Producto(10, "Coca", "Coca Cola", Categoria.BEBIDAS),2));
+
 		double totalCompra = Compra.getInstance().CalcularTotal();
-		System.out.println(totalCompra);*/
+			
+		System.out.println(totalCompra);
 	}
 }
