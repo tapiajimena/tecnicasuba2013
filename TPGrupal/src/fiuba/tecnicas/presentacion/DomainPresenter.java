@@ -22,15 +22,6 @@ public class DomainPresenter {
 	public String getMensajeBienvenida() {
 		return Mensaje.getMensaje("mensaje_Bienvenida");
 	}
-	
-	public void abrirCaja() {
-		//InicializoCaja
-		//view.setMensaje("Bienvenido!");
-	}
-	
-	public double calcularMontoTotalCompra() {
-		return 0;
-	}
 
 	public ICommand getCommand(String input) {
 		return (ICommand) CommandFactory.getInstance().getCommand(input);
