@@ -48,14 +48,14 @@ public class Aplicacion {
 //		System.out.println(totalCompra);
 		Sucursal sucursal = SucursalFactory.SucursalCuatro();
 		//Compra compra = new Compra(sucursal);
-		Compra compra = Compra.getInstance();
-		compra.inicializarCompra(sucursal, new MedioDePago(TipoPago.TARJETA, ""),Calendar.getInstance());
-		Compra.getInstance().addItem(new ItemCompra(new Producto(10, "Champagne Extra Brut", "Chandon", Categoria.BEBIDAS),5));
-		Compra.getInstance().addItem(new ItemCompra(new Producto(10, "Ibuprofeno", "Ibupirac", Categoria.FARMACIA),5));
-		Compra.getInstance().addItem(new ItemCompra(new Producto(10, "Coca", "Coca Cola", Categoria.BEBIDAS),2));
+		//Compra compra = Compra.getInstance();
+		//compra.inicializarCompra(sucursal, new MedioDePago(TipoPago.TARJETA, ""),Calendar.getInstance());
+		//Compra.getInstance().addItem(new ItemCompra(new Producto(10, "Champagne Extra Brut", "Chandon", Categoria.BEBIDAS),5));
+		//Compra.getInstance().addItem(new ItemCompra(new Producto(10, "Ibuprofeno", "Ibupirac", Categoria.FARMACIA),5));
+		//Compra.getInstance().addItem(new ItemCompra(new Producto(10, "Coca", "Coca Cola", Categoria.BEBIDAS),2));
 
-		double totalCompra = Compra.getInstance().CalcularTotal();
+		//double totalCompra = Compra.getInstance().CalcularTotal();
 			
-		System.out.println(totalCompra);
+		//System.out.println(totalCompra);
 	}
 }

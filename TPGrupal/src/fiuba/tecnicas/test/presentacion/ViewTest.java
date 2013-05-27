@@ -61,13 +61,27 @@ public class ViewTest {
 		//Mockeo la consola
 		IConsoleView consola = mock(IConsoleView.class);		
 		when(consola.getPresenter()).thenReturn(new DomainPresenter(consola));
-		when(consola.getCommandFromInput("")).thenReturn("Agregar productos / p0000,p0001");
+		when(consola.getCommandFromInput("")).thenReturn("Agregar productos");
 		when(consola.getParametersFromInput("")).thenReturn("p0000,p0001");
 		
 		DomainPresenter presenter = consola.getPresenter();
 		
 		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute(consola.getParametersFromInput("")).getMensaje(),Mensaje.getMensaje("mensaje_AgregarProductos"));
 	}
+	
+	@Test
+	public void testInputCommandMedioDePago() throws IOException {
+		//Mockeo la consola
+		IConsoleView consola = mock(IConsoleView.class);		
+		when(consola.getPresenter()).thenReturn(new DomainPresenter(consola));
+		when(consola.getCommandFromInput("")).thenReturn("medio de pago");
+		when(consola.getParametersFromInput("")).thenReturn("visa");
+		
+		DomainPresenter presenter = consola.getPresenter();
+		
+		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute(consola.getParametersFromInput("")).getMensaje(),Mensaje.getMensaje("mensaje_MedioDePago"));
+	}
+
 
 
 }

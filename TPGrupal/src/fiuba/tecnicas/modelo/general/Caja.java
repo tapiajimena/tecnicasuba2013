@@ -3,6 +3,7 @@ package fiuba.tecnicas.modelo.general;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 /**
@@ -11,11 +12,12 @@ import java.util.Map;
 public class Caja {
 	private static Caja INSTANCE;
 	private String fechaDeApertura;
-	private int totalVentasCaja;
-	private double totalDescuentos;
-	private Map<MedioDePago, Double> totalPorMedioDePago;
+	//private Map<MedioDePago, Double> totalPorMedioDePago;
+	private HashMap<Integer,Compra> comprasDeCaja;
 
-    private Caja() {}
+    private Caja() {
+    	this.comprasDeCaja = new HashMap<Integer,Compra>();
+    }
  
     private void setFechaDeHoy() {
     	Calendar cal = Calendar.getInstance();
@@ -37,33 +39,36 @@ public class Caja {
     
     public void abrir() {
 			setFechaDeHoy();
-			this.setTotalDescuentos(0);
-			this.setTotalVentasCaja(0);
-			this.setTotalPorMedioDePago(new HashMap<MedioDePago,Double>());
+			//this.setTotalPorMedioDePago(new HashMap<MedioDePago,Double>());
     }
 
-	public int getTotalVentasCaja() {
-		return totalVentasCaja;
+	public double getTotalVentasCaja() {
+		double totalVentas = 0;
+		if (!this.comprasDeCaja.isEmpty()) {
+			Iterator<Compra> it_Compra = this.comprasDeCaja.values().iterator();
+			while (it_Compra.hasNext()) {
+				totalVentas += it_Compra.next().getTotalCompra();
+			}
+		}
+		return totalVentas;
 	}
 
-	public void setTotalVentasCaja(int totalVentasCaja) {
-		this.totalVentasCaja = totalVentasCaja;
-	}
-
-	public double getTotalDescuentos() {
+	public double getTotalDescuentosCaja() {
+		double totalDescuentos = 0;
+		if (!this.comprasDeCaja.isEmpty()) {
+			Iterator<Compra> it_Compra = this.comprasDeCaja.values().iterator();
+			while (it_Compra.hasNext()) {
+				//totalDescuentos += it_Compra.next();
+			}
+		}
 		return totalDescuentos;
 	}
 
-	public void setTotalDescuentos(double totalDescuentos) {
-		this.totalDescuentos = totalDescuentos;
-	}
-
 	public Map<MedioDePago, Double> getTotalPorMedioDePago() {
-		return totalPorMedioDePago;
+		return null;
 	}
 
-	public void setTotalPorMedioDePago(Map<MedioDePago, Double> totalPorMedioDePago) {
-		this.totalPorMedioDePago = totalPorMedioDePago;
+	public Map<Integer,Compra> getComprasDeCaja() {
+		return comprasDeCaja;
 	}
-    
 }

@@ -12,6 +12,6 @@ public class NullCommand implements ICommand {
 
 	@Override
 	public Resultado execute(String input) {
-		return new Resultado(Mensaje.getMensaje("mensaje_ComandoInvalido") + input);
+		return new Resultado(Mensaje.getMensaje("mensaje_ComandoInvalido"));
 	}
 }

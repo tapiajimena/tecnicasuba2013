@@ -17,4 +17,8 @@ public class MedioDePago {
     public TipoPago getTipoPago(){
     	return this.tipo;
     }
+    
+    public String toString() {
+    	return tipo + " " + banco;
+    }
 }
