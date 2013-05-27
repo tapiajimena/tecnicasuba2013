@@ -3,29 +3,6 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-<bean id="OfertaGenerica"
-	class="fiuba.tecnicas.modelo.concreto.OfertaGenerica" />
-	
-<bean id="Oferta10porcientoFarmacia"
-	class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoFarmacia" >
-	<property name="next"><ref bean="OfertaGenerica"/></property>
-</bean>
-
-<bean id="Oferta2x1"
-	class="fiuba.tecnicas.modelo.concreto.Oferta2x1" >
-	<property name="next"><ref bean="OfertaGenerica"/></property>
-</bean>
-
-<bean id="Oferta10porcientoTarjeta"
-	class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjeta" >
-	<property name="next"><ref bean="OfertaGenerica"/></property>
-</bean>
-
-<bean id="Oferta10porcientoTarjetaJueves"
-	class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjetaJueves" >
-</bean>
-
-
 <!-- CADENA SUCURSAL UNO -->
 
 	<bean id="SucursalConCadenaUno"

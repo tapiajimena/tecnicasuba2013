@@ -12,7 +12,7 @@ public class Sucursal {
 	}
 	
 	public Sucursal(String nombreSucursal) {
-		this.descripcion = nombreSucursal;
+		this.setDescripcion(nombreSucursal);
 	}
 
 	public void CalcularDescuentos(Compra compra){
@@ -31,6 +31,14 @@ public class Sucursal {
 	}
 	
 	public String toString() {
-		return this.descripcion;
+		return this.getDescripcion();
+	}
+
+	public String getDescripcion() {
+		return descripcion;
+	}
+
+	public void setDescripcion(String descripcion) {
+		this.descripcion = descripcion;
 	}
 }
