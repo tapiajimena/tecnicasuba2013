@@ -13,7 +13,7 @@ public class CerrarCajaCommand implements ICommand {
 	@Override
 	public Resultado execute(String input) {
 		//Mostrar estos campos
-		Caja.getInstance().getTotalDescuentos();
+		//Caja.getInstance().getTotalDescuentos();
 		Caja.getInstance().getTotalPorMedioDePago();
 		Caja.getInstance().getTotalVentasCaja();
 		return new Resultado(Mensaje.getMensaje("mensaje_cerrarCaja"));

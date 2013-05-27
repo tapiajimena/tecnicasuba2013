@@ -6,7 +6,7 @@ import fiuba.tecnicas.modelo.comun.Resultado;
  * Comando para ver el total de la compra realizada
  *
  */
-public class VerTotalCommand implements ICommand {
+public class VerTotalCompraCommand implements ICommand {
 
 	@Override
 	public Resultado execute(String input) {
