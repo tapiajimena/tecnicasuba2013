@@ -4,6 +4,7 @@ import java.util.Iterator;
 
 import fiuba.tecnicas.modelo.comun.Mensaje;
 import fiuba.tecnicas.modelo.comun.Resultado;
+import fiuba.tecnicas.modelo.general.Caja;
 import fiuba.tecnicas.modelo.general.Compra;
 import fiuba.tecnicas.modelo.general.ItemCompra;
 import fiuba.tecnicas.modelo.general.Producto;
@@ -21,8 +22,8 @@ public class AgregarProductosCommand implements ICommand {
 		String[] listaCodigos;
 		listaCodigos = input.split("\\,");
 		ProductoFactory pf = ProductoFactory.getInstance();
-		Compra compra = Compra.getInstance();
-		Iterator<ItemCompra> it = compra.iterator();
+		Compra compra = Caja.getInstance().getCompraActiva();
+		Iterator<ItemCompra> it = compra.getItems().iterator();
 		boolean isagregado = false;
 		for (int x=0;x<listaCodigos.length;x++){
 			Producto p = pf.getProducto(listaCodigos[x].trim());

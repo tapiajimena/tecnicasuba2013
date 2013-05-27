@@ -5,7 +5,7 @@ import fiuba.tecnicas.modelo.comun.Resultado;
 import fiuba.tecnicas.modelo.general.Caja;
 import fiuba.tecnicas.modelo.general.Compra;
 
-public class CalcularTotalCajaCommand implements ICommand {
+public class CalcularTotalCompraCommand implements ICommand {
 
 	@Override
 	public Resultado execute(String input) {

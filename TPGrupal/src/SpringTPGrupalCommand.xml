@@ -18,8 +18,8 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 <bean id ="helpcommand"
 	class="fiuba.tecnicas.modelo.general.command.HelpCommand" />
 
-<bean id ="vertotalcommand"
-	class="fiuba.tecnicas.modelo.general.command.VerTotalCompraCommand" />
+<bean id ="vertotalcajacommand"
+	class="fiuba.tecnicas.modelo.general.command.VerTotalCajaCommand" />
 	
 <bean id ="verdescuentoscommand"
 	class="fiuba.tecnicas.modelo.general.command.VerDescuentosCommand" />
@@ -30,7 +30,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 <bean id ="cerrarcajacommand"
 	class="fiuba.tecnicas.modelo.general.command.CerrarCajaCommand" />
 
-<bean id ="calculartotalcajacommand"
-	class="fiuba.tecnicas.modelo.general.command.CalcularTotalCajaCommand" />
+<bean id ="calculartotalcompracommand"
+	class="fiuba.tecnicas.modelo.general.command.CalcularTotalCompraCommand" />
 
 </beans>
