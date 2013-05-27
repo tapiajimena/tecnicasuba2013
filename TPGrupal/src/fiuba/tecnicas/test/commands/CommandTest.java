@@ -21,7 +21,6 @@ public class CommandTest {
 		command.execute("");
 		
     	Calendar cal = Calendar.getInstance();
-    	cal.add(Calendar.DATE, 1);
     	SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
     	String fechaActual = format1.format(cal.getTime());  
 		
@@ -32,15 +31,21 @@ public class CommandTest {
 	@Test 
 	public void testCommandMedioDePagoSeteaMedioDePagoEnCompra() 
 	{
-		ICommand command = new MedioDePagoCommand();
-		command.execute("");
-		
-    	Calendar cal = Calendar.getInstance();
-    	cal.add(Calendar.DATE, 1);
-    	SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
-    	String fechaActual = format1.format(cal.getTime());  
-		
-		assertEquals(Caja.getInstance().getFechaDeApertura(),fechaActual);
+		//TODO:
+	
+	}
+	
+	@Test 
+	public void testCommandVerTotalDescuentosCaja() 
+	{
+		//TODO:
+	
+	}
+	
+	@Test 
+	public void testCommandVerTotalCaja() 
+	{
+		//TODO:
 	
 	}
 }
