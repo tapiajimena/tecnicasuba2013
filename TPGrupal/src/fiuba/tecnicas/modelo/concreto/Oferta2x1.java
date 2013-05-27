@@ -17,8 +17,7 @@ public class Oferta2x1 extends Oferta{
 
 	@Override
 	public void calcularDescuentos (Compra compra){
-		compra.setPosicionArray(0);
-		Iterator<ItemCompra> it = compra.iterator();
+		Iterator<ItemCompra> it = compra.getItems().iterator();
 		ItemCompra item;
 		double valorDescuento = 0;
 		double precioPares = 0;

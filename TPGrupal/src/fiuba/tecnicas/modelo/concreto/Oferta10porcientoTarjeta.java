@@ -20,9 +20,8 @@ public class Oferta10porcientoTarjeta extends Oferta{
 
 	@Override
 	public void calcularDescuentos (Compra compra){
-		compra.setPosicionArray(0);
 		double valorDescuento = 0;
-		Iterator<ItemCompra> it = compra.iterator();
+		Iterator<ItemCompra> it = compra.getItems().iterator();
 		ItemCompra item;
 		while(it.hasNext()){
 			item = it.next();	

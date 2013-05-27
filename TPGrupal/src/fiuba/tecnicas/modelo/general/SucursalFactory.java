@@ -1,5 +1,6 @@
 package fiuba.tecnicas.modelo.general;
 
+import fiuba.tecnicas.modelo.comun.Constante;
 import fiuba.tecnicas.modelo.concreto.Oferta10porcientoFarmacia;
 import fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjeta;
 import fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjetaJueves;
@@ -7,12 +8,12 @@ import fiuba.tecnicas.modelo.concreto.Oferta2x1;
 
 
 public class SucursalFactory {
-
+	
 	public static Sucursal SucursalUno()
 	{
 		// Inyectar ofertas genericas
 
-		Sucursal sucursal = new Sucursal();
+		Sucursal sucursal = new Sucursal(Constante.getConstante("nombre_Sucursal_Uno"));
 
 		Oferta o10F = OfertaFactory.getInstance().ConstruiOferta("Oferta10porcientoFarmacia");
 		sucursal.setNext(o10F);
@@ -30,7 +31,7 @@ public class SucursalFactory {
 	}
 
 	public static Sucursal SucursalDos(){
-		Sucursal sucursal = new Sucursal();
+		Sucursal sucursal = new Sucursal(Constante.getConstante("nombre_Sucursal_Dos"));
 
 		Oferta o10F = OfertaFactory.getInstance().ConstruiOferta("Oferta10porcientoFarmacia");
 		sucursal.setNext(o10F);
@@ -48,7 +49,7 @@ public class SucursalFactory {
 	}
 
 	public static Sucursal SucursalTres(){
-		Sucursal sucursal = new Sucursal();
+		Sucursal sucursal = new Sucursal(Constante.getConstante("nombre_Sucursal_Tres"));
 
 		Oferta o10F = OfertaFactory.getInstance().ConstruiOferta("Oferta10porcientoFarmacia");
 		sucursal.setNext(o10F);
@@ -66,7 +67,7 @@ public class SucursalFactory {
 	}
 
 	public static Sucursal SucursalCuatro(){
-		Sucursal sucursal = new Sucursal();
+		Sucursal sucursal = new Sucursal(Constante.getConstante("nombre_Sucursal_Cuatro"));
 
 		Oferta o2x1 = OfertaFactory.getInstance().ConstruiOferta("Oferta2x1");
 		sucursal.setNext(o2x1);

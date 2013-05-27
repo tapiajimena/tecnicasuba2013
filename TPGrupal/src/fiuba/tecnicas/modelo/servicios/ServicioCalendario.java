@@ -5,6 +5,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import fiuba.tecnicas.modelo.comun.Constante;
+import fiuba.tecnicas.modelo.general.DiaSemana;
+
 public class ServicioCalendario { 
 	
 	public static int getDayOfTheWeek(Date d){
@@ -14,16 +17,18 @@ public class ServicioCalendario {
 	}
 	
 	public static int getTodayDayOfTheWeek(){
-		Calendar calendar = Calendar.getInstance();
-		GregorianCalendar cal = new GregorianCalendar();
-		cal.setTime(calendar.getTime());
-		return cal.get(Calendar.DAY_OF_WEEK);		
+		return getDayOfTheWeek(new Date());		
 	}
 	
-    private static String fechaDeHoy() {
+	public static String getTodayDayOfTheWeekToString(){
+		int numHoy = getTodayDayOfTheWeek();
+		DiaSemana hoy = DiaSemana.values()[numHoy-1];
+		return hoy.name();		
+	}
+	
+    public static String fechaDeHoy() {
     	Calendar cal = Calendar.getInstance();
-    	cal.add(Calendar.DATE, 1);
-    	SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
+    	SimpleDateFormat format1 = new SimpleDateFormat(Constante.getConstante("formato_fechaDeCaja"));
     	return format1.format(cal.getTime());   	
     }
 }

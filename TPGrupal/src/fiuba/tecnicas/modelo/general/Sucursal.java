@@ -5,16 +5,19 @@ import java.util.Iterator;
 public class Sucursal {
 	
 	private Oferta chainOferta;
+	private String descripcion;
 	
 	public void setNext(Oferta oferta){
 		this.chainOferta = oferta;
 	}
 	
-	public Sucursal(){}
+	public Sucursal(String nombreSucursal) {
+		this.descripcion = nombreSucursal;
+	}
 
 	public void CalcularDescuentos(Compra compra){
 // Setteo todos los precios iniciales de cada item y luego aplico las ofertas.
-		Iterator<ItemCompra> it = compra.iterator();
+		Iterator<ItemCompra> it = compra.getItems().iterator();
 		ItemCompra item;
 		while(it.hasNext()){
 			item = it.next();	
@@ -25,5 +28,9 @@ public class Sucursal {
 	
 	public Oferta getNext(){
 		return this.chainOferta;
+	}
+	
+	public String toString() {
+		return this.descripcion;
 	}
 }

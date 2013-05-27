@@ -1,6 +1,8 @@
 package fiuba.tecnicas.modelo.general.command;
 
 import fiuba.tecnicas.modelo.comun.Resultado;
+import fiuba.tecnicas.modelo.general.Caja;
+import fiuba.tecnicas.modelo.general.SucursalFactory;
 
 /**
  * Comando para iniciar una compra.
@@ -11,7 +13,8 @@ public class IniciarCompraCommand implements ICommand {
 
 	@Override
 	public Resultado execute(String input) {
-		// TODO IniciarCompraCommand
+		//TODO:agregar sucursal dependiendo de input?
+		Caja.getInstance().addNuevaCompraActiva(null);
 		return null;
 	}
 

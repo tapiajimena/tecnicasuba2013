@@ -18,14 +18,13 @@ public class Oferta10porcientoTarjetaJueves extends Oferta{
 
 	@Override
 	public void calcularDescuentos (Compra compra){
-		compra.setPosicionArray(0);
-		Iterator<ItemCompra> it = compra.iterator();
+		Iterator<ItemCompra> it = compra.getItems().iterator();
 		ItemCompra item;
 		double valorDescuento = 0;
 		
 		while(it.hasNext()){
 			item = it.next();	
-			if(compra.getMedioDePago().getTipoPago().equals(TipoPago.TARJETA) && compra.getDiaDeCompra()==5){
+			if(compra.getMedioDePago().getTipoPago().equals(TipoPago.TARJETA) && compra.getDiaDeCompra()=="JUEVES"){
 				valorDescuento += 0.1*item.getProducto().getPrecio()*item.getCantidad();
 				if (item.getPrecioFinal() == (item.getProducto().getPrecio()*item.getCantidad())){
 					item.setPrecioFinal((item.getProducto().getPrecio() - 0.1*item.getProducto().getPrecio())*item.getCantidad());					

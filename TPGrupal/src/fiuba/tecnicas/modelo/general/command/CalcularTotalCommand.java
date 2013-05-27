@@ -11,7 +11,7 @@ public class CalcularTotalCommand implements ICommand {
 	 */
 	@Override
 	public Resultado execute(String input) {
-		String stringCosto = new Double(Compra.getInstance().CalcularTotal()).toString();
+		String stringCosto = new Double(compra.CalcularTotal()).toString();
 		return new Resultado("La Compra tiene un Costo de" + stringCosto);
 	}
 }

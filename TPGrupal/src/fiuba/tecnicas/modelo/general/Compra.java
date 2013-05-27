@@ -2,9 +2,9 @@ package fiuba.tecnicas.modelo.general;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Iterator;
+
+import fiuba.tecnicas.modelo.servicios.ServicioCalendario;
 
 public class Compra {
 	private ArrayList<ItemCompra> items;
@@ -12,25 +12,28 @@ public class Compra {
 	private Sucursal sucursal;
 	private double totalCompra;
 	private ArrayList<Descuento> descuentos;
-	private DiaSemana diaDeCompra;
+	private String diaDeCompra;
 	
 	private void setSucursal(Sucursal sucursal){
 		this.sucursal = sucursal;
+	}
+	
+	public Sucursal getSucursal(){
+		return this.sucursal;
 	}
 
 	public void setMedioDePago(String medioDePago, String banco){
 		this.medioDePago = new MedioDePago(TipoPago.valueOf(medioDePago),banco);
 	}	
 	
-	public Compra(){
-		this.items = new ArrayList<ItemCompra>();
-		//this.diaDeCompra = DiaSemana.values()[Calendar.getInstance().DAY_OF_WEEK];
-	}
+	public void setMedioDePago(MedioDePago medioDePago){
+		this.medioDePago = medioDePago;
+	}	
 	
-	public static int getDayOfTheWeek(Date d){
-		GregorianCalendar cal = new GregorianCalendar();
-		cal.setTime(d);
-		return cal.get(Calendar.DAY_OF_WEEK);		
+	public Compra(Sucursal sucursal){
+		this.items = new ArrayList<ItemCompra>();
+		this.diaDeCompra = ServicioCalendario.getTodayDayOfTheWeekToString();
+		this.sucursal = sucursal;
 	}
 
 	//Calcula el monto total de la compra CON DESCUENTOS
@@ -71,7 +74,7 @@ public class Compra {
 
 	
 	public String getDiaDeCompra(){
-		return this.diaDeCompra.name();
+		return this.diaDeCompra;
 	}
 	
 	public void addItem(ItemCompra item){
@@ -88,18 +91,14 @@ public class Compra {
 		this.sucursal.CalcularDescuentos(this);
 		return this.getTotalCompra();
 	}
-
-	public void setDiaCompra(int numeroDia){
-		this.diaDeCompra = DiaSemana.values()[numeroDia];
-	}
 	
 	public void inicializarCompra(Sucursal sucursal, MedioDePago medio_de_pago, Calendar fechaCompra){
 		inicializarCompra(sucursal,medio_de_pago);
-		this.diaDeCompra = DiaSemana.values()[fechaCompra.DAY_OF_WEEK];
+		//TODO:this.diaDeCompra = ServicioCalendario;
 	}
 	
 	public void inicializarCompra(Sucursal sucursal, MedioDePago medio_de_pago){
-		//TODO:this.setMedioDePago(medio_de_pago);
+		this.setMedioDePago(medio_de_pago);
 		this.setSucursal(sucursal);
 		items = new ArrayList<ItemCompra>();
 		descuentos = new ArrayList<Descuento>();
