@@ -30,4 +30,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 <bean id ="cerrarcajacommand"
 	class="fiuba.tecnicas.modelo.general.command.CerrarCajaCommand" />
 
+<bean id ="calculartotalcompracommand"
+	class="fiuba.tecnicas.modelo.general.command.CalcularTotalCompraCommand" />
+
 </beans>
