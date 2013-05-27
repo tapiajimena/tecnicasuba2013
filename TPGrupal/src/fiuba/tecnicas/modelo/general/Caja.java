@@ -37,11 +37,33 @@ public class Caja {
     
     public void abrir() {
 			setFechaDeHoy();
-			this.totalDescuentos = 0;
-			this.totalVentasCaja = 0;
-			this.totalPorMedioDePago = new HashMap<MedioDePago,Double>();
+			this.setTotalDescuentos(0);
+			this.setTotalVentasCaja(0);
+			this.setTotalPorMedioDePago(new HashMap<MedioDePago,Double>());
     }
-    
-    public void cerrar() {}
+
+	public int getTotalVentasCaja() {
+		return totalVentasCaja;
+	}
+
+	public void setTotalVentasCaja(int totalVentasCaja) {
+		this.totalVentasCaja = totalVentasCaja;
+	}
+
+	public double getTotalDescuentos() {
+		return totalDescuentos;
+	}
+
+	public void setTotalDescuentos(double totalDescuentos) {
+		this.totalDescuentos = totalDescuentos;
+	}
+
+	public Map<MedioDePago, Double> getTotalPorMedioDePago() {
+		return totalPorMedioDePago;
+	}
+
+	public void setTotalPorMedioDePago(Map<MedioDePago, Double> totalPorMedioDePago) {
+		this.totalPorMedioDePago = totalPorMedioDePago;
+	}
     
 }
