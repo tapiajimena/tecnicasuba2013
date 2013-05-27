@@ -21,21 +21,29 @@ public class Oferta2x1 extends Oferta{
 		Iterator<ItemCompra> it = compra.iterator();
 		ItemCompra item;
 		double valorDescuento = 0;
-		
+		double precioPares = 0;
+		double precioImpares = 0;
+
 		while(it.hasNext()){
 			item = it.next();				
-			
-			if ( item.getProducto().getDescripcion() == "Coca") {
-				double precioPares = (int)item.getCantidad()/2 * item.getProducto().getPrecio();
-				double precioImpares = item.getProducto().getPrecio() * (item.getCantidad() - 2 * ((int) item.getCantidad()/2));
-				
+
+			if ( item.getProducto().getDescripcion() == "Coca") {					
+
+				precioPares = (int)item.getCantidad()/2 * item.getProducto().getPrecio();
+				precioImpares = item.getProducto().getPrecio() * (item.getCantidad() - 2 * ((int) item.getCantidad()/2));
 				valorDescuento += precioPares;
-				
-				item.setPrecioFinal(precioPares + precioImpares);				
+				if (item.getPrecioFinal() == (item.getProducto().getPrecio()*item.getCantidad())){
+					item.setPrecioFinal(precioPares + precioImpares);
+				}else {
+					precioPares = (int)item.getCantidad()/2 * (item.getPrecioFinal()/2);
+					precioImpares = (item.getPrecioFinal()/2) * (item.getCantidad() - 2 * ((int) item.getCantidad()/2));
+					item.setPrecioFinal(precioPares + precioImpares);
+				}
 			}
 		}
+
 		compra.addDescuento(new Descuento(valorDescuento,"2 x 1"));
-		
+
 		if (this.next != null){ 
 			next.calcularDescuentos(compra); 
 		}
