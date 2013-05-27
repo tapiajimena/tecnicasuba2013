@@ -14,7 +14,7 @@ public class Caja {
 	
 	private static Caja INSTANCE;
 	private String fechaDeApertura;
-	//private Map<Double, MedioDePago> totalPorMedioDePago;
+	private Map<MedioDePago, Double> totalPorMedioDePago;
 	private HashMap<Boolean,Compra> comprasDeCaja;
 
     private Caja() {
@@ -38,7 +38,7 @@ public class Caja {
     
     public void abrir() {
 			setFechaDeHoy();
-			//this.setTotalPorMedioDePago(new HashMap<MedioDePago,Double>());
+			this.setTotalPorMedioDePago(new HashMap<MedioDePago,Double>());
     }
 
 	public double getTotalVentasCaja() {
@@ -64,7 +64,7 @@ public class Caja {
 	}
 
 	public Map<Double,MedioDePago> getTotalPorMedioDePago() {
-		//TODO:getTotalPorMedioDePago
+		//TODO:getTotalPorMedioDePago LO HACE LUCAS
 		return null;
 	}
 
@@ -83,5 +83,9 @@ public class Caja {
 	
 	public void addNuevaCompraActiva(Sucursal sucursal) {
 		this.comprasDeCaja.put(true, new Compra(sucursal));
+	}
+	
+	private void setTotalPorMedioDePago (Map<MedioDePago,Double> totalMedioPago){
+		this.totalPorMedioDePago = totalMedioPago;
 	}
 }
