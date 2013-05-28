@@ -21,30 +21,37 @@ public class AgregarProductosCommand implements ICommand {
 	@Override
 	public Resultado execute(String input) {
 		Producto p = null;
+		int y = 0;
 		String[] listaCodigos;
 		listaCodigos = input.split(Constante.getConstante("separador_parametros"));
 		ProductoFactory pf = ProductoFactory.getInstance();
 		Compra compra = Caja.getInstance().getCompraActiva();
-		Iterator<ItemCompra> it = compra.getItems().iterator();
-		boolean isagregado = false;
-		if (compra.getItems().isEmpty() && listaCodigos.length > 0) {
-			p = pf.getProducto(listaCodigos[0].trim());
-		}
-		if (!compra.getItems().isEmpty() && listaCodigos.length > 0) {
-			for (int x=0;x<listaCodigos.length;x++){
-				p = pf.getProducto(listaCodigos[x].trim());
-				while (it.hasNext() && !isagregado){
-					ItemCompra item = it.next(); 
-					if (item.getProducto().getCodigo_producto() == p.getCodigo_producto()){
-						item.setCantidad(item.getCantidad() + 1);
-						isagregado = true;
+		if (compra != null){
+			Iterator<ItemCompra> it = compra.getItems().iterator();
+			boolean isagregado = false;
+			if (compra.getItems().isEmpty() && listaCodigos.length > 0) {
+				p = pf.getProducto(listaCodigos[0].trim());
+				compra.addItem(new ItemCompra(p, 1));
+				y = 1;
+			}
+			if (!compra.getItems().isEmpty() && listaCodigos.length > 0) {
+				for (int x=y ;x<listaCodigos.length;x++){
+					p = pf.getProducto(listaCodigos[x].trim());
+					while (it.hasNext() && !isagregado){
+						ItemCompra item = it.next(); 
+						if (item.getProducto().getCodigo_producto() == p.getCodigo_producto()){
+							item.setCantidad(item.getCantidad() + 1);
+							isagregado = true;
+						}
+					}
+					if (!isagregado){
+						compra.addItem(new ItemCompra(p, 1));
 					}
 				}
-				if (!isagregado){
-					compra.addItem(new ItemCompra(p, 1));
-				}
 			}
+			return new Resultado(Mensaje.getMensaje("mensaje_AgregarProducto"));
+		}else{
+			return new Resultado(Mensaje.getMensaje("mensaje_inicializar_compra"));
 		}
-		return new Resultado(Mensaje.getMensaje("mensaje_AgregarProducto"));
 	}
 }

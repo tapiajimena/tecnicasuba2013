@@ -3,17 +3,17 @@
 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
-<bean id="BG00" class="fiuba.tecnicas.modelo.general.Producto">
+<bean id="BGAA" class="fiuba.tecnicas.modelo.general.Producto">
 <property name="codigo_producto" value="0000" />
-<property name="categorias" value="Bebidas" />
+<property name="categorias" value="BEBIDAS" />
 <property name="precio" value="15.0" />
 <property name="marca" value="Coca Cola" />
 <property name="descripcion" value="Gaseosa Coca Cola" />
 </bean>
 	
-<bean id="BV00" class="fiuba.tecnicas.modelo.general.Producto">
+<bean id="BVAA" class="fiuba.tecnicas.modelo.general.Producto">
 <property name="codigo_producto" value="0001" />
-<property name="categorias" value="Bebidas" />
+<property name="categorias" value="BEBIDAS" />
 <property name="precio" value="35.0" />
 <property name="marca" value="Callia" />
 <property name="descripcion" value="Vino Tinto Callia" />
