@@ -46,7 +46,7 @@ public class Aplicacion {
 //		// Calculo
 //		double totalCompra = Compra.getInstance().CalcularTotal();
 //		System.out.println(totalCompra);
-		Sucursal sucursal = SucursalFactory.SucursalCuatro();
+		Sucursal sucursal = SucursalFactory.SucursalTres();
 		//Compra compra = new Compra(sucursal);
 		//Compra compra = Compra.getInstance();
 		//compra.inicializarCompra(sucursal, new MedioDePago(TipoPago.TARJETA, ""),Calendar.getInstance());

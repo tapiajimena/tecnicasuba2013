@@ -32,6 +32,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 						<property name="valor" value="Coca" />
 					</bean>
 				</util:list></property>
+			
 			</bean>
 			<bean id="CEslabon_SucursalConCadenaUno"
 					class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjeta" >

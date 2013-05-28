@@ -30,10 +30,6 @@ public class Caracteristica implements Comparable<Caracteristica> {
 
 	@Override
 	public int compareTo(Caracteristica o) {
-		String oD = o.getTipoCaracteristica();
-		String tD = this.getTipoCaracteristica();
-		String oV = o.getValor();
-		String tV = this.getValor();
 		if(o.getTipoCaracteristica().compareTo(this.getTipoCaracteristica()) == 0
 				&& o.getValor().compareTo(this.getValor())==0)
 			return 0;

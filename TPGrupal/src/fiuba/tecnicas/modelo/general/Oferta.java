@@ -16,7 +16,7 @@ public abstract class Oferta {
 		this.next = oferta;
 	}
 	
-	public Oferta getNext1(){
+	public Oferta getNext(){
 		return this.next;
 	}	
 	
@@ -24,7 +24,10 @@ public abstract class Oferta {
 	{
 		// Aplico el descuento de este eslabon.
 		if(aplicoAEstaCompra(compra))
+		{
 			doCalcularDescuetos(compra);
+		}
+			
 
 		// Continuo la cadena.
 		if (this.next != null) 
