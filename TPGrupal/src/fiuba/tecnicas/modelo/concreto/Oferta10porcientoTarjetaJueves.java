@@ -9,15 +9,10 @@ import fiuba.tecnicas.modelo.general.Oferta;
 import fiuba.tecnicas.modelo.general.TipoPago;
 
 public class Oferta10porcientoTarjetaJueves extends Oferta{
-	private Oferta next;
 	
 	@Override
-	public void setNext(Oferta oferta){
-		this.next = oferta;
-	}
-
-	@Override
-	public void calcularDescuentos (Compra compra){
+	public void doCalcularDescuetos(Compra compra) {
+		
 		Iterator<ItemCompra> it = compra.getItems().iterator();
 		ItemCompra item;
 		double valorDescuento = 0;
@@ -36,13 +31,5 @@ public class Oferta10porcientoTarjetaJueves extends Oferta{
 		}
 		compra.addDescuento(new Descuento(valorDescuento,"10% Tarjeta los Jueves"));
 		
-		if (this.next != null){ 
-			next.calcularDescuentos(compra); 
-		}
-	}
-
-	@Override
-	public Oferta getNext(){
-		return this.next;
 	}		
 }

@@ -11,6 +11,11 @@ public class Sucursal {
 		this.chainOferta = oferta;
 	}
 	
+	public Sucursal()
+	{
+		
+	}
+	
 	public Sucursal(String nombreSucursal) {
 		this.setDescripcion(nombreSucursal);
 	}

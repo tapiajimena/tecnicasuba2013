@@ -3,6 +3,7 @@ package fiuba.tecnicas.modelo.general;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Iterator;
+import java.util.List;
 
 import fiuba.tecnicas.modelo.servicios.ServicioCalendario;
 
@@ -13,6 +14,7 @@ public class Compra {
 	private double totalCompra;
 	private ArrayList<Descuento> descuentos;
 	private String diaDeCompra;
+	private ArrayList<Caracteristica> caracteristicas;
 	
 	private void setSucursal(Sucursal sucursal){
 		this.sucursal = sucursal;
@@ -34,6 +36,7 @@ public class Compra {
 		this.items = new ArrayList<ItemCompra>();
 		this.diaDeCompra = ServicioCalendario.getTodayDayOfTheWeekToString();
 		this.sucursal = sucursal;
+		this.caracteristicas = new  ArrayList<Caracteristica>();
 	}
 
 	//Calcula el monto total de la compra CON DESCUENTOS
@@ -79,6 +82,7 @@ public class Compra {
 	
 	public void addItem(ItemCompra item){
 		// Ojo prodria calcular el descuento aca
+		this.caracteristicas.add(new Caracteristica("PRODUCTO_DESCRIPCION",item.getProducto().getDescripcion()));
 		items.add(item);
 	}
 	
@@ -103,4 +107,10 @@ public class Compra {
 		items = new ArrayList<ItemCompra>();
 		descuentos = new ArrayList<Descuento>();
 	}
+
+	public List<Caracteristica> getCaracteristicas() {
+		return caracteristicas;
+	}
+
+	
 }

@@ -9,15 +9,8 @@ import fiuba.tecnicas.modelo.general.ItemCompra;
 
 public class Oferta10porcientoFarmacia extends Oferta {
 
-	private Oferta next;
-
 	@Override
-	public void setNext(Oferta oferta){
-		this.next = oferta;
-	}
-
-	@Override
-	public void calcularDescuentos (Compra compra){
+	public void doCalcularDescuetos(Compra compra) {
 		double valorDescuento =0;
 		Iterator<ItemCompra> it = compra.getItems().iterator();
 		ItemCompra item;
@@ -34,14 +27,5 @@ public class Oferta10porcientoFarmacia extends Oferta {
 			}
 		}
 		compra.addDescuento(new Descuento(valorDescuento,"10% Farmacia"));
-		
-		if (this.next != null){ 
-			next.calcularDescuentos(compra); 
-		}
-	}
-
-	@Override
-	public Oferta getNext(){
-		return this.next;
 	}
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
 import fiuba.tecnicas.modelo.concreto.OfertaGenerica;
+import fiuba.tecnicas.modelo.general.Compra;
 import fiuba.tecnicas.modelo.general.Oferta;
 import fiuba.tecnicas.modelo.general.OfertaFactory;
 
@@ -18,5 +19,9 @@ public class OfertasRepositoryTest {
 		Oferta o = OfertaFactory.getInstance().ConstruiOferta("OfertaGenerica");
 		assertEquals(new OfertaGenerica().getClass(), o.getClass());
 	}
+	
+	
+	
+	
 
 }
