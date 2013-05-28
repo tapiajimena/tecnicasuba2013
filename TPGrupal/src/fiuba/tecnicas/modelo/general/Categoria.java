@@ -1,3 +1,3 @@
 package fiuba.tecnicas.modelo.general;
 
-public enum Categoria  { ALIMENTOS, FARMACIA, BEBIDAS, PERFUMERIA, HOGAR, JARDINERIA }
+public enum Categoria  { ALIMENTOS, FARMACIA, BEBIDAS, PERFUMERIA, HOGAR, JARDINERIA, VINOS }

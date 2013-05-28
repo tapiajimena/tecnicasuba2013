@@ -75,9 +75,14 @@ public class Compra {
 		return items;
 	}
 
+	public ArrayList<Descuento> getDescuentos(){
+		return this.descuentos;
+	}
 	
 	public String getDiaDeCompra(){
-		return this.diaDeCompra;
+		return "LUNES";
+		//return "JUEVES";
+		//return this.diaDeCompra;
 	}
 	
 	public void addItem(ItemCompra item){

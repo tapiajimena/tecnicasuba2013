@@ -2,11 +2,9 @@ package fiuba.tecnicas.modelo.concreto;
 
 import java.util.Iterator;
 
-import fiuba.tecnicas.modelo.general.Categoria;
 import fiuba.tecnicas.modelo.general.Compra;
 import fiuba.tecnicas.modelo.general.Descuento;
 import fiuba.tecnicas.modelo.general.ItemCompra;
-import fiuba.tecnicas.modelo.general.MedioDePago;
 import fiuba.tecnicas.modelo.general.Oferta;
 import fiuba.tecnicas.modelo.general.TipoPago;
 

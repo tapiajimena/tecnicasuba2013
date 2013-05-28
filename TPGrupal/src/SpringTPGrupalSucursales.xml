@@ -44,6 +44,39 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 
 <!-- FIN SUCURSAL UNO -->
 
+<!-- CADENA SUCURSAL DOS -->
+
+	<bean id="SucursalConCadenaDos"
+		class="fiuba.tecnicas.modelo.general.Sucursal" >
+		<property name="next"><ref bean="AEslabon_SucursalConCadenaDos"/></property>
+	</bean>
+		<bean id="AEslabon_SucursalConCadenaDos"
+				class="fiuba.tecnicas.modelo.concreto.OfertaSegundaUnidad75NoChandon" >
+				<property name="next"><ref bean="BEslabon_SucursalConCadenaDos"/></property>
+			</bean>
+			
+				<bean id="BEslabon_SucursalConCadenaDos"
+				     class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoDebitoLunes" >
+			   </bean>
+	
+<!-- FIN SUCURSAL DOS -->
+
+<!-- CADENA SUCURSAL TRES -->
+
+	<bean id="SucursalConCadenaTres"
+		class="fiuba.tecnicas.modelo.general.Sucursal" >
+		<property name="next"><ref bean="AEslabon_SucursalConCadenaTres"/></property>
+	</bean>
+			<bean id="AEslabon_SucursalConCadenaTres"
+				class="fiuba.tecnicas.modelo.concreto.Oferta2x1" >
+			</bean>			
+			
+				<bean id="BEslabon_SucursalConCadenaTres"
+				     class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjetaXYZJueves" >
+			   </bean>
+	
+<!-- FIN SUCURSAL TRES -->
+
 <!-- CADENA SUCURSAL CUATRO -->
 
 	<bean id="SucursalConCadenaCuatro"
