@@ -48,7 +48,7 @@ public class Caja {
 		if (!this.comprasDeCaja.isEmpty()) {
 			Iterator<Compra> it_Compra = this.comprasDeCaja.values().iterator();
 			while (it_Compra.hasNext()) {
-				totalVentas += it_Compra.next().getTotalCompra();
+				totalVentas += it_Compra.next().getTotalCompraConDescuentos();
 			}
 		}
 		return totalVentas;

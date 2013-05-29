@@ -12,9 +12,9 @@ import fiuba.tecnicas.modelo.general.Producto;
 import fiuba.tecnicas.modelo.general.ProductoFactory;
 
 /**
- * Comando para agregar productos
- * Agrega los productos correspondientes a una compra.
- *
+ * Comando para agregar productos Agrega los productos correspondientes a una
+ * compra.
+ * 
  */
 public class AgregarProductosCommand implements ICommand {
 
@@ -26,7 +26,8 @@ public class AgregarProductosCommand implements ICommand {
 		listaCodigos = input.split(Constante.getConstante("separador_parametros"));
 		ProductoFactory pf = ProductoFactory.getInstance();
 		Compra compra = Caja.getInstance().getCompraActiva();
-		if (compra != null){
+
+		if (compra != null) {
 			Iterator<ItemCompra> it = compra.getItems().iterator();
 			boolean isagregado = false;
 			if (compra.getItems().isEmpty() && listaCodigos.length > 0) {
@@ -35,22 +36,23 @@ public class AgregarProductosCommand implements ICommand {
 				y = 1;
 			}
 			if (!compra.getItems().isEmpty() && listaCodigos.length > 0) {
-				for (int x=y ;x<listaCodigos.length;x++){
+				for (int x = y; x < listaCodigos.length; x++) {
 					p = pf.getProducto(listaCodigos[x].trim());
-					while (it.hasNext() && !isagregado){
-						ItemCompra item = it.next(); 
-						if (item.getProducto().getCodigo_producto() == p.getCodigo_producto()){
+					while (it.hasNext() && !isagregado) {
+						ItemCompra item = it.next();
+						if (item.getProducto().getCodigo_producto() == p
+								.getCodigo_producto()) {
 							item.setCantidad(item.getCantidad() + 1);
 							isagregado = true;
 						}
 					}
-					if (!isagregado){
+					if (!isagregado) {
 						compra.addItem(new ItemCompra(p, 1));
 					}
 				}
 			}
 			return new Resultado(Mensaje.getMensaje("mensaje_AgregarProducto"));
-		}else{
+		} else {
 			return new Resultado(Mensaje.getMensaje("mensaje_inicializar_compra"));
 		}
 	}

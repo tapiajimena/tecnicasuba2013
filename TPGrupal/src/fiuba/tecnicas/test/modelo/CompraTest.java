@@ -50,7 +50,7 @@ public class CompraTest {
 		Sucursal sucursal = SucursalFactory.SucursalTres();
 		ItemCompra  itemCoca = new ItemCompra(new Producto(1, "Coca", "Coca Cola", Categoria.BEBIDAS),2);
 		Compra compra = new Compra(sucursal);
-		compra.inicializarCompra(sucursal, new MedioDePago(TipoPago.TARJETA, "XYZ"),Calendar.getInstance());
+		compra.setMedioDePago(new MedioDePago(TipoPago.TARJETA, "XYZ"));
 		compra.addItem(itemCoca);
 		
 		ItemCompra  itemCepillo = new ItemCompra(new Producto(3, "Cepillo Dientes", "Colgate", Categoria.FARMACIA),1);
@@ -79,7 +79,7 @@ public class CompraTest {
 		Sucursal sucursal = SucursalFactory.SucursalDos();
 		ItemCompra  itemVinoX = new ItemCompra(new Producto(100, "X", "X", Categoria.VINOS),2);
 		Compra compra = new Compra(sucursal);
-		compra.inicializarCompra(sucursal, new MedioDePago(TipoPago.DEBITO, "XYZ"),Calendar.getInstance());
+		compra.setMedioDePago(new MedioDePago(TipoPago.DEBITO, "XYZ"));
 		compra.addItem(itemVinoX);
 		
 		ItemCompra  itemChandon = new ItemCompra(new Producto(75, "Chandon", "Chandon", Categoria.VINOS),2);
