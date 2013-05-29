@@ -11,7 +11,7 @@ public class Caracteristica implements Comparable<Caracteristica> {
 	public Caracteristica(String tipoCaracteristica, String valor)
 	{
 		this.tipoCaracteristica = tipoCaracteristica;
-		this.valor = valor;
+		this.valor = valor.toUpperCase();
 				
 	}
 	

@@ -44,7 +44,8 @@ public class CompraTest {
 	 */
 	@Test
 	public void Test2x1Tarjeta(){
-		Sucursal sucursal = SucursalFactory.SucursalTres();
+		
+		Sucursal sucursal = SucursalFactory.SucursalUno();
 		ItemCompra  itemCoca = new ItemCompra(new Producto(1, "Coca", "Coca Cola", Categoria.BEBIDAS),2);
 		Compra compra = new Compra(sucursal);
 		compra.setMedioDePago(new MedioDePago(TipoPago.TARJETA, "XYZ"));

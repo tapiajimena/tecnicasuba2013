@@ -5,6 +5,61 @@ xmlns:util="http://www.springframework.org/schema/util"
 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
+<bean id="Oferta10porcientoFarmacia"
+	class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoFarmacia" >
+	<property name="caracteristicas">
+		<util:list id="Oferta10porcientoFarmaciaCaracteristicas" list-class="java.util.ArrayList" 
+			value-type="fiuba.tecnicas.modelo.general.Caracteristica">
+			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+				<property name="tipoCaracteristica" value="CATEGORIA_DESCRIPCION" />
+				<property name="valor" value="FARMACIA" />
+			</bean>
+		</util:list>
+	</property>
+</bean>
+
+<bean id="Oferta2x1" class="fiuba.tecnicas.modelo.concreto.Oferta2x1" >
+	<property name="caracteristicas">
+		<util:list list-class="java.util.ArrayList" id="Oferta2x1Caracteristicas" 
+			value-type="fiuba.tecnicas.modelo.general.Caracteristica">
+			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+				<property name="tipoCaracteristica" value="PRODUCTO_DESCRIPCION" />
+				<property name="valor" value="COCA" />
+			</bean>
+		</util:list>
+	</property>
+</bean>
+
+
+<bean id="Oferta10porcientoTarjeta"
+	class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjeta" >
+	<property name="caracteristicas">
+		<util:list list-class="java.util.ArrayList" id="Oferta10porcientoTarjetaCaracteristicas" 
+			value-type="fiuba.tecnicas.modelo.general.Caracteristica">
+			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+				<property name="tipoCaracteristica" value="MEDIODEPAGO_DESCRIPCION" />
+				<property name="valor" value="TARJETA" />
+			</bean>
+		</util:list>
+	</property>
+</bean>
+
+<bean id="Oferta10porcientoTarjetaJueves"
+	class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjetaJueves" >
+	<property name="caracteristicas">
+		<util:list list-class="java.util.ArrayList" id="Oferta10porcientoTarjetaJuevesCaracteristicas" 
+			value-type="fiuba.tecnicas.modelo.general.Caracteristica">
+			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+				<property name="tipoCaracteristica" value="MEDIODEPAGO_DESCRIPCION" />
+				<property name="valor" value="TARJETA" />
+			</bean>
+			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+				<property name="tipoCaracteristica" value="COMPRA_DIA" />
+				<property name="valor" value="JUEVES" />
+			</bean>
+		</util:list>
+	</property>
+</bean>
 
 
 <!-- CADENA SUCURSAL UNO -->
@@ -12,44 +67,25 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	<bean id="SucursalConCadenaUno"
 		class="fiuba.tecnicas.modelo.general.Sucursal" >
 		<property name="next"><ref bean="AEslabon_SucursalConCadenaUno"/></property>
-		
-	</bean>
-	
-		<bean id="AEslabon_SucursalConCadenaUno"
-			class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoFarmacia" >
+	</bean>	
+		<bean id="AEslabon_SucursalConCadenaUno" parent="Oferta2x1">
 			<property name="next"><ref bean="BEslabon_SucursalConCadenaUno"/></property>
-			
 		</bean>
-	
-			<bean id="BEslabon_SucursalConCadenaUno"
-				class="fiuba.tecnicas.modelo.concreto.Oferta2x1" >
-				<property name="next"><ref bean="CEslabon_SucursalConCadenaUno"/></property>
-				<property name="caracteristicas">
-				<util:list list-class="java.util.ArrayList" id="Oferta2x1Caracteristicas" 
-					value-type="fiuba.tecnicas.modelo.general.Caracteristica">
-					<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
-						<property name="tipoCaracteristica" value="PRODUCTO_DESCRIPCION" />
-						<property name="valor" value="Coca" />
-					</bean>
-				</util:list></property>
-			
+			<bean id="BEslabon_SucursalConCadenaUno" parent="Oferta10porcientoTarjetaJueves" >
 			</bean>
-			<bean id="CEslabon_SucursalConCadenaUno"
-					class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjeta" >
-					<property name="next"><ref bean="DEslabon_SucursalConCadenaUno"/></property>
-				</bean>
-				
-					<bean id="DEslabon_SucursalConCadenaUno"
-						class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjetaJueves" >
-					</bean>
 
 <!-- FIN SUCURSAL UNO -->
-
+<bean id="DEslabon_SucursalConCadenaUno" parent="Oferta10porcientoFarmacia" >
+	<property name="next"><ref bean="CEslabon_SucursalConCadenaUno"/></property>
+</bean>
+<bean id="CEslabon_SucursalConCadenaUno" parent="Oferta10porcientoTarjeta" >
+	<property name="next"><ref bean="DEslabon_SucursalConCadenaUno"/></property>
+</bean>
 <!-- CADENA SUCURSAL DOS -->
 
 	<bean id="SucursalConCadenaDos"
 		class="fiuba.tecnicas.modelo.general.Sucursal" >
-		<property name="next"><ref bean="AEslabon_SucursalConCadenaDos"/></property>
+		<property name="next"><ref bean="AEslabon_SucursalConCadenaDos" /></property>
 	</bean>
 		<bean id="AEslabon_SucursalConCadenaDos"
 				class="fiuba.tecnicas.modelo.concreto.OfertaSegundaUnidad75NoChandon" >
@@ -68,10 +104,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		class="fiuba.tecnicas.modelo.general.Sucursal" >
 		<property name="next"><ref bean="AEslabon_SucursalConCadenaTres"/></property>
 	</bean>
-			<bean id="AEslabon_SucursalConCadenaTres"
-				class="fiuba.tecnicas.modelo.concreto.Oferta2x1" >
+			<bean id="AEslabon_SucursalConCadenaTres" parent="Oferta2x1" >
 			</bean>			
-			
 				<bean id="BEslabon_SucursalConCadenaTres"
 				     class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjetaXYZJueves" >
 			   </bean>
@@ -86,14 +120,11 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		
 	</bean>
 	
-		<bean id="AEslabon_SucursalConCadenaCuatro"
-			class="fiuba.tecnicas.modelo.concreto.Oferta2x1" >
+		<bean id="AEslabon_SucursalConCadenaCuatro" parent="Oferta2x1" >
 			<property name="next"><ref bean="BEslabon_SucursalConCadenaCuatro"/></property>
 		</bean>
 	
-			<bean id="BEslabon_SucursalConCadenaCuatro"
-				class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjetaJueves" >
-				
+			<bean id="BEslabon_SucursalConCadenaCuatro"	parent="Oferta10porcientoTarjetaJueves" >
 			</bean>
 			
 <!-- FIN SUCURSAL CUATRO -->

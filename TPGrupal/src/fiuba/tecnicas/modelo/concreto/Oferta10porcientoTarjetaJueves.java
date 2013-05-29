@@ -19,7 +19,7 @@ public class Oferta10porcientoTarjetaJueves extends Oferta{
 		
 		while(it.hasNext()){
 			item = it.next();	
-			if(compra.getMedioDePago().getTipoPago().equals(TipoPago.TARJETA) && compra.getDiaDeCompra()=="JUEVES"){
+			//if(compra.getMedioDePago().getTipoPago().equals(TipoPago.TARJETA) && compra.getDiaDeCompra()=="JUEVES"){
 				valorDescuento += 0.1*item.getProducto().getPrecio()*item.getCantidad();
 				if (item.getPrecioFinal() == (item.getProducto().getPrecio()*item.getCantidad())){
 					item.setPrecioFinal((item.getProducto().getPrecio() - 0.1*item.getProducto().getPrecio())*item.getCantidad());					
@@ -27,7 +27,7 @@ public class Oferta10porcientoTarjetaJueves extends Oferta{
 					item.setPrecioFinal(item.getPrecioFinal() - 0.1*item.getProducto().getPrecio());
 				}
 
-			}
+			//}
 		}
 		compra.addDescuento(new Descuento(valorDescuento,"10% Tarjeta los Jueves"));
 		
