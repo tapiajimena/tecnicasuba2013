@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import fiuba.tecnicas.modelo.comun.Resultado;
 import fiuba.tecnicas.modelo.servicios.ServicioCalendario;
 
 /**
@@ -16,6 +17,7 @@ public class Caja {
 	private String fechaDeApertura;
 	private Map<MedioDePago, Double> totalPorMedioDePago;
 	private HashMap<Boolean,Compra> comprasDeCaja;
+	private Sucursal sucursal;
 
     private Caja() {
     	this.comprasDeCaja = new HashMap<Boolean,Compra>();
@@ -64,7 +66,7 @@ public class Caja {
 	}
 
 	public Map<Double,MedioDePago> getTotalPorMedioDePago() {
-		//TODO:getTotalPorMedioDePago LO HACE LUCAS
+		//TODO:getTotalPorMedioDePago LO HACE LUCAS, fijate que me parece que la clave,valor estan mal
 		return null;
 	}
 
@@ -81,11 +83,25 @@ public class Caja {
 		return this.comprasDeCaja.get(true);
 	}
 	
-	public void addNuevaCompraActiva(Sucursal sucursal) {
-		this.comprasDeCaja.put(true, new Compra(sucursal));
+	public Resultado addNuevaCompraActiva(Sucursal sucursal) {
+		Resultado resultado = new Resultado(false);
+		if(sucursal != null) {
+			resultado.setExito(true);
+			this.comprasDeCaja.put(true, new Compra(sucursal));
+		}
+		return resultado;
 	}
 	
 	private void setTotalPorMedioDePago (Map<MedioDePago,Double> totalMedioPago){
 		this.totalPorMedioDePago = totalMedioPago;
+	}
+
+	public Sucursal getSucursal() {
+		return sucursal;
+	}
+
+	public void setSucursal(String sucursal) {
+		//TODO: get sucursal con nombre amistoso por input de pantalla en el abrir caja
+		this.sucursal = SucursalFactory.getSucursalByName(sucursal);
 	}
 }

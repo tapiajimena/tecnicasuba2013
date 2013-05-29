@@ -80,13 +80,10 @@ public class Compra {
 	}
 	
 	public String getDiaDeCompra(){
-		return "LUNES";
-		//return "JUEVES";
-		//return this.diaDeCompra;
+		return this.diaDeCompra;
 	}
 	
 	public void addItem(ItemCompra item){
-		// Ojo prodria calcular el descuento aca
 		this.caracteristicas.add(new Caracteristica("PRODUCTO_DESCRIPCION",item.getProducto().getDescripcion()));
 		items.add(item);
 	}

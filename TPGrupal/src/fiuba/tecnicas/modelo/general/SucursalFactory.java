@@ -36,5 +36,12 @@ public class SucursalFactory {
 		ClassPathResource c = new ClassPathResource("SpringTPGrupalSucursales.xml");
 		return new XmlBeanFactory(c);
 	}
+	
+	public static Sucursal getSucursalByName(String input) {
+		//TODO: No setea la descripcion, porque solo llama al bean. 
+		//return (Sucursal) SucursalFactory.getBeanFactory().getBean(input);
+		//TODO: Solo se ve la sucursal UNO
+		return SucursalUno();
+	}
 
 }

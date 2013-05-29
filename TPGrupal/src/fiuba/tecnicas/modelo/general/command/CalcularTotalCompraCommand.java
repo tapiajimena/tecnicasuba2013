@@ -3,7 +3,6 @@ package fiuba.tecnicas.modelo.general.command;
 import fiuba.tecnicas.modelo.comun.Resultado;
 
 import fiuba.tecnicas.modelo.general.Caja;
-import fiuba.tecnicas.modelo.general.Compra;
 
 public class CalcularTotalCompraCommand implements ICommand {
 

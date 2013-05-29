@@ -1,22 +1,9 @@
 package fiuba.tecnicas.principal;
 
-
-
-import java.util.Calendar;
-
-import junit.framework.Assert;
-import fiuba.tecnicas.modelo.general.Categoria;
-import fiuba.tecnicas.modelo.general.Compra;
-import fiuba.tecnicas.modelo.general.Descuento;
-import fiuba.tecnicas.modelo.general.ItemCompra;
-import fiuba.tecnicas.modelo.general.Producto;
-import fiuba.tecnicas.modelo.general.MedioDePago;
 import fiuba.tecnicas.modelo.general.Sucursal;
 import fiuba.tecnicas.modelo.general.SucursalFactory;
-import fiuba.tecnicas.modelo.general.TipoPago;
 import fiuba.tecnicas.presentacion.ConsoleView;
 import fiuba.tecnicas.presentacion.IView;
-import fiuba.tecnicas.test.modelo.CompraTest;
 
 public class Aplicacion {
 

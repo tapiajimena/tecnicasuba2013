@@ -6,6 +6,10 @@ import java.io.IOException;
 import org.junit.Test;
 
 import fiuba.tecnicas.modelo.comun.Mensaje;
+import fiuba.tecnicas.modelo.general.command.AbrirCajaCommand;
+import fiuba.tecnicas.modelo.general.command.AgregarProductosCommand;
+import fiuba.tecnicas.modelo.general.command.ICommand;
+import fiuba.tecnicas.modelo.general.command.IniciarCompraCommand;
 import fiuba.tecnicas.presentacion.ConsoleView;
 import fiuba.tecnicas.presentacion.DomainPresenter;
 import fiuba.tecnicas.presentacion.DomainPresenter.IConsoleView;
@@ -43,7 +47,6 @@ public class ViewTest {
 		
 		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute("").getMensaje(),Mensaje.getMensaje("mensaje_ComandoInvalido"));
 	}
-	
 	@Test
 	public void testInputCommandAbrirCaja() throws IOException {
 		//Mockeo la consola
@@ -62,7 +65,12 @@ public class ViewTest {
 		IConsoleView consola = mock(IConsoleView.class);		
 		when(consola.getPresenter()).thenReturn(new DomainPresenter(consola));
 		when(consola.getCommandFromInput("")).thenReturn("Agregar productos");
-		when(consola.getParametersFromInput("")).thenReturn("p0000,p0001");
+		when(consola.getParametersFromInput("")).thenReturn("BGAA");
+		
+		ICommand abrirCaja = new AbrirCajaCommand();
+		ICommand iniciarCompra = new IniciarCompraCommand();
+		abrirCaja.execute("");
+		iniciarCompra.execute("");
 		
 		DomainPresenter presenter = consola.getPresenter();
 		
@@ -82,6 +90,18 @@ public class ViewTest {
 		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute(consola.getParametersFromInput("")).getMensaje(),Mensaje.getMensaje("mensaje_MedioDePago"));
 	}
 
+	@Test 
+	public void testCommandAgregarProductosValidaIniciacionDeCompra() 
+	{
+		IConsoleView consola = mock(IConsoleView.class);		
+		when(consola.getPresenter()).thenReturn(new DomainPresenter(consola));
+		when(consola.getCommandFromInput("")).thenReturn("agregar productos");
+		when(consola.getParametersFromInput("")).thenReturn("BGAA");
+
+		DomainPresenter presenter = consola.getPresenter();
+		
+		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute(consola.getParametersFromInput("")).getMensaje(),Mensaje.getMensaje("mensaje_inicializar_compra"));
+	}
 
 
 }

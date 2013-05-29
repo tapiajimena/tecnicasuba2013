@@ -35,10 +35,8 @@ public class CompraTest {
 	{
 		Compra compra = new Compra(null);
 		ItemCompra item = mock(ItemCompra.class);
-		item.setProducto(null);
-		item.setCantidad(2);
-		item.setPrecioFinal(10);
-		
+		item.setProducto(new Producto(10.0,"desc","marca",Categoria.ALIMENTOS));
+
 		compra.addItem(item);
 		
 		Assert.assertTrue(compra.getItems().contains(item));	

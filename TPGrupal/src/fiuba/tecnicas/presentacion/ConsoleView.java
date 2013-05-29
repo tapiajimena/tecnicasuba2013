@@ -56,8 +56,8 @@ public class ConsoleView implements IConsoleView{
 	public void run() {
 		System.out.println(presenter.getMensajeBienvenida());
 		String input = getInput();
-		while (!input.equals("Salir")) {
-			System.out.print(presenter.getCommand(getCommandFromInput(input)).execute(getParametersFromInput(input)).getMensaje());
+		while (!presenter.quitAplicacion(input)) {
+			System.out.print(presenter.executeCommand(input).getMensaje());
 			input = getInput();
 		}
 	}

@@ -3,8 +3,6 @@ package fiuba.tecnicas.modelo.general;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
-import fiuba.tecnicas.modelo.concreto.OfertaGenerica;
-
 public class OfertaFactory {
 
 	private static OfertaFactory INSTANCE;

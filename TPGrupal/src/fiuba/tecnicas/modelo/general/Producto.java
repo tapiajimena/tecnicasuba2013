@@ -1,7 +1,5 @@
 package fiuba.tecnicas.modelo.general;
 
-import java.util.ArrayList;
-
 public class Producto {
 
 	private String codigo_producto;
@@ -18,6 +16,8 @@ public class Producto {
 		this.descripcion = descripcion;
 	}
 
+	public Producto() {}
+	
 	public Producto(double precio, String descripcion, String marca, Categoria categoria){
 		this.categorias = categoria;
 		this.precio = precio;

@@ -3,10 +3,6 @@ package fiuba.tecnicas.modelo.general.command;
 import org.springframework.beans.factory.xml.XmlBeanFactory;
 import org.springframework.core.io.ClassPathResource;
 
-import fiuba.tecnicas.modelo.concreto.Oferta10porcientoFarmacia;
-import fiuba.tecnicas.modelo.general.Oferta;
-import fiuba.tecnicas.modelo.general.Sucursal;
-
 public class CommandFactory {
 
 	private static CommandFactory INSTANCE;
