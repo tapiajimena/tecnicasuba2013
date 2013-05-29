@@ -16,7 +16,6 @@ public class Oferta10porcientoTarjetaJueves extends Oferta{
 		Iterator<ItemCompra> it = compra.getItems().iterator();
 		ItemCompra item;
 		double valorDescuento = 0;
-		
 		while(it.hasNext()){
 			item = it.next();	
 			//if(compra.getMedioDePago().getTipoPago().equals(TipoPago.TARJETA) && compra.getDiaDeCompra()=="JUEVES"){

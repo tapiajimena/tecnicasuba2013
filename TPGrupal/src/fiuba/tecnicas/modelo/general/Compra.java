@@ -32,7 +32,7 @@ public class Compra {
 		this.diaDeCompra = ServicioCalendario.getTodayDayOfTheWeekToString();
 		this.sucursal = sucursal;
 		this.caracteristicas = new ArrayList<Caracteristica>();
-		this.diaDeCompra = "JUEVES";
+		//this.diaDeCompra = "JUEVES";
 	}
 
 	public double getTotalCompraConDescuentos() {

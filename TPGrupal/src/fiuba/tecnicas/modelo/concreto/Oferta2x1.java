@@ -9,13 +9,20 @@ import fiuba.tecnicas.modelo.general.Oferta;
 
 public class Oferta2x1 extends Oferta{	
 	
+	private double precioPares = 0;
+	private double precioImpares = 0;
+
+	public Oferta2x1()
+	{
+		this.precioPares = 0;
+		this.precioImpares = 0;
+	}
+
 	@Override
 	public void doCalcularDescuetos(Compra compra) {
 		Iterator<ItemCompra> it = compra.getItems().iterator();
 		ItemCompra item;
 		double valorDescuento = 0;
-		double precioPares = 0;
-		double precioImpares = 0;
 
 		while(it.hasNext()){
 			item = it.next();				
@@ -37,6 +44,12 @@ public class Oferta2x1 extends Oferta{
 		}
 
 		compra.addDescuento(new Descuento(valorDescuento,"2 x 1"));
-		
+		Inicializame();
+
+	}
+
+	private void Inicializame() {
+		this.precioImpares = 0;
+		this.precioPares = 0;
 	}
 }
