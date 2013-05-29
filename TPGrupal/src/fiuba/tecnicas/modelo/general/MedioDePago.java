@@ -1,5 +1,6 @@
 package fiuba.tecnicas.modelo.general;
 
+//TODO:armar jerarquia de medios de pago
 public class MedioDePago {
    
     private String banco;

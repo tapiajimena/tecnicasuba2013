@@ -5,11 +5,18 @@ public class Resultado {
 	private Boolean exito;
 	
 	public Resultado() {}
+	
 	public Resultado(String mensaje) {
 		this.mensaje = mensaje;
 	}
+	
 	public Resultado(Boolean exito) {
 		this.exito = exito;
+	}
+	
+	public Resultado(String mensaje, boolean exito) {
+		this.exito = exito;
+		this.mensaje = mensaje;
 	}
 	
 	public String getMensaje() {
@@ -23,6 +30,7 @@ public class Resultado {
 	public Boolean getExito() {
 		return exito;
 	}
+	
 	public void setExito(Boolean exito) {
 		this.exito = exito;
 	}

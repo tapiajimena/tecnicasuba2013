@@ -2,6 +2,8 @@ package fiuba.tecnicas.modelo.general.command;
 
 import fiuba.tecnicas.modelo.comun.Mensaje;
 import fiuba.tecnicas.modelo.comun.Resultado;
+import fiuba.tecnicas.modelo.general.Caja;
+import fiuba.tecnicas.modelo.general.Compra;
 import fiuba.tecnicas.modelo.servicios.validacion.ServicioValidacion;
 
 /**
@@ -12,10 +14,12 @@ public class MedioDePagoCommand implements ICommand {
 
 	@Override
 	public Resultado execute(String input) {
-		Resultado resultado = ServicioValidacion.validarParametrosMedioPago(input);
+		
+		Compra compraActiva = Caja.getInstance().getCompraActiva();		
+		Resultado resultado = ServicioValidacion.validarEjecucionComandoMedioDePago(input, compraActiva);
 		if (resultado.getExito()) {
-			//Caja.getCurrentCompra().setMedioDePago(extraerTipoPago(input),extraerBanco(input));
-			return new Resultado(Mensaje.getMensaje("mensaje_MedioDePago")); //+ Caja.getCurrentCompra().getMedioDePago().toString() +".\n");
+			compraActiva.setMedioDePago(extraerTipoPago(input),extraerBanco(input));
+			return new Resultado(Mensaje.getMensaje("mensaje_MedioDePago") + compraActiva.getMedioDePago().toString());
 		}
 		return resultado;
 		

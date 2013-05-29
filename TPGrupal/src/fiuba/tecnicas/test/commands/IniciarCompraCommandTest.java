@@ -17,7 +17,7 @@ public class IniciarCompraCommandTest {
 	{
 		ICommand command = new IniciarCompraCommand();
 		
-		assertEquals(command.execute("").getMensaje(),Mensaje.getMensaje("error_ordenParam_IniciarCompra"));
+		assertEquals(command.execute("").getMensaje(),Mensaje.getMensaje("error_ordenEjec_IniciarCompra"));
 	
 	}
 	

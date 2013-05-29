@@ -15,7 +15,7 @@ public class IniciarCompraCommand implements ICommand {
 		Resultado resultadoInciarCompraActiva = Caja.getInstance().addNuevaCompraActiva(Caja.getInstance().getSucursal());
 		if (resultadoInciarCompraActiva.getExito())
 				resultadoInciarCompraActiva.setMensaje(Mensaje.getMensaje("mensaje_CompraIniciada"));
-				else resultadoInciarCompraActiva.setMensaje(Mensaje.getMensaje("error_ordenParam_IniciarCompra"));
+				else resultadoInciarCompraActiva.setMensaje(Mensaje.getMensaje("error_ordenEjec_IniciarCompra"));
 		return resultadoInciarCompraActiva;
 	}
 
