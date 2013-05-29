@@ -1,9 +1,6 @@
 package fiuba.tecnicas.test.modelo;
 
-
-import java.util.Calendar;
 import java.util.Iterator;
-
 import junit.framework.Assert;
 import org.junit.Test;
 import static org.mockito.Mockito.*;

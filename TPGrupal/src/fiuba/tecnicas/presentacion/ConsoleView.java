@@ -4,7 +4,6 @@ import fiuba.tecnicas.presentacion.DomainPresenter.IConsoleView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.List;
 
 public class ConsoleView implements IConsoleView{
 	private DomainPresenter presenter;
@@ -57,7 +56,7 @@ public class ConsoleView implements IConsoleView{
 		System.out.println(presenter.getMensajeBienvenida());
 		String input = getInput();
 		while (!presenter.quitAplicacion(input)) {
-			System.out.print(presenter.executeCommand(input).getMensaje());
+			System.out.println(presenter.executeCommand(input).getMensaje());
 			input = getInput();
 		}
 	}

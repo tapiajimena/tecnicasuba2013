@@ -6,6 +6,13 @@ public class ItemCompra {
 	private int cantidad;
 	private double precioFinal;
 	
+	public ItemCompra() {}
+	
+	public ItemCompra(Producto producto, int cantidad){
+		this.producto = producto;
+		this.cantidad = cantidad;
+	}
+
 	public Producto getProducto() {
 		return producto;
 	}
@@ -30,14 +37,12 @@ public class ItemCompra {
 		this.precioFinal = precioFinal;
 	}
 
-
-	public ItemCompra(Producto producto, int cantidad){
-		this.producto = producto;
-		this.cantidad = cantidad;
-	}
-
-
 	public double getPrecioFinal() {
 		return precioFinal;
+	}
+
+	public void aumentarCantidadUnidad() {
+		this.cantidad++;
+		
 	}
 }

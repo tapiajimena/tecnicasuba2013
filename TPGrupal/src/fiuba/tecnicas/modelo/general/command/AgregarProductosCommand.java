@@ -1,6 +1,10 @@
 package fiuba.tecnicas.modelo.general.command;
 
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
 
 import fiuba.tecnicas.modelo.comun.Constante;
 import fiuba.tecnicas.modelo.comun.Mensaje;
@@ -20,40 +24,43 @@ public class AgregarProductosCommand implements ICommand {
 
 	@Override
 	public Resultado execute(String input) {
-		Producto p = null;
-		int y = 0;
-		String[] listaCodigos;
-		listaCodigos = input.split(Constante.getConstante("separador_parametros"));
-		ProductoFactory pf = ProductoFactory.getInstance();
 		Compra compra = Caja.getInstance().getCompraActiva();
 
-		if (compra != null) {
-			Iterator<ItemCompra> it = compra.getItems().iterator();
-			boolean isagregado = false;
-			if (compra.getItems().isEmpty() && listaCodigos.length > 0) {
-				p = pf.getProducto(listaCodigos[0].trim());
-				compra.addItem(new ItemCompra(p, 1));
-				y = 1;
-			}
-			if (!compra.getItems().isEmpty() && listaCodigos.length > 0) {
-				for (int x = y; x < listaCodigos.length; x++) {
-					p = pf.getProducto(listaCodigos[x].trim());
-					while (it.hasNext() && !isagregado) {
-						ItemCompra item = it.next();
-						if (item.getProducto().getCodigo_producto() == p
-								.getCodigo_producto()) {
-							item.setCantidad(item.getCantidad() + 1);
-							isagregado = true;
-						}
-					}
-					if (!isagregado) {
-						compra.addItem(new ItemCompra(p, 1));
-					}
+		if (compra != null && !input.isEmpty()) {
+			String[] listaCodigosNuevos;
+			listaCodigosNuevos = input.split(Constante.getConstante("separador_parametros"));
+			Set<Entry<Producto,Integer>> productosNuevos = obtenerListaProductosDeCompra(listaCodigosNuevos);
+			Iterator<Entry<Producto, Integer>> it_productosNuevos = productosNuevos.iterator();
+		
+			while (it_productosNuevos.hasNext()) {
+				Entry<Producto,Integer> productoNuevo = it_productosNuevos.next();
+				ItemCompra itemNuevo = new ItemCompra(productoNuevo.getKey(), productoNuevo.getValue());
+				if (!compra.getItems().isEmpty() && compra.getItems().contains(itemNuevo))	{
+					int index = compra.getItems().indexOf(itemNuevo);
+					compra.getItems().get(index).aumentarCantidadUnidad();
+				} else {
+					compra.addItem(itemNuevo);
 				}
 			}
 			return new Resultado(Mensaje.getMensaje("mensaje_AgregarProducto"));
 		} else {
 			return new Resultado(Mensaje.getMensaje("mensaje_inicializar_compra"));
 		}
+	}
+	
+	private Set<Entry<Producto, Integer>> obtenerListaProductosDeCompra(String[] codigosProductos) {
+		Map<Producto, Integer> productos = new HashMap<Producto, Integer>();
+		for (int i = 0; i < codigosProductos.length; i++) {
+			Producto productoNuevo = ProductoFactory.getInstance().getProducto(codigosProductos[i]);
+			if (productos.containsKey(productoNuevo)) {
+				int cantidad = productos.get(productoNuevo);
+				cantidad++;
+				productos.remove(productoNuevo);
+				productos.put(productoNuevo, cantidad);
+			} else {
+				productos.put(productoNuevo, 1);
+			}
+		}
+		return productos.entrySet();
 	}
 }

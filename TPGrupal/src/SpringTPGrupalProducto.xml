@@ -19,4 +19,12 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 <property name="descripcion" value="Vino Tinto Callia" />
 </bean>
 
+<bean id="BFAA" class="fiuba.tecnicas.modelo.general.Producto">
+<property name="codigo_producto" value="0002" />
+<property name="categorias" value="FARMACIA" />
+<property name="precio" value="5.0" />
+<property name="marca" value="Dove" />
+<property name="descripcion" value="Jabon" />
+</bean>
+
 </beans>
