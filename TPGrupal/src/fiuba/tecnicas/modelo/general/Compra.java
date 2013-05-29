@@ -21,10 +21,13 @@ public class Compra {
 
 	public void setMedioDePago(String medioDePago, String banco) {
 		this.medioDePago = new MedioDePago(TipoPago.valueOf(medioDePago), banco);
+		this.caracteristicas.add(new Caracteristica("MEDIODEPAGO_DESCRIPCION_ENTIDAD", banco, CaracteristicaAplicoA.COMPRA));
+		
 	}
 
 	public void setMedioDePago(MedioDePago medioDePago) {
 		this.medioDePago = medioDePago;
+		this.caracteristicas.add(new Caracteristica("MEDIODEPAGO_DESCRIPCION", medioDePago.getTipoPago().toString(), CaracteristicaAplicoA.COMPRA));
 	}
 
 	public Compra(Sucursal sucursal) {
@@ -32,6 +35,8 @@ public class Compra {
 		this.diaDeCompra = ServicioCalendario.getTodayDayOfTheWeekToString();
 		this.sucursal = sucursal;
 		this.caracteristicas = new ArrayList<Caracteristica>();
+		this.descuentos = new ArrayList<Descuento>();
+		this.caracteristicas.add(new Caracteristica("COMPRA_DIA", getDiaDeCompra(), CaracteristicaAplicoA.COMPRA));
 		//this.diaDeCompra = "JUEVES";
 	}
 
@@ -74,13 +79,11 @@ public class Compra {
 	}
 
 	public String getDiaDeCompra() {
-		return this.diaDeCompra;
+		return "JUEVES";
 	}
 
 	
 	public void addItem(ItemCompra item){
-		this.caracteristicas.add(new Caracteristica("PRODUCTO_DESCRIPCION",
-				item.getProducto().getDescripcion()));
 		
 		items.add(item);
 	}
@@ -94,7 +97,7 @@ public class Compra {
 		return this.getTotalCompraConDescuentos();
 	}
 
-	public List<Caracteristica> getCaracteristicas() {
+	public ArrayList<Caracteristica> getCaracteristicas() {
 		return caracteristicas;
 	}
 

@@ -10,6 +10,7 @@ public abstract class Oferta {
 	
 	private Oferta next;
 	private ArrayList<Caracteristica> caracteristicas;
+	private String nombre;
 	
 	
 	public void setNext(Oferta oferta){
@@ -23,39 +24,81 @@ public abstract class Oferta {
 	public void calcularDescuentos(Compra compra)
 	{
 		// Aplico el descuento de este eslabon.
-		if(aplicoAEstaCompra(compra))
-		{
-			doCalcularDescuetos(compra);
-		}
-			
+		if(aplicoAEstaSerieDeCaracteristicas(compra.getCaracteristicas(), 
+				this.getCaracteristicasEspecificas(CaracteristicaAplicoA.COMPRA)))
+			recorrerItemsYCalcularDescuentos(compra);
 
 		// Continuo la cadena.
 		if (this.next != null) 
 			next.calcularDescuentos(compra); 
 	}
 	
-	public abstract void doCalcularDescuetos(Compra compra);
-	
-	public Boolean aplicoAEstaCompra(Compra compra)
+	private ArrayList<Caracteristica> getCaracteristicasEspecificas(CaracteristicaAplicoA tipoDeObjeto) {
+		ArrayList<Caracteristica> _sub = new ArrayList<Caracteristica>();
+		Iterator<Caracteristica> it = this.getCaracteristicas().iterator();
+		while(it.hasNext())
+		{
+			Caracteristica c = it.next();
+			if(c.getObjetoAlQueAplico() == tipoDeObjeto)
+				_sub.add(c);
+		}
+		return _sub;
+	}
+
+	public void recorrerItemsYCalcularDescuentos(Compra compra)
 	{
-		if(compra == null || this.caracteristicas == null)
+		Iterator<ItemCompra> it = compra.getItems().iterator();
+		ItemCompra item;
+		double valorDescuento = 0;
+
+		while(it.hasNext()){
+			item = it.next();
+			if(aplicoAEstaSerieDeCaracteristicas(item.getCaracteristicas(), 
+					this.getCaracteristicasEspecificas(CaracteristicaAplicoA.ITEM)))
+				valorDescuento = doCalcularDescuentos(item, valorDescuento);
+		}
+
+		compra.addDescuento(new Descuento(valorDescuento,getNombre()));
+	}
+	
+	public abstract double doCalcularDescuentos(ItemCompra item, double valorDescuento);
+	
+	public ArrayList<Caracteristica> getCaracteristicas() {
+		return caracteristicas;
+	}
+
+	public void setCaracteristicas(ArrayList<Caracteristica> caracteristicas) {
+		this.caracteristicas = caracteristicas;
+	}
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	private Boolean aplicoAEstaSerieDeCaracteristicas(ArrayList<Caracteristica> serie, ArrayList<Caracteristica> subConjuntoDeMias)
+	{
+		if(serie == null || subConjuntoDeMias == null)
 			return false;
 		
 		// Recorro mis caracteristicas y me fijo si estan todas en la compra, si hay alguna que no, me fui, no aplico.
-		Iterator<Caracteristica> misCaracteristicas = this.getCaracteristicas().iterator();
+		Iterator<Caracteristica> misCaracteristicas = subConjuntoDeMias.iterator();
 		while(misCaracteristicas.hasNext())
 		{
 			Caracteristica estaCaracteristica = misCaracteristicas.next();
-			if(!tieneEstaCaracteristicaMia(compra, estaCaracteristica))
+			if(!tieneEstaCaracteristicaMia(serie, estaCaracteristica))
 				return false;
 		}
 
 		return true;
 	}
 
-	private Boolean tieneEstaCaracteristicaMia(Compra compra, Caracteristica estaCaracteristica) {
+	private Boolean tieneEstaCaracteristicaMia(ArrayList<Caracteristica> caracteristicasNoMias, Caracteristica estaCaracteristica) {
 		Boolean noLaTiene = true;
-		Iterator<Caracteristica> susCaracteristicas = compra.getCaracteristicas().iterator();
+		Iterator<Caracteristica> susCaracteristicas = caracteristicasNoMias.iterator();
 		while(susCaracteristicas.hasNext() && noLaTiene){
 			noLaTiene = (estaCaracteristica.compareTo(susCaracteristicas.next()) != 0);
 			if(!noLaTiene)
@@ -63,13 +106,5 @@ public abstract class Oferta {
 		}
 		
 		return !noLaTiene;
-	}
-
-	public ArrayList<Caracteristica> getCaracteristicas() {
-		return caracteristicas;
-	}
-
-	public void setCaracteristicas(ArrayList<Caracteristica> caracteristicas) {
-		this.caracteristicas = caracteristicas;
 	}
 }

@@ -13,9 +13,11 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
 				<property name="tipoCaracteristica" value="CATEGORIA_DESCRIPCION" />
 				<property name="valor" value="FARMACIA" />
+				<property name="objetoAlQueAplico" value="ITEM" />
 			</bean>
 		</util:list>
 	</property>
+	<property name="nombre" value="10% farmacia" />
 </bean>
 
 <bean id="Oferta2x1" class="fiuba.tecnicas.modelo.concreto.Oferta2x1" >
@@ -25,9 +27,11 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
 				<property name="tipoCaracteristica" value="PRODUCTO_DESCRIPCION" />
 				<property name="valor" value="COCA" />
+				<property name="objetoAlQueAplico" value="ITEM" />
 			</bean>
 		</util:list>
 	</property>
+	<property name="nombre" value="2x1" />
 </bean>
 
 
@@ -39,9 +43,11 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
 				<property name="tipoCaracteristica" value="MEDIODEPAGO_DESCRIPCION" />
 				<property name="valor" value="TARJETA" />
+				<property name="objetoAlQueAplico" value="COMPRA" />
 			</bean>
 		</util:list>
 	</property>
+	<property name="nombre" value="10% tarjeta" />
 </bean>
 
 <bean id="Oferta10porcientoTarjetaJueves"
@@ -52,13 +58,16 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
 				<property name="tipoCaracteristica" value="MEDIODEPAGO_DESCRIPCION" />
 				<property name="valor" value="TARJETA" />
+				<property name="objetoAlQueAplico" value="COMPRA" />
 			</bean>
 			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
 				<property name="tipoCaracteristica" value="COMPRA_DIA" />
 				<property name="valor" value="JUEVES" />
+				<property name="objetoAlQueAplico" value="COMPRA" />
 			</bean>
 		</util:list>
 	</property>
+	<property name="nombre" value="Tarjeta Jueves" />
 </bean>
 
 

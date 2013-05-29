@@ -5,13 +5,15 @@ public class Caracteristica implements Comparable<Caracteristica> {
 	
 	private String tipoCaracteristica;
 	private String valor;
+	private CaracteristicaAplicoA objetoAlQueAplico;
 	
 	public Caracteristica(){}
 	
-	public Caracteristica(String tipoCaracteristica, String valor)
+	public Caracteristica(String tipoCaracteristica, String valor, CaracteristicaAplicoA tipoObjetoAlQueAplico)
 	{
 		this.tipoCaracteristica = tipoCaracteristica;
 		this.valor = valor.toUpperCase();
+		this.objetoAlQueAplico = tipoObjetoAlQueAplico;
 				
 	}
 	
@@ -35,5 +37,13 @@ public class Caracteristica implements Comparable<Caracteristica> {
 			return 0;
 		
 		return -1;
+	}
+
+	public CaracteristicaAplicoA getObjetoAlQueAplico() {
+		return objetoAlQueAplico;
+	}
+
+	public void setObjetoAlQueAplico(CaracteristicaAplicoA objetoAlQueAplico) {
+		this.objetoAlQueAplico = objetoAlQueAplico;
 	}
 }

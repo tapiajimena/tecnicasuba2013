@@ -36,11 +36,11 @@ public class ItemCompra {
 	}
 
 	public ItemCompra(Producto producto, int cantidad){
-		this.caracteristicas = new ArrayList<Caracteristica>();
+		this.setCaracteristicas(new ArrayList<Caracteristica>());
 		this.producto = producto;
 		this.cantidad = cantidad;
-		this.caracteristicas.add(new Caracteristica("PRODUCTO_DESCRIPCION", getProducto().getDescripcion()));
-		this.caracteristicas.add(new Caracteristica("CATEGORIA_DESCRIPCION", getProducto().getCategorias().toString()));
+		this.getCaracteristicas().add(new Caracteristica("PRODUCTO_DESCRIPCION", getProducto().getDescripcion(), CaracteristicaAplicoA.ITEM));
+		this.getCaracteristicas().add(new Caracteristica("CATEGORIA_DESCRIPCION", getProducto().getCategorias().toString(), CaracteristicaAplicoA.ITEM));
 	}
 
 	public double getPrecioFinal() {
@@ -50,5 +50,13 @@ public class ItemCompra {
 	public void aumentarCantidadUnidad() {
 		this.cantidad++;
 		
+	}
+
+	public ArrayList<Caracteristica> getCaracteristicas() {
+		return caracteristicas;
+	}
+
+	public void setCaracteristicas(ArrayList<Caracteristica> caracteristicas) {
+		this.caracteristicas = caracteristicas;
 	}
 }
