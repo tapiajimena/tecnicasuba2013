@@ -36,7 +36,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 <bean id ="calculartotalcompracommand"
 	class="fiuba.tecnicas.modelo.general.command.CalcularTotalCompraCommand" />
 
-<bean id ="vertotalcajapormediosdepago"
+<bean id ="vertotalcajapormediosdepagocommand"
 	class="fiuba.tecnicas.modelo.general.command.VerTotalCajaPorMediosDePagoCommand" />
 
 </beans>
