@@ -80,7 +80,7 @@ public class Compra {
 	}
 
 	public String getDiaDeCompra() {
-		//TODO sacar esto!!!
+
 		return ServicioCalendario.getTodayDayOfTheWeekToString();
 	}
 	
