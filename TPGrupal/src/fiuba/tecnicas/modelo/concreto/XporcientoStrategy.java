@@ -1,9 +1,9 @@
 package fiuba.tecnicas.modelo.concreto;
-import fiuba.tecnicas.modelo.general.Oferta;
+import fiuba.tecnicas.modelo.general.IOfertaStrategy;
 import fiuba.tecnicas.modelo.general.ItemCompra;
 
-public class Oferta10porcientoFarmacia extends Oferta {
-	
+public class XporcientoStrategy implements IOfertaStrategy {
+
 	private double porcentaje;
 
 	@Override
@@ -20,7 +20,8 @@ public class Oferta10porcientoFarmacia extends Oferta {
 	
 	private double getFactorPorcentual()
 	{
-		return (getPorcentaje() / 100);
+		double r = (getPorcentaje() / 100);
+		return r;
 	}
 
 	public double getPorcentaje() {

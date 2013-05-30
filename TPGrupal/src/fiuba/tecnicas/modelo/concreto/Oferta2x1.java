@@ -7,7 +7,7 @@ public class Oferta2x1 extends Oferta{
 	
 	private double precioPares = 0;
 	private double precioImpares = 0;
-
+	
 	public Oferta2x1()
 	{
 		Inicializame();

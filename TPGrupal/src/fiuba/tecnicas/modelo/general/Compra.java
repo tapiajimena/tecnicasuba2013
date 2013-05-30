@@ -83,6 +83,11 @@ public class Compra {
 		//TODO sacar esto!!!
 		return "JUEVES";
 	}
+	
+	public void setDiaDeCompra(String dia)
+	{
+		diaDeCompra = dia;
+	}
 
 	
 	public void addItem(ItemCompra item){

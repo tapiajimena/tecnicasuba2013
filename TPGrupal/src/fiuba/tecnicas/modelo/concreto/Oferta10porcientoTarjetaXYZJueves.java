@@ -9,7 +9,6 @@ import fiuba.tecnicas.modelo.general.Oferta;
 import fiuba.tecnicas.modelo.general.TipoPago;
 
 public class Oferta10porcientoTarjetaXYZJueves extends Oferta{
-	private Oferta next;
 
 	@Override
 	public double doCalcularDescuentos(ItemCompra item, double valorDescuento) {

@@ -5,8 +5,20 @@ xmlns:util="http://www.springframework.org/schema/util"
 xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
 http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd">
 
+<bean id="DiezPorcientoStrategy" class="fiuba.tecnicas.modelo.concreto.XporcientoStrategy">
+		<property name="porcentaje" value="10"></property>
+</bean>
+
+<bean id="DosPorUnoStrategy" class="fiuba.tecnicas.modelo.concreto.Strategy2x1"/>
+
+<bean id="SegundaUnidad75PorcientoStrategy" class="fiuba.tecnicas.modelo.concreto.SegundaUnidadXPorcientoStrategy">
+	<property name="porcentaje" value="75"></property>
+</bean>
+
+
 <bean id="Oferta10porcientoFarmacia"
-	class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoFarmacia" >
+	class="fiuba.tecnicas.modelo.general.Oferta" >
+	<property name="strategy"><ref bean="DiezPorcientoStrategy"/></property>
 	<property name="caracteristicas">
 		<util:list id="Oferta10porcientoFarmaciaCaracteristicas" list-class="java.util.ArrayList" 
 			value-type="fiuba.tecnicas.modelo.general.Caracteristica">
@@ -21,7 +33,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	<property name="nombre" value="10% farmacia" />
 </bean>
 
-<bean id="Oferta2x1" class="fiuba.tecnicas.modelo.concreto.Oferta2x1" >
+<bean id="Oferta2x1" class="fiuba.tecnicas.modelo.general.Oferta" >
+	<property name="strategy"><ref bean="DosPorUnoStrategy"/></property>
 	<property name="caracteristicas">
 		<util:list list-class="java.util.ArrayList" id="Oferta2x1Caracteristicas" 
 			value-type="fiuba.tecnicas.modelo.general.Caracteristica">
@@ -38,7 +51,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 
 
 <bean id="Oferta10porcientoTarjeta"
-	class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjeta" >
+	class="fiuba.tecnicas.modelo.general.Oferta" >
+	<property name="strategy"><ref bean="DiezPorcientoStrategy"/></property>
 	<property name="caracteristicas">
 		<util:list list-class="java.util.ArrayList" id="Oferta10porcientoTarjetaCaracteristicas" 
 			value-type="fiuba.tecnicas.modelo.general.Caracteristica">
@@ -54,7 +68,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 </bean>
 
 <bean id="Oferta10porcientoTarjetaJueves"
-	class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjetaJueves" >
+	class="fiuba.tecnicas.modelo.general.Oferta" >
+	<property name="strategy"><ref bean="DiezPorcientoStrategy"/></property>
 	<property name="caracteristicas">
 		<util:list list-class="java.util.ArrayList" id="Oferta10porcientoTarjetaJuevesCaracteristicas" 
 			value-type="fiuba.tecnicas.modelo.general.Caracteristica">
@@ -76,7 +91,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 </bean>
 
 <bean id="OfertaSegundaUnidad75NoChandon"
-	class="fiuba.tecnicas.modelo.concreto.OfertaSegundaUnidad75NoChandon" >
+	class="fiuba.tecnicas.modelo.general.Oferta" >
+	<property name="strategy"><ref bean="SegundaUnidad75PorcientoStrategy"/></property>
 	<property name="caracteristicas">
 		<util:list list-class="java.util.ArrayList" id="OfertaSegundaUnidad75NoChandonCaracteristicas" 
 			value-type="fiuba.tecnicas.modelo.general.Caracteristica">
@@ -98,7 +114,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 </bean>
 
 <bean id="Oferta10porcientoDebitoLunes"
-	class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoDebitoLunes" >
+	class="fiuba.tecnicas.modelo.general.Oferta">
+	<property name="strategy"><ref bean="DiezPorcientoStrategy"/></property>
 	<property name="caracteristicas">
 		<util:list list-class="java.util.ArrayList" id="Oferta10porcientoDebitoLunesCaracteristicas" 
 			value-type="fiuba.tecnicas.modelo.general.Caracteristica">

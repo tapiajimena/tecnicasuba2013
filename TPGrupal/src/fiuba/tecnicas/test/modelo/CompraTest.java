@@ -56,6 +56,7 @@ public class CompraTest {
 		
 		ItemCompra  itemMaceta = new ItemCompra(new Producto(10, "Maceta", "Macetas", Categoria.JARDINERIA),1);
 		compra.addItem(itemMaceta);
+		compra.setDiaDeCompra("JUEVES");
 		
 		double totalCompra = compra.CalcularTotal();
 		System.out.println(totalCompra);
@@ -88,6 +89,7 @@ public class CompraTest {
 		
 		ItemCompra  itemMaceta = new ItemCompra(new Producto(10, "Maceta", "Macetas", Categoria.JARDINERIA),1);
 		compra.addItem(itemMaceta);
+		compra.setDiaDeCompra("LUNES");
 		
 		double totalCompra = compra.CalcularTotal();
 		System.out.println(totalCompra);

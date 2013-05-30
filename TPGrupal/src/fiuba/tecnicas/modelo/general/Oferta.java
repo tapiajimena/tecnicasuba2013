@@ -6,11 +6,12 @@ import java.util.List;
 
 import fiuba.tecnicas.principal.Aplicacion;
 
-public abstract class Oferta {
+public class Oferta {
 	
 	private Oferta next;
 	private ArrayList<Caracteristica> caracteristicas;
 	private String nombre;
+	private IOfertaStrategy strategy;
 	
 	
 	public void setNext(Oferta oferta){
@@ -61,7 +62,10 @@ public abstract class Oferta {
 		compra.addDescuento(new Descuento(valorDescuento,getNombre()));
 	}
 	
-	public abstract double doCalcularDescuentos(ItemCompra item, double valorDescuento);
+	public double doCalcularDescuentos(ItemCompra item, double valorDescuento)
+	{
+		return this.getStrategy().doCalcularDescuentos(item, valorDescuento);
+	}
 	
 	public ArrayList<Caracteristica> getCaracteristicas() {
 		return caracteristicas;
@@ -106,5 +110,13 @@ public abstract class Oferta {
 		}
 		
 		return !noLaTiene;
+	}
+
+	public IOfertaStrategy getStrategy() {
+		return strategy;
+	}
+
+	public void setStrategy(IOfertaStrategy strategy) {
+		this.strategy = strategy;
 	}
 }
