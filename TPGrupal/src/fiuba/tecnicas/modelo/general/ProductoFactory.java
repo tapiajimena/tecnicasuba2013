@@ -28,7 +28,7 @@ public class ProductoFactory {
 		Producto producto = null;
 		try
 		{
-			producto = (Producto)PRODUCTO_FACTORY.getBean(codigo);
+			producto = (Producto)PRODUCTO_FACTORY.getBean(codigo.toUpperCase());
 		}
 		catch(Exception exp)
 		{

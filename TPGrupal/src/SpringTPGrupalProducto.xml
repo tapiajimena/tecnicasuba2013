@@ -27,7 +27,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 <property name="descripcion" value="Jabon" />
 </bean>
 
-<bean id="Coca" class="fiuba.tecnicas.modelo.general.Producto">
+<bean id="COCA" class="fiuba.tecnicas.modelo.general.Producto">
 	<property name="codigo_producto" value="00100" />
 	<property name="categorias" value="BEBIDAS" />
 	<property name="precio" value="1" />
@@ -43,7 +43,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 	<property name="descripcion" value="X" />
 </bean>
 
-<bean id="Chandon" class="fiuba.tecnicas.modelo.general.Producto">
+<bean id="CHANDON" class="fiuba.tecnicas.modelo.general.Producto">
 	<property name="codigo_producto" value="00030" />
 	<property name="categorias" value="VINOTECA" />
 	<property name="precio" value="75" />
@@ -51,7 +51,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 	<property name="descripcion" value="Chandon" />
 </bean>
 
-<bean id="CepilloDientes" class="fiuba.tecnicas.modelo.general.Producto">
+<bean id="CEPILLODIENTES" class="fiuba.tecnicas.modelo.general.Producto">
 	<property name="codigo_producto" value="00040" />
 	<property name="categorias" value="FARMACIA" />
 	<property name="precio" value="3" />
@@ -59,7 +59,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 	<property name="descripcion" value="Cepillo Dientes" />
 </bean>
 
-<bean id="Maceta" class="fiuba.tecnicas.modelo.general.Producto">
+<bean id="MACETA" class="fiuba.tecnicas.modelo.general.Producto">
 	<property name="codigo_producto" value="00050" />
 	<property name="categorias" value="JARDINERIA" />
 	<property name="precio" value="10" />
@@ -67,7 +67,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 	<property name="descripcion" value="Maceta" />
 </bean>
 
-<bean id="VinoELL" class="fiuba.tecnicas.modelo.general.Producto">
+<bean id="VINOELL" class="fiuba.tecnicas.modelo.general.Producto">
 	<property name="codigo_producto" value="0002" />
 	<property name="categorias" value="VINOTECA" />
 	<property name="precio" value="10" />
@@ -75,7 +75,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 	<property name="descripcion" value="Vino ELL" />
 </bean>
 
-<bean id="VinoXYZ" class="fiuba.tecnicas.modelo.general.Producto">
+<bean id="VINOXYZ" class="fiuba.tecnicas.modelo.general.Producto">
 	<property name="codigo_producto" value="0005" />
 	<property name="categorias" value="VINOTECA" />
 	<property name="precio" value="20" />
@@ -83,7 +83,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 	<property name="descripcion" value="Vino XYZ" />
 </bean>
 
-<bean id="VinoLLL" class="fiuba.tecnicas.modelo.general.Producto">
+<bean id="VINOLLL" class="fiuba.tecnicas.modelo.general.Producto">
 	<property name="codigo_producto" value="0006" />
 	<property name="categorias" value="VINOTECA" />
 	<property name="precio" value="30" />
