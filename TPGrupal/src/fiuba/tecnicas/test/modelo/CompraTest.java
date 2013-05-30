@@ -26,7 +26,7 @@ public class CompraTest {
 	@Test
 	public void Test2x1Tarjeta(){
 		
-		Sucursal sucursal = SucursalFactory.SucursalUno();
+		Sucursal sucursal = SucursalFactory.getSucursalByName("uno");
 		ItemCompra  itemCoca = new ItemCompra(ProductoFactory.getInstance().getProducto("Coca"),2);
 		Compra compra = new Compra(sucursal);
 		compra.setMedioDePago(new MedioDePago(TipoPago.TARJETA, "XYZ"));
@@ -56,7 +56,7 @@ public class CompraTest {
 	 */
 	@Test
 	public void TestSegundaUnidadLunes(){
-		Sucursal sucursal = SucursalFactory.SucursalDos();
+		Sucursal sucursal = SucursalFactory.getSucursalByName("dos");
 			
 		
 		ItemCompra  itemVinoX = new ItemCompra(ProductoFactory.getInstance().getProducto("X"),2);
@@ -92,7 +92,7 @@ public class CompraTest {
 	@Test
 	public void MarcaXYZ(){
 		
-		Sucursal sucursal = SucursalFactory.SucursalTres();
+		Sucursal sucursal = SucursalFactory.getSucursalByName("tres");
 		Compra compra = new Compra(sucursal);
 		
 		ItemCompra  itemV = new ItemCompra(ProductoFactory.getInstance().getProducto("VinoELL"),2);

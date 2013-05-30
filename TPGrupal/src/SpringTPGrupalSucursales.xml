@@ -168,7 +168,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 
 <!-- CADENA SUCURSAL UNO -->
 
-	<bean id="SucursalConCadenaUno"
+	<bean id="unoSucursal"
 		class="fiuba.tecnicas.modelo.general.Sucursal" >
 		<property name="next"><ref bean="AEslabon_SucursalConCadenaUno"/></property>
 	</bean>	
@@ -181,7 +181,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 <!-- FIN SUCURSAL UNO -->
 
 <!-- CADENA SUCURSAL DOS -->
-	<bean id="SucursalConCadenaDos"
+	<bean id="dosSucursal"
 		class="fiuba.tecnicas.modelo.general.Sucursal" >
 		<property name="next"><ref bean="AEslabon_SucursalConCadenaDos" /></property>
 	</bean>
@@ -197,7 +197,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 
 <!-- CADENA SUCURSAL TRES -->
 
-	<bean id="SucursalConCadenaTres"
+	<bean id="tresSucursal"
 		class="fiuba.tecnicas.modelo.general.Sucursal" >
 		<property name="next"><ref bean="AEslabon_SucursalConCadenaTres"/></property>
 	</bean>
@@ -206,20 +206,4 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	
 <!-- FIN SUCURSAL TRES -->
 
-<!-- CADENA SUCURSAL CUATRO -->
-
-	<bean id="SucursalConCadenaCuatro"
-		class="fiuba.tecnicas.modelo.general.Sucursal" >
-		<property name="next"><ref bean="AEslabon_SucursalConCadenaCuatro"/></property>
-		
-	</bean>
-	
-		<bean id="AEslabon_SucursalConCadenaCuatro" parent="Oferta2x1" >
-			<property name="next"><ref bean="BEslabon_SucursalConCadenaCuatro"/></property>
-		</bean>
-	
-			<bean id="BEslabon_SucursalConCadenaCuatro"	parent="Oferta10porcientoTarjetaJueves" >
-			</bean>
-			
-<!-- FIN SUCURSAL CUATRO -->
 </beans>

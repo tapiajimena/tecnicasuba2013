@@ -41,7 +41,17 @@ public class SucursalFactory {
 		//TODO: No setea la descripcion, porque solo llama al bean. 
 		//return (Sucursal) SucursalFactory.getBeanFactory().getBean(input);
 		//TODO: Solo se ve la sucursal UNO
-		return SucursalUno();
+		Sucursal s = (Sucursal) SucursalFactory.getBeanFactory().getBean(getRealNameOfFromInput(input));
+		s.setDescripcion(Constante.getConstante("nombre_Sucursal_Uno"));
+		
+		return s;
+	}
+	
+	private static String getRealNameOfFromInput(String input)
+	{		
+		// le saco los espacios y lo pongo en minuscula.
+		String p = input.toString().replaceAll(" ", "").toLowerCase().concat("Sucursal");
+		return p;
 	}
 
 }
