@@ -1,9 +1,5 @@
 package fiuba.tecnicas.modelo.concreto;
 
-import java.util.Iterator;
-
-import fiuba.tecnicas.modelo.general.Compra;
-import fiuba.tecnicas.modelo.general.Descuento;
 import fiuba.tecnicas.modelo.general.ItemCompra;
 import fiuba.tecnicas.modelo.general.Oferta;
 
@@ -14,8 +10,7 @@ public class Oferta2x1 extends Oferta{
 
 	public Oferta2x1()
 	{
-		this.precioPares = 0;
-		this.precioImpares = 0;
+		Inicializame();
 	}
 
 	public double doCalcularDescuentos(ItemCompra item, double valorDescuento) {
