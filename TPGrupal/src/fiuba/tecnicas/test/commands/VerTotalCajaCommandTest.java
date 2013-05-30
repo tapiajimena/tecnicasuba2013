@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
 import org.junit.Test;
 
+import fiuba.tecnicas.modelo.comun.Mensaje;
 import fiuba.tecnicas.modelo.general.Caja;
 import fiuba.tecnicas.modelo.general.Categoria;
 import fiuba.tecnicas.modelo.general.Compra;
@@ -27,12 +28,9 @@ public class VerTotalCajaCommandTest {
 		Compra compraActiva = Caja.getInstance().getCompraActiva();
 		ItemCompra item = new ItemCompra(new Producto(10.0,"desc","marca", Categoria.FARMACIA),2);
 		compraActiva.addItem(item);
-		
 		ICommand command = new VerTotalCajaCommand();
-		command.execute("");
 		
-		//TODO: Sacar del precio final el descuento
-		assertTrue(Caja.getInstance().getTotalVentasCaja() == 10.0);
+		assertEquals(command.execute("").getMensaje(),Mensaje.getMensaje("mensaje_VerTotalCaja") + " " + "20.0");
 	}
 
 }
