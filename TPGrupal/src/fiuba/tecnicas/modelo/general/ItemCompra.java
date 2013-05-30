@@ -48,8 +48,8 @@ public class ItemCompra {
 		return precioFinal;
 	}
 
-	public void aumentarCantidadUnidad() {
-		this.cantidad++;
+	public void aumentarCantidad(Integer value) {
+		this.cantidad += value;
 		
 	}
 

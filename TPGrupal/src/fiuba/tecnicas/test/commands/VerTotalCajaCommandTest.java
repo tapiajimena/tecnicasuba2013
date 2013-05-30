@@ -31,7 +31,7 @@ public class VerTotalCajaCommandTest {
 		ICommand command = new VerTotalCajaCommand();
 		command.execute("");
 		
-		//Sacar del precio final el descunto
+		//TODO: Sacar del precio final el descuento
 		assertTrue(Caja.getInstance().getTotalVentasCaja() == 10.0);
 	}
 

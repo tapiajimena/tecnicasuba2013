@@ -37,7 +37,7 @@ public class AgregarProductosCommand implements ICommand {
 				ItemCompra itemNuevo = new ItemCompra(productoNuevo.getKey(), productoNuevo.getValue());
 				if (!compra.getItems().isEmpty() && compra.getItems().contains(itemNuevo))	{
 					int index = compra.getItems().indexOf(itemNuevo);
-					compra.getItems().get(index).aumentarCantidadUnidad();
+					compra.getItems().get(index).aumentarCantidad(productoNuevo.getValue());
 				} else {
 					compra.addItem(itemNuevo);
 				}

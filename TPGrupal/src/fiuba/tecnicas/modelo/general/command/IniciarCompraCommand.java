@@ -12,11 +12,11 @@ public class IniciarCompraCommand implements ICommand {
 
 	@Override
 	public Resultado execute(String input) {
-		Resultado resultadoInciarCompraActiva = Caja.getInstance().addNuevaCompraActiva(Caja.getInstance().getSucursal());
-		if (resultadoInciarCompraActiva.getExito())
-				resultadoInciarCompraActiva.setMensaje(Mensaje.getMensaje("mensaje_CompraIniciada"));
-				else resultadoInciarCompraActiva.setMensaje(Mensaje.getMensaje("error_ordenEjec_IniciarCompra"));
-		return resultadoInciarCompraActiva;
+		Resultado resultadoIniciarCompraActiva = Caja.getInstance().addNuevaCompraActiva(Caja.getInstance().getSucursal());
+		if (resultadoIniciarCompraActiva.getExito())
+				resultadoIniciarCompraActiva.setMensaje(Mensaje.getMensaje("mensaje_CompraIniciada"));
+				else resultadoIniciarCompraActiva.setMensaje(Mensaje.getMensaje("error_ordenEjec_IniciarCompra"));
+		return resultadoIniciarCompraActiva;
 	}
 
 }

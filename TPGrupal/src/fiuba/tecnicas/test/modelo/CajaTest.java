@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import fiuba.tecnicas.modelo.comun.Constante;
 import fiuba.tecnicas.modelo.general.Caja;
+import fiuba.tecnicas.modelo.general.Compra;
 import fiuba.tecnicas.modelo.general.SucursalFactory;
 import fiuba.tecnicas.modelo.servicios.ServicioCalendario;
 
@@ -20,9 +21,20 @@ public class CajaTest {
 	
 	@Test
 	public void testaddNuevaCompraActiva() {
+		Caja.getInstance().abrir();
 		Caja.getInstance().addNuevaCompraActiva(SucursalFactory.SucursalUno());
 		
-		assertEquals(Caja.getInstance().getCompraActiva().getSucursal().toString(),Constante.getConstante("nombre_Sucursal_Uno"));
+		assertNotNull(Caja.getInstance().getCompraActiva());
+		
+	}
+	
+	@Test
+	public void testCerrarCompraActiva() {
+		Caja.getInstance().abrir();
+		Caja.getInstance().addNuevaCompraActiva(SucursalFactory.SucursalUno());
+		Caja.getInstance().cerrarCompraActiva();
+		
+		assertNull(Caja.getInstance().getCompraActiva());
 		
 	}
 
