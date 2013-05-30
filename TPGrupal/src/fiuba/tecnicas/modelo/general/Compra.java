@@ -81,7 +81,7 @@ public class Compra {
 
 	public String getDiaDeCompra() {
 		//TODO sacar esto!!!
-		return "LUNES";
+		return ServicioCalendario.getTodayDayOfTheWeekToString();
 	}
 	
 	public void setDiaDeCompra(String dia)

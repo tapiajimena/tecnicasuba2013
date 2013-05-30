@@ -16,6 +16,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 </bean>
 
 
+
 <bean id="Oferta10porcientoFarmacia"
 	class="fiuba.tecnicas.modelo.general.Oferta" >
 	<property name="strategy"><ref bean="DiezPorcientoStrategy"/></property>
@@ -127,13 +128,42 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 			</bean>
 			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
 				<property name="tipoCaracteristica" value="COMPRA_DIA" />
-				<property name="valor" value="LUNES" />
+				<property name="valor" value="JUEVES" />
 				<property name="objetoAlQueAplico" value="COMPRA" />
 				<property name="valorSiExisteLaCaracteristica" value="0"></property>
 			</bean>
 		</util:list>
 	</property>
 	<property name="nombre" value="10% debito los lunes" />
+</bean>
+
+<bean id="Oferta10porcientoVinos"
+	class="fiuba.tecnicas.modelo.general.Oferta" >
+	<property name="strategy"><ref bean="DiezPorcientoStrategy"/></property>
+	<property name="caracteristicas">
+		<util:list id="Oferta10porcientoVinosCaracteristicas" list-class="java.util.ArrayList" 
+			value-type="fiuba.tecnicas.modelo.general.Caracteristica">
+			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+				<property name="tipoCaracteristica" value="CATEGORIA_DESCRIPCION" />
+				<property name="valor" value="VINOTECA" />
+				<property name="objetoAlQueAplico" value="ITEM" />
+				<property name="valorSiExisteLaCaracteristica" value="0"></property>
+			</bean>
+			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+				<property name="tipoCaracteristica" value="PRODUCTO_MARCA" />
+				<property name="valor" value="XYZ" />
+				<property name="objetoAlQueAplico" value="ITEM" />
+				<property name="valorSiExisteLaCaracteristica" value="-1"></property>
+			</bean>
+			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+				<property name="tipoCaracteristica" value="PRODUCTO_MARCA" />
+				<property name="valor" value="LLL" />
+				<property name="objetoAlQueAplico" value="ITEM" />
+				<property name="valorSiExisteLaCaracteristica" value="-1"></property>
+			</bean>
+		</util:list>
+	</property>
+	<property name="nombre" value="10% en vinos" />
 </bean>
 
 <!-- CADENA SUCURSAL UNO -->
@@ -171,28 +201,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		class="fiuba.tecnicas.modelo.general.Sucursal" >
 		<property name="next"><ref bean="AEslabon_SucursalConCadenaTres"/></property>
 	</bean>
-			<bean id="AEslabon_SucursalConCadenaTres" parent="Oferta2x1" >
-				<property name="next"><ref bean="BEslabon_SucursalConCadenaTres"/></property>
-				<property name="caracteristicas">
-				<util:list list-class="java.util.ArrayList" id="Oferta2x1CaracteristicasS3" 
-					value-type="fiuba.tecnicas.modelo.general.Caracteristica">
-					<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
-						<property name="tipoCaracteristica" value="PRODUCTO_DESCRIPCION" />
-						<property name="valor" value="Coca" />
-					</bean>
-				</util:list></property>
-			</bean>			
-				<bean id="BEslabon_SucursalConCadenaTres"
-				     class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjetaXYZJueves" >
-				     <property name="caracteristicas">
-				<util:list list-class="java.util.ArrayList" id="Oferta10porcientoTarjetaXYZJuevesS3" 
-					value-type="fiuba.tecnicas.modelo.general.Caracteristica">
-					<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
-						<property name="tipoCaracteristica" value="DIA_SEMANA" />
-						<property name="valor" value="JUEVES" />
-					</bean>
-				</util:list></property>
-			   </bean>
+		<bean id="AEslabon_SucursalConCadenaTres" parent="Oferta10porcientoVinos" >
+	  	 </bean>
 	
 <!-- FIN SUCURSAL TRES -->
 

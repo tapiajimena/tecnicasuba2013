@@ -31,4 +31,5 @@ public class ServicioCalendario {
     	SimpleDateFormat format1 = new SimpleDateFormat(Constante.getConstante("formato_fechaDeCaja"));
     	return format1.format(cal.getTime());   	
     }
+   
 }

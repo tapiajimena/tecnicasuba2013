@@ -27,4 +27,67 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 <property name="descripcion" value="Jabon" />
 </bean>
 
+<bean id="Coca" class="fiuba.tecnicas.modelo.general.Producto">
+	<property name="codigo_producto" value="00100" />
+	<property name="categorias" value="BEBIDAS" />
+	<property name="precio" value="1" />
+	<property name="marca" value="Coca Cola" />
+	<property name="descripcion" value="Coca" />
+</bean>
+
+<bean id="X" class="fiuba.tecnicas.modelo.general.Producto">
+	<property name="codigo_producto" value="00015" />
+	<property name="categorias" value="VINOTECA" />
+	<property name="precio" value="100" />
+	<property name="marca" value="X" />
+	<property name="descripcion" value="X" />
+</bean>
+
+<bean id="Chandon" class="fiuba.tecnicas.modelo.general.Producto">
+	<property name="codigo_producto" value="00030" />
+	<property name="categorias" value="VINOTECA" />
+	<property name="precio" value="75" />
+	<property name="marca" value="Chandon" />
+	<property name="descripcion" value="Chandon" />
+</bean>
+
+<bean id="CepilloDientes" class="fiuba.tecnicas.modelo.general.Producto">
+	<property name="codigo_producto" value="00040" />
+	<property name="categorias" value="FARMACIA" />
+	<property name="precio" value="3" />
+	<property name="marca" value="Colgate" />
+	<property name="descripcion" value="Cepillo Dientes" />
+</bean>
+
+<bean id="Maceta" class="fiuba.tecnicas.modelo.general.Producto">
+	<property name="codigo_producto" value="00050" />
+	<property name="categorias" value="JARDINERIA" />
+	<property name="precio" value="10" />
+	<property name="marca" value="Maceta" />
+	<property name="descripcion" value="Maceta" />
+</bean>
+
+<bean id="VinoELL" class="fiuba.tecnicas.modelo.general.Producto">
+	<property name="codigo_producto" value="0002" />
+	<property name="categorias" value="VINOTECA" />
+	<property name="precio" value="10" />
+	<property name="marca" value="ELL" />
+	<property name="descripcion" value="Vino ELL" />
+</bean>
+
+<bean id="VinoXYZ" class="fiuba.tecnicas.modelo.general.Producto">
+	<property name="codigo_producto" value="0005" />
+	<property name="categorias" value="VINOTECA" />
+	<property name="precio" value="20" />
+	<property name="marca" value="XYZ" />
+	<property name="descripcion" value="Vino XYZ" />
+</bean>
+
+<bean id="VinoLLL" class="fiuba.tecnicas.modelo.general.Producto">
+	<property name="codigo_producto" value="0006" />
+	<property name="categorias" value="VINOTECA" />
+	<property name="precio" value="30" />
+	<property name="marca" value="LLL" />
+	<property name="descripcion" value="Vino LLL" />
+</bean>
 </beans>
