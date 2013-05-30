@@ -156,11 +156,11 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		<property name="next"><ref bean="AEslabon_SucursalConCadenaDos" /></property>
 	</bean>
 		<bean id="AEslabon_SucursalConCadenaDos" parent="OfertaSegundaUnidad75NoChandon" >
-				<property name="next"><ref bean="BEslabon_SucursalConCadenaDos"/></property>
-			</bean>			
-					<bean id="BEslabon_SucursalConCadenaDos" parent="Oferta10porcientoDebitoLunes" >
-			   		</bean>
-	
+			<property name="next"><ref bean="BEslabon_SucursalConCadenaDos"/></property>
+		</bean>			
+			<bean id="BEslabon_SucursalConCadenaDos" parent="Oferta10porcientoDebitoLunes" >
+	   		</bean>
+
 <!-- FIN SUCURSAL DOS -->
 
 <!-- CADENA SUCURSAL TRES -->

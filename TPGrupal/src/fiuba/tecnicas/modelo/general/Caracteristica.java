@@ -33,11 +33,15 @@ public class Caracteristica implements Comparable<Caracteristica> {
 
 	@Override
 	public int compareTo(Caracteristica o) {
+		
+		if(o.getTipoCaracteristica().compareTo(this.getTipoCaracteristica()) != 0)
+			return -1;
+
 		if(o.getTipoCaracteristica().compareTo(this.getTipoCaracteristica()) == 0
 				&& o.getValor().compareTo(this.getValor())==0)
 			return getValorSiExisteLaCaracteristica();
 		
-		return -1;
+		return getValorSiNOExisteLaCaracteristica();
 	}
 
 	public CaracteristicaAplicoA getObjetoAlQueAplico() {
@@ -55,5 +59,13 @@ public class Caracteristica implements Comparable<Caracteristica> {
 	public void setValorSiExisteLaCaracteristica(
 			int valorSiExisteLaCaracteristica) {
 		this.valorSiExisteLaCaracteristica = valorSiExisteLaCaracteristica;
+	}
+	
+	public int getValorSiNOExisteLaCaracteristica()
+	{
+		if(getValorSiExisteLaCaracteristica() == -1)
+			return 0;
+		else
+			return -1;
 	}
 }

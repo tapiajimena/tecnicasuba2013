@@ -104,7 +104,8 @@ public class Oferta {
 		Boolean noLaTiene = true;
 		Iterator<Caracteristica> susCaracteristicas = caracteristicasNoMias.iterator();
 		while(susCaracteristicas.hasNext() && noLaTiene){
-			noLaTiene = (estaCaracteristica.compareTo(susCaracteristicas.next()) != 0);
+			Caracteristica s = susCaracteristicas.next();
+			noLaTiene = (estaCaracteristica.compareTo(s) != 0);
 			if(!noLaTiene)
 				break;
 		}
