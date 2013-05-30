@@ -26,6 +26,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 	
 <bean id ="mediodepagocommand"
 	class="fiuba.tecnicas.modelo.general.command.MedioDePagoCommand" />
+	
+<bean id ="finalizarcompracommand"
+	class="fiuba.tecnicas.modelo.general.command.FinalizarCompraCommand" />
 
 <bean id ="cerrarcajacommand"
 	class="fiuba.tecnicas.modelo.general.command.CerrarCajaCommand" />
