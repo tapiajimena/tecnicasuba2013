@@ -6,6 +6,7 @@ public class Caracteristica implements Comparable<Caracteristica> {
 	private String tipoCaracteristica;
 	private String valor;
 	private CaracteristicaAplicoA objetoAlQueAplico;
+	private int valorSiExisteLaCaracteristica;
 	
 	public Caracteristica(){}
 	
@@ -34,7 +35,7 @@ public class Caracteristica implements Comparable<Caracteristica> {
 	public int compareTo(Caracteristica o) {
 		if(o.getTipoCaracteristica().compareTo(this.getTipoCaracteristica()) == 0
 				&& o.getValor().compareTo(this.getValor())==0)
-			return 0;
+			return getValorSiExisteLaCaracteristica();
 		
 		return -1;
 	}
@@ -45,5 +46,14 @@ public class Caracteristica implements Comparable<Caracteristica> {
 
 	public void setObjetoAlQueAplico(CaracteristicaAplicoA objetoAlQueAplico) {
 		this.objetoAlQueAplico = objetoAlQueAplico;
+	}
+
+	public int getValorSiExisteLaCaracteristica() {
+		return valorSiExisteLaCaracteristica;
+	}
+
+	public void setValorSiExisteLaCaracteristica(
+			int valorSiExisteLaCaracteristica) {
+		this.valorSiExisteLaCaracteristica = valorSiExisteLaCaracteristica;
 	}
 }

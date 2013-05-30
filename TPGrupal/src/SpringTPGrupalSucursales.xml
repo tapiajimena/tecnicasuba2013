@@ -14,6 +14,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 				<property name="tipoCaracteristica" value="CATEGORIA_DESCRIPCION" />
 				<property name="valor" value="FARMACIA" />
 				<property name="objetoAlQueAplico" value="ITEM" />
+				<property name="valorSiExisteLaCaracteristica" value="0"></property>
 			</bean>
 		</util:list>
 	</property>
@@ -28,6 +29,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 				<property name="tipoCaracteristica" value="PRODUCTO_DESCRIPCION" />
 				<property name="valor" value="COCA" />
 				<property name="objetoAlQueAplico" value="ITEM" />
+				<property name="valorSiExisteLaCaracteristica" value="0"></property>
 			</bean>
 		</util:list>
 	</property>
@@ -44,6 +46,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 				<property name="tipoCaracteristica" value="MEDIODEPAGO_DESCRIPCION" />
 				<property name="valor" value="TARJETA" />
 				<property name="objetoAlQueAplico" value="COMPRA" />
+				<property name="valorSiExisteLaCaracteristica" value="0"></property>
 			</bean>
 		</util:list>
 	</property>
@@ -59,16 +62,65 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 				<property name="tipoCaracteristica" value="MEDIODEPAGO_DESCRIPCION" />
 				<property name="valor" value="TARJETA" />
 				<property name="objetoAlQueAplico" value="COMPRA" />
+				<property name="valorSiExisteLaCaracteristica" value="0"></property>
 			</bean>
 			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
 				<property name="tipoCaracteristica" value="COMPRA_DIA" />
 				<property name="valor" value="JUEVES" />
 				<property name="objetoAlQueAplico" value="COMPRA" />
+				<property name="valorSiExisteLaCaracteristica" value="0"></property>
 			</bean>
 		</util:list>
 	</property>
 	<property name="nombre" value="Tarjeta Jueves" />
 </bean>
+
+<bean id="OfertaSegundaUnidad75NoChandon"
+	class="fiuba.tecnicas.modelo.concreto.OfertaSegundaUnidad75NoChandon" >
+	<property name="caracteristicas">
+		<util:list list-class="java.util.ArrayList" id="OfertaSegundaUnidad75NoChandonCaracteristicas" 
+			value-type="fiuba.tecnicas.modelo.general.Caracteristica">
+			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+				<property name="tipoCaracteristica" value="CATEGORIA_DESCRIPCION" />
+				<property name="valor" value="VINOTECA" />
+				<property name="objetoAlQueAplico" value="ITEM" />
+				<property name="valorSiExisteLaCaracteristica" value="0"></property>
+			</bean>
+			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+				<property name="tipoCaracteristica" value="PRODUCTO_MARCA" />
+				<property name="valor" value="CHANDON" />
+				<property name="objetoAlQueAplico" value="ITEM" />
+				<property name="valorSiExisteLaCaracteristica" value="-1"></property>
+			</bean>
+		</util:list>
+	</property>
+	<property name="nombre" value="75% segunda unidad menos chandon" />
+</bean>
+
+<bean id="Oferta10porcientoDebitoLunes"
+	class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoDebitoLunes" >
+	<property name="caracteristicas">
+		<util:list list-class="java.util.ArrayList" id="Oferta10porcientoDebitoLunesCaracteristicas" 
+			value-type="fiuba.tecnicas.modelo.general.Caracteristica">
+			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+				<property name="tipoCaracteristica" value="MEDIODEPAGO_DESCRIPCION" />
+				<property name="valor" value="DEBITO" />
+				<property name="objetoAlQueAplico" value="COMPRA" />
+				<property name="valorSiExisteLaCaracteristica" value="0"></property>
+			</bean>
+			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+				<property name="tipoCaracteristica" value="COMPRA_DIA" />
+				<property name="valor" value="LUNES" />
+				<property name="objetoAlQueAplico" value="COMPRA" />
+				<property name="valorSiExisteLaCaracteristica" value="0"></property>
+			</bean>
+		</util:list>
+	</property>
+	<property name="nombre" value="10% debito los lunes" />
+</bean>
+
+
+
 
 
 <!-- CADENA SUCURSAL UNO -->
@@ -84,14 +136,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 			</bean>
 
 <!-- FIN SUCURSAL UNO -->
-<bean id="DEslabon_SucursalConCadenaUno" parent="Oferta10porcientoFarmacia" >
-	<property name="next"><ref bean="CEslabon_SucursalConCadenaUno"/></property>
-</bean>
-<bean id="CEslabon_SucursalConCadenaUno" parent="Oferta10porcientoTarjeta" >
-	<property name="next"><ref bean="DEslabon_SucursalConCadenaUno"/></property>
-</bean>
-<!-- CADENA SUCURSAL DOS -->
 
+<!-- CADENA SUCURSAL DOS -->
 	<bean id="SucursalConCadenaDos"
 		class="fiuba.tecnicas.modelo.general.Sucursal" >
 		<property name="next"><ref bean="AEslabon_SucursalConCadenaDos" /></property>

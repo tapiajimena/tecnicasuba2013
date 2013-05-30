@@ -21,13 +21,15 @@ public class Compra {
 
 	public void setMedioDePago(String medioDePago, String banco) {
 		this.medioDePago = new MedioDePago(TipoPago.valueOf(medioDePago), banco);
+		this.caracteristicas.add(new Caracteristica("MEDIODEPAGO_DESCRIPCION", medioDePago, CaracteristicaAplicoA.COMPRA));
 		this.caracteristicas.add(new Caracteristica("MEDIODEPAGO_DESCRIPCION_ENTIDAD", banco, CaracteristicaAplicoA.COMPRA));
-		
+
 	}
 
 	public void setMedioDePago(MedioDePago medioDePago) {
 		this.medioDePago = medioDePago;
 		this.caracteristicas.add(new Caracteristica("MEDIODEPAGO_DESCRIPCION", medioDePago.getTipoPago().toString(), CaracteristicaAplicoA.COMPRA));
+		this.caracteristicas.add(new Caracteristica("MEDIODEPAGO_DESCRIPCION_ENTIDAD", medioDePago.getBanco(), CaracteristicaAplicoA.COMPRA));
 	}
 
 	public Compra(Sucursal sucursal) {
@@ -37,7 +39,6 @@ public class Compra {
 		this.caracteristicas = new ArrayList<Caracteristica>();
 		this.descuentos = new ArrayList<Descuento>();
 		this.caracteristicas.add(new Caracteristica("COMPRA_DIA", getDiaDeCompra(), CaracteristicaAplicoA.COMPRA));
-		//this.diaDeCompra = "JUEVES";
 	}
 
 	public double getTotalCompraConDescuentos() {
@@ -79,6 +80,7 @@ public class Compra {
 	}
 
 	public String getDiaDeCompra() {
+		//TODO sacar esto!!!
 		return "JUEVES";
 	}
 
