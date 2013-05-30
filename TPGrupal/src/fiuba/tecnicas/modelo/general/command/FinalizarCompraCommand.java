@@ -8,8 +8,12 @@ public class FinalizarCompraCommand implements ICommand {
 
 	@Override
 	public Resultado execute(String input) {
-		Caja.getInstance().cerrarCompraActiva();
-		return new Resultado(Mensaje.getMensaje("mensaje_CerrarCompraActiva"));
+		try {
+			Caja.getInstance().cerrarCompraActiva();
+			return new Resultado(Mensaje.getMensaje("mensaje_CerrarCompraActiva"));
+		} catch (Exception e) {
+			return new Resultado(Mensaje.getMensaje("error_ordenEjec_FinalizarCompra"));
+		}
 	}
 
 }
