@@ -25,8 +25,16 @@ public class ProductoFactory {
 	
 	public Producto getProducto(String codigo)
 	{
-		Producto producto;
-		producto = (Producto)PRODUCTO_FACTORY.getBean(codigo);
+		Producto producto = null;
+		try
+		{
+			producto = (Producto)PRODUCTO_FACTORY.getBean(codigo);
+		}
+		catch(Exception exp)
+		{
+			
+		}
+		
 		return producto;
 	}
 	

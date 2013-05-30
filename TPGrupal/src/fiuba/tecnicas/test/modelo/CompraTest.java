@@ -26,7 +26,7 @@ public class CompraTest {
 	@Test
 	public void Test2x1Tarjeta(){
 		
-		Sucursal sucursal = SucursalFactory.getSucursalByName("uno");
+		Sucursal sucursal = SucursalFactory.getSucursalByName("asdasdasds");
 		ItemCompra  itemCoca = new ItemCompra(ProductoFactory.getInstance().getProducto("Coca"),2);
 		Compra compra = new Compra(sucursal);
 		compra.setMedioDePago(new MedioDePago(TipoPago.TARJETA, "XYZ"));
@@ -56,12 +56,13 @@ public class CompraTest {
 	 */
 	@Test
 	public void TestSegundaUnidadLunes(){
-		Sucursal sucursal = SucursalFactory.getSucursalByName("dos");
-			
 		
-		ItemCompra  itemVinoX = new ItemCompra(ProductoFactory.getInstance().getProducto("X"),2);
+		
+		Sucursal sucursal = SucursalFactory.getSucursalByName("dos");
 		Compra compra = new Compra(sucursal);
 		compra.setMedioDePago(new MedioDePago(TipoPago.DEBITO, "XYZ"));
+		
+		ItemCompra  itemVinoX = new ItemCompra(ProductoFactory.getInstance().getProducto("X"),2);
 		compra.addItem(itemVinoX);
 		
 		ItemCompra  itemChandon = new ItemCompra(ProductoFactory.getInstance().getProducto("Chandon"),2);
@@ -74,7 +75,7 @@ public class CompraTest {
 		compra.addItem(itemMaceta);
 		
 		double totalCompra = compra.CalcularTotal();
-		System.out.println(totalCompra);
+		
 		Assert.assertEquals(259.20,totalCompra);
 
 		Iterator<Descuento> it = compra.getDescuentos().iterator();
