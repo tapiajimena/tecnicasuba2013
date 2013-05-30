@@ -51,15 +51,18 @@ public class Oferta {
 		Iterator<ItemCompra> it = compra.getItems().iterator();
 		ItemCompra item;
 		double valorDescuento = 0;
+		double acumulador = 0;
 
 		while(it.hasNext()){
 			item = it.next();
 			if(aplicoAEstaSerieDeCaracteristicas(item.getCaracteristicas(), 
-					this.getCaracteristicasEspecificas(CaracteristicaAplicoA.ITEM)))
+					this.getCaracteristicasEspecificas(CaracteristicaAplicoA.ITEM))){
 				valorDescuento = doCalcularDescuentos(item, valorDescuento);
+				acumulador += valorDescuento;
+			}
 		}
 
-		compra.addDescuento(new Descuento(valorDescuento,getNombre()));
+		compra.addDescuento(new Descuento(acumulador,getNombre()));
 	}
 	
 	public double doCalcularDescuentos(ItemCompra item, double valorDescuento)

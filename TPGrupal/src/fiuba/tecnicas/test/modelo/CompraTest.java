@@ -102,4 +102,37 @@ public class CompraTest {
 			System.out.println(descuento.getValor()+" pesos por "+descuento.getNombre());
 		}
 	}
+	
+	/*
+	 * Test promo 2da unidad igual 75% desc en Vinoteca. (Excepto marcas Chandon) y debito el lunes
+	 */
+	@Test
+	public void MarcaXYZ(){
+		Sucursal sucursal = SucursalFactory.SucursalTres();
+		ItemCompra  itemVinoX = new ItemCompra(new Producto(100, "X", "X", Categoria.VINOTECA),2);
+		Compra compra = new Compra(sucursal);
+		compra.setMedioDePago(new MedioDePago(TipoPago.DEBITO, "XYZ"));
+		compra.addItem(itemVinoX);
+		
+		ItemCompra  itemChandon = new ItemCompra(new Producto(75, "Chandon", "Chandon", Categoria.VINOTECA),2);
+		compra.addItem(itemChandon);
+		
+		ItemCompra  itemCepillo = new ItemCompra(new Producto(3, "Cepillo Dientes", "Colgate", Categoria.FARMACIA),1);
+		compra.addItem(itemCepillo);
+		
+		ItemCompra  itemMaceta = new ItemCompra(new Producto(10, "Maceta", "Macetas", Categoria.JARDINERIA),1);
+		compra.addItem(itemMaceta);
+		compra.setDiaDeCompra("LUNES");
+		
+		double totalCompra = compra.CalcularTotal();
+		System.out.println(totalCompra);
+		Assert.assertEquals(259.20,totalCompra);
+		
+		Iterator<Descuento> it = compra.getDescuentos().iterator();
+		System.out.print("Descuentos aplicados: ");
+		while(it.hasNext()){
+			Descuento descuento = it.next();
+			System.out.println(descuento.getValor()+" pesos por "+descuento.getNombre());
+		}
+	}
 }

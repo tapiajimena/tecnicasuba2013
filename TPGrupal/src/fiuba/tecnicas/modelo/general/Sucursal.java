@@ -19,13 +19,6 @@ public class Sucursal {
 	}
 
 	public void CalcularDescuentos(Compra compra){
-// Setteo todos los precios iniciales de cada item y luego aplico las ofertas.
-		Iterator<ItemCompra> it = compra.getItems().iterator();
-		ItemCompra item;
-		while(it.hasNext()){
-			item = it.next();	
-			item.setPrecioFinal(item.getProducto().getPrecio()*item.getCantidad());
-		}
 		chainOferta.calcularDescuentos(compra);
 	}
 	

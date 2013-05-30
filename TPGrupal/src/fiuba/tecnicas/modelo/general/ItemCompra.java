@@ -42,6 +42,7 @@ public class ItemCompra {
 		this.getCaracteristicas().add(new Caracteristica("PRODUCTO_DESCRIPCION", getProducto().getDescripcion(), CaracteristicaAplicoA.ITEM));
 		this.getCaracteristicas().add(new Caracteristica("CATEGORIA_DESCRIPCION", getProducto().getCategorias().toString(), CaracteristicaAplicoA.ITEM));
 		this.getCaracteristicas().add(new Caracteristica("PRODUCTO_MARCA", getProducto().getMarca().toString(), CaracteristicaAplicoA.ITEM));
+		this.setPrecioFinal(this.getProducto().getPrecio() * this.getCantidad());
 	}
 
 	public double getPrecioFinal() {

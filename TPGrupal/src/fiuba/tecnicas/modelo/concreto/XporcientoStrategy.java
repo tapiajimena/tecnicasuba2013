@@ -9,12 +9,16 @@ public class XporcientoStrategy implements IOfertaStrategy {
 	@Override
 	public double doCalcularDescuentos(ItemCompra item, double valorDescuento) {
 		
-		valorDescuento += getFactorPorcentual()*item.getProducto().getPrecio()*item.getCantidad();
-		if (item.getPrecioFinal() == (item.getProducto().getPrecio()*item.getCantidad()))
+		/*
+		if (item.getPrecioFinal() == (item.getProducto().getPrecio()*item.getCantidad())){
 			item.setPrecioFinal((item.getProducto().getPrecio() - getFactorPorcentual()*item.getProducto().getPrecio())*item.getCantidad());					
-		else
-			item.setPrecioFinal(item.getPrecioFinal() - getFactorPorcentual()*item.getProducto().getPrecio());
-
+			valorDescuento += getFactorPorcentual() * item.getProducto().getPrecio() * item.getCantidad();
+		}
+		else{*/
+			valorDescuento =  getFactorPorcentual() * item.getPrecioFinal();
+			item.setPrecioFinal(item.getPrecioFinal() - valorDescuento);
+		/*}*/
+		
 		return valorDescuento;
 	}
 	
