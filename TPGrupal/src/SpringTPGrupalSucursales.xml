@@ -119,10 +119,6 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	<property name="nombre" value="10% debito los lunes" />
 </bean>
 
-
-
-
-
 <!-- CADENA SUCURSAL UNO -->
 
 	<bean id="SucursalConCadenaUno"
@@ -142,14 +138,11 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		class="fiuba.tecnicas.modelo.general.Sucursal" >
 		<property name="next"><ref bean="AEslabon_SucursalConCadenaDos" /></property>
 	</bean>
-		<bean id="AEslabon_SucursalConCadenaDos"
-				class="fiuba.tecnicas.modelo.concreto.OfertaSegundaUnidad75NoChandon" >
+		<bean id="AEslabon_SucursalConCadenaDos" parent="OfertaSegundaUnidad75NoChandon" >
 				<property name="next"><ref bean="BEslabon_SucursalConCadenaDos"/></property>
-			</bean>
-			
-				<bean id="BEslabon_SucursalConCadenaDos"
-				     class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoDebitoLunes" >
-			   </bean>
+			</bean>			
+					<bean id="BEslabon_SucursalConCadenaDos" parent="Oferta10porcientoDebitoLunes" >
+			   		</bean>
 	
 <!-- FIN SUCURSAL DOS -->
 
@@ -160,9 +153,26 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		<property name="next"><ref bean="AEslabon_SucursalConCadenaTres"/></property>
 	</bean>
 			<bean id="AEslabon_SucursalConCadenaTres" parent="Oferta2x1" >
+				<property name="next"><ref bean="BEslabon_SucursalConCadenaTres"/></property>
+				<property name="caracteristicas">
+				<util:list list-class="java.util.ArrayList" id="Oferta2x1CaracteristicasS3" 
+					value-type="fiuba.tecnicas.modelo.general.Caracteristica">
+					<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+						<property name="tipoCaracteristica" value="PRODUCTO_DESCRIPCION" />
+						<property name="valor" value="Coca" />
+					</bean>
+				</util:list></property>
 			</bean>			
 				<bean id="BEslabon_SucursalConCadenaTres"
 				     class="fiuba.tecnicas.modelo.concreto.Oferta10porcientoTarjetaXYZJueves" >
+				     <property name="caracteristicas">
+				<util:list list-class="java.util.ArrayList" id="Oferta10porcientoTarjetaXYZJuevesS3" 
+					value-type="fiuba.tecnicas.modelo.general.Caracteristica">
+					<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
+						<property name="tipoCaracteristica" value="DIA_SEMANA" />
+						<property name="valor" value="JUEVES" />
+					</bean>
+				</util:list></property>
 			   </bean>
 	
 <!-- FIN SUCURSAL TRES -->

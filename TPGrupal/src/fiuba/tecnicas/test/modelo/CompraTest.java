@@ -75,12 +75,12 @@ public class CompraTest {
 	@Test
 	public void TestSegundaUnidadLunes(){
 		Sucursal sucursal = SucursalFactory.SucursalDos();
-		ItemCompra  itemVinoX = new ItemCompra(new Producto(100, "X", "X", Categoria.VINOS),2);
+		ItemCompra  itemVinoX = new ItemCompra(new Producto(100, "X", "X", Categoria.VINOTECA),2);
 		Compra compra = new Compra(sucursal);
 		compra.setMedioDePago(new MedioDePago(TipoPago.DEBITO, "XYZ"));
 		compra.addItem(itemVinoX);
 		
-		ItemCompra  itemChandon = new ItemCompra(new Producto(75, "Chandon", "Chandon", Categoria.VINOS),2);
+		ItemCompra  itemChandon = new ItemCompra(new Producto(75, "Chandon", "Chandon", Categoria.VINOTECA),2);
 		compra.addItem(itemChandon);
 		
 		ItemCompra  itemCepillo = new ItemCompra(new Producto(3, "Cepillo Dientes", "Colgate", Categoria.FARMACIA),1);
