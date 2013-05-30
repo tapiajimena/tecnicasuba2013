@@ -30,9 +30,7 @@ public class VerTotalDescuentosCommandTest {
 
 		ICommand command = new VerTotalDescuentosCajaCommand();
 		
-		command.execute("");
-		
-		System.out.println(command.execute("").getMensaje());
+		assertEquals(command.execute("").getMensaje(),"10.0");
 	
 	}
 }

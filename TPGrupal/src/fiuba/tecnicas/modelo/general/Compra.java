@@ -42,6 +42,7 @@ public class Compra {
 	}
 
 	public double getTotalCompraConDescuentos() {
+		this.totalCompra = 0;
 		Iterator<ItemCompra> it = this.items.iterator();
 		while (it.hasNext()) {
 			this.totalCompra += it.next().getPrecioFinal();
@@ -50,6 +51,7 @@ public class Compra {
 	}
 
 	public double getTotalCompraSinDescuentos() {
+		this.totalCompra = 0;
 		Iterator<ItemCompra> it = this.items.iterator();
 		while (it.hasNext()) {
 			this.totalCompra += it.next().getPrecioFinal();
@@ -101,7 +103,8 @@ public class Compra {
 
 	public double CalcularTotal() {
 		this.sucursal.CalcularDescuentos(this);
-		return this.getTotalCompraConDescuentos();
+		this.totalCompra = this.getTotalCompraConDescuentos(); 
+		return this.totalCompra;
 	}
 
 	public ArrayList<Caracteristica> getCaracteristicas() {

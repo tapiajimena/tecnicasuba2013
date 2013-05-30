@@ -18,7 +18,7 @@ public class Caja {
 	
 	private static Caja INSTANCE;
 	private String fechaDeApertura;
-	private Map<MedioDePago, Double> totalPorMedioDePago;
+	private HashMap<String,Double> totalPorMedioDePago;
 	private HashMap<Boolean,List<Compra>> comprasDeCaja;
 	private Sucursal sucursal;
 
@@ -44,7 +44,7 @@ public class Caja {
     public void abrir() {
 			setFechaDeHoy();
 			inicializarListaCompras();
-			this.setTotalPorMedioDePago(new HashMap<MedioDePago,Double>());
+			this.totalPorMedioDePago = new HashMap<String,Double>();
     }
     
     private void inicializarListaCompras() {
@@ -102,21 +102,41 @@ public class Caja {
 		return resultado;
 	}
 	
-	private void setTotalPorMedioDePago (Map<MedioDePago,Double> totalMedioPago){
-		this.totalPorMedioDePago = totalMedioPago;
+	public void setTotalPorMedioDePago (HashMap<String, Double> mediosDePago){
+		List<Compra> comprasDeCaja = this.getComprasDeCaja();
+
+		if (comprasDeCaja != null && !comprasDeCaja.isEmpty()) {
+			Iterator<Compra> it_comprasDeCaja = comprasDeCaja.iterator();
+
+			while (it_comprasDeCaja.hasNext()) {
+				Compra compra = it_comprasDeCaja.next();
+				MedioDePago medioUsado = compra.getMedioDePago();
+				if (mediosDePago.containsKey(medioUsado.getTipoPago().name())) {
+					double totalAux = mediosDePago.get(medioUsado.getTipoPago().name());
+					totalAux += compra.getTotalCompraSinDescuentos();
+					mediosDePago.remove(medioUsado);
+					mediosDePago.put(medioUsado.getTipoPago().name(), totalAux);
+				}
+			}
+		}
+		this.totalPorMedioDePago = mediosDePago;
+	}
+	
+	public HashMap<String, Double> getTotalPorMedioDePago (){
+		return this.totalPorMedioDePago;
 	}
 
 	public Sucursal getSucursal() {
 		return sucursal;
 	}
 
-	public void setSucursal(String sucursal) {
-		//TODO: get sucursal con nombre amistoso por input de pantalla en el abrir caja
-		this.sucursal = SucursalFactory.getSucursalByName(sucursal);
+	public void setSucursal(Sucursal sucursal) {
+		this.sucursal = sucursal;
 	}
 
 	public void cerrarCompraActiva() {
 		Compra compra = this.comprasDeCaja.get(true).get(0);
+		compra.CalcularTotal();
 		this.comprasDeCaja.get(true).clear();
 		this.comprasDeCaja.get(false).add(compra);
 	}

@@ -34,10 +34,8 @@ public class VerTotalCajaPorMediosDePagoTest {
 		Caja.getInstance().cerrarCompraActiva();
 		
 		ICommand command = new VerTotalCajaPorMediosDePagoCommand();
-		
-		System.out.println(command.execute("").getMensaje());
-		
-		//assertEquals("",Mensaje.getMensaje("mensaje_CalcularTotalCajaPorMedioDePago"));
+
+		assertEquals("Los totales calculados por medio de pago son: [TARJETA=40.0, DEBITO=0.0, EFECTIVO=10.0]",command.execute("").getMensaje());
 		
 		
 	}

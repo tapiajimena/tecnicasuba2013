@@ -20,27 +20,13 @@ public class VerTotalCajaPorMediosDePagoCommand implements ICommand {
 	@Override
 	public Resultado execute(String input) {
 
-		List<Compra> comprasDeCaja = Caja.getInstance().getComprasDeCaja();
-		HashMap<String, Double> totales = crearIndiceMediosDePago();
-
-		if (comprasDeCaja != null && !comprasDeCaja.isEmpty()) {
-			Iterator<Compra> it_comprasDeCaja = comprasDeCaja.iterator();
-
-			while (it_comprasDeCaja.hasNext()) {
-				Compra compra = it_comprasDeCaja.next();
-				MedioDePago medioUsado = compra.getMedioDePago();
-				if (totales.containsKey(medioUsado.getTipoPago().name())) {
-					double totalAux = totales.get(medioUsado.getTipoPago().name());
-					totalAux += compra.getTotalCompraSinDescuentos();
-					totales.remove(medioUsado);
-					totales.put(medioUsado.getTipoPago().name(), totalAux);
-				}
-			}
+		Caja.getInstance().setTotalPorMedioDePago(crearIndiceMediosDePago());
+		HashMap<String,Double> totales = (Caja.getInstance().getTotalPorMedioDePago());
+		if (totales != null && !totales.isEmpty()) {
+			return new Resultado(Mensaje.getMensaje("mensaje_CalcularTotalCajaPorMedioDePago") + renderTotalesXMedioDePago(totales));
 		} else {
 			return new Resultado(Mensaje.getMensaje("error_ordenEjec_MedioPago"));
 		}
-
-		return new Resultado(Mensaje.getMensaje("mensaje_CalcularTotalCajaPorMedioDePago") + renderTotalesXMedioDePago(totales));
 	}
 
 	private String renderTotalesXMedioDePago(HashMap<String,Double> totales) {
