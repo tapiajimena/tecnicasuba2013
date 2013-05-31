@@ -10,6 +10,7 @@ import fiuba.tecnicas.modelo.general.Categoria;
 import fiuba.tecnicas.modelo.general.Compra;
 import fiuba.tecnicas.modelo.general.ItemCompra;
 import fiuba.tecnicas.modelo.general.Producto;
+import fiuba.tecnicas.modelo.general.ProductoFactory;
 import fiuba.tecnicas.modelo.general.Sucursal;
 import fiuba.tecnicas.modelo.general.SucursalFactory;
 import fiuba.tecnicas.modelo.general.command.ICommand;
@@ -26,11 +27,12 @@ public class VerTotalCajaCommandTest {
 		Caja.getInstance().addNuevaCompraActiva(sucursal);
 
 		Compra compraActiva = Caja.getInstance().getCompraActiva();
-		ItemCompra item = new ItemCompra(new Producto(10.0,"desc","marca", Categoria.FARMACIA),2);
-		compraActiva.addItem(item);
+		ItemCompra itemCoca = new ItemCompra(ProductoFactory.getInstance().getProducto("COCA"),2);
+		compraActiva.addItem(itemCoca);
 		ICommand command = new VerTotalCajaCommand();
 		
-		assertEquals(command.execute("").getMensaje(),Mensaje.getMensaje("mensaje_VerTotalCaja") + " " + "20.0");
+		//aplica descuento del 2x1
+		assertEquals(command.execute("").getMensaje(),Mensaje.getMensaje("mensaje_VerTotalCaja") + " " + "1.0");
 	}
 
 }
