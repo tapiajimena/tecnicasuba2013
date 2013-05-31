@@ -24,39 +24,17 @@ public class AgregarProductosCommand implements ICommand {
 
 	@Override
 	public Resultado execute(String input) {
+		if (input.isEmpty()) return new Resultado(Mensaje.getMensaje("error_param_AgregarProducto"));
+		
 		Compra compra = Caja.getInstance().getCompraActiva();
-
-		if (compra != null && !input.isEmpty()) {
-			String[] listaCodigosNuevos;
-			listaCodigosNuevos = input.split(Constante
-					.getConstante("separador_parametros"));
-
+		if (compra == null) return new Resultado(Mensaje.getMensaje("mensaje_inicializar_compra"));
+		
+		if (compra != null) {
+			String[] listaCodigosNuevos = input.split(Constante.getConstante("separador_parametros"));
 			Set<Entry<Producto, Integer>> productosNuevos = obtenerListaProductosDeCompra(listaCodigosNuevos);
-			Iterator<Entry<Producto, Integer>> it_productosNuevos = productosNuevos
-					.iterator();
-
-			while (it_productosNuevos.hasNext()) {
-				Entry<Producto, Integer> productoNuevo = it_productosNuevos
-						.next();
-				ItemCompra itemNuevo = new ItemCompra(productoNuevo.getKey(),
-						productoNuevo.getValue());
-				if (!compra.getItems().isEmpty()
-						&& compra.getItems().contains(itemNuevo)) {
-					int index = compra.getItems().indexOf(itemNuevo);
-					compra.getItems().get(index)
-							.aumentarCantidad(productoNuevo.getValue());
-				} else {
-					compra.addItem(itemNuevo);
-				}
+			Caja.getInstance().getCompraActiva().agregarItemsCompra(productosNuevos);
 			}
 			return new Resultado(Mensaje.getMensaje("mensaje_AgregarProducto"));
-		} else {
-			if (input.isEmpty())
-				return new Resultado(
-						Mensaje.getMensaje("error_param_AgregarProducto"));
-			return new Resultado(
-					Mensaje.getMensaje("mensaje_inicializar_compra"));
-		}
 	}
 
 	private Set<Entry<Producto, Integer>> obtenerListaProductosDeCompra(

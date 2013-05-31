@@ -11,6 +11,8 @@ import fiuba.tecnicas.modelo.comun.Mensaje;
 import fiuba.tecnicas.modelo.general.Caja;
 import fiuba.tecnicas.modelo.general.ItemCompra;
 import fiuba.tecnicas.modelo.general.Producto;
+import fiuba.tecnicas.modelo.general.Sucursal;
+import fiuba.tecnicas.modelo.general.SucursalFactory;
 import fiuba.tecnicas.modelo.general.command.AbrirCajaCommand;
 import fiuba.tecnicas.modelo.general.command.AgregarProductosCommand;
 import fiuba.tecnicas.modelo.general.command.ICommand;
@@ -21,10 +23,10 @@ public class AgregarProductosCommandTest {
 	@Test 
 	public void testCommandAgregarProductosProductoNuevo() 
 	{
-		ICommand commandAbrirCaja = new AbrirCajaCommand();
-		commandAbrirCaja.execute("");
-		ICommand commandIniciarCompraCommand = new IniciarCompraCommand();
-		commandIniciarCompraCommand.execute("");
+		Caja.getInstance().abrir();
+		Sucursal sucursal = SucursalFactory.SucursalUno();
+		Caja.getInstance().addNuevaCompraActiva(sucursal);
+		
 		ICommand command = new AgregarProductosCommand();
 		command.execute("BGAA");
 		
@@ -37,10 +39,9 @@ public class AgregarProductosCommandTest {
 	@Test 
 	public void testCommandAgregarProductosProductosNuevos() 
 	{
-		ICommand commandAbrirCaja = new AbrirCajaCommand();
-		commandAbrirCaja.execute("");
-		ICommand commandIniciarCompraCommand = new IniciarCompraCommand();
-		commandIniciarCompraCommand.execute("");
+		Caja.getInstance().abrir();
+		Sucursal sucursal = SucursalFactory.SucursalUno();
+		Caja.getInstance().addNuevaCompraActiva(sucursal);
 		ICommand command = new AgregarProductosCommand();
 		command.execute("BGAA,BFAA,BVAA");
 		
@@ -53,10 +54,10 @@ public class AgregarProductosCommandTest {
 	@Test 
 	public void testCommandAgregarProductosProductoRepetido() 
 	{
-		ICommand commandAbrirCaja = new AbrirCajaCommand();
-		commandAbrirCaja.execute("");
-		ICommand commandIniciarCompraCommand = new IniciarCompraCommand();
-		commandIniciarCompraCommand.execute("");
+		Caja.getInstance().abrir();
+		Sucursal sucursal = SucursalFactory.SucursalUno();
+		Caja.getInstance().addNuevaCompraActiva(sucursal);
+		
 		ICommand command = new AgregarProductosCommand();
 		command.execute("BGAA,BGAA");
 		
@@ -69,14 +70,13 @@ public class AgregarProductosCommandTest {
 	@Test 
 	public void testCommandAgregarProductosProductoCodigoVacio() 
 	{
-		ICommand commandAbrirCaja = new AbrirCajaCommand();
-		commandAbrirCaja.execute("");
-		ICommand commandIniciarCompraCommand = new IniciarCompraCommand();
-		commandIniciarCompraCommand.execute("");
-		ICommand command = new AgregarProductosCommand();
+		Caja.getInstance().abrir();
+		Sucursal sucursal = SucursalFactory.SucursalUno();
+		Caja.getInstance().addNuevaCompraActiva(sucursal);
 		
+		ICommand command = new AgregarProductosCommand();		
 		
-		assertEquals(command.execute("").getMensaje(),Mensaje.getMensaje("mensaje_inicializar_compra"));
+		assertEquals(command.execute("").getMensaje(),Mensaje.getMensaje("error_param_AgregarProducto"));
 	
 	}
 

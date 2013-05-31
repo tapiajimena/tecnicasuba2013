@@ -3,6 +3,8 @@ package fiuba.tecnicas.modelo.general;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
+import java.util.Map.Entry;
 
 import fiuba.tecnicas.modelo.servicios.ServicioCalendario;
 
@@ -15,6 +17,32 @@ public class Compra {
 	private String diaDeCompra;
 	private ArrayList<Caracteristica> caracteristicas;
 
+	public Compra() {}
+	
+	public Compra(Sucursal sucursal) {
+		this.totalCompra = 0;
+		this.items = new ArrayList<ItemCompra>();
+		this.diaDeCompra = ServicioCalendario.getTodayDayOfTheWeekToString();
+		this.sucursal = sucursal;
+		this.caracteristicas = new ArrayList<Caracteristica>();
+		this.descuentos = new ArrayList<Descuento>();
+		this.caracteristicas.add(new Caracteristica("COMPRA_DIA", getDiaDeCompra(), CaracteristicaAplicoA.COMPRA));
+	}
+	
+	public void agregarItemsCompra(Set<Entry<Producto, Integer>> listaProductos) {	
+		Iterator<Entry<Producto, Integer>> it_productosNuevos = listaProductos.iterator();
+		while (it_productosNuevos.hasNext()) {
+			Entry<Producto, Integer> productoNuevo = it_productosNuevos.next();
+			ItemCompra itemNuevo = new ItemCompra(productoNuevo.getKey(), productoNuevo.getValue());
+			if (!this.items.isEmpty() && this.getItems().contains(itemNuevo)) {
+				int index = this.items.indexOf(itemNuevo);
+				this.items.get(index).aumentarCantidad(productoNuevo.getValue());
+			} else {
+				this.addItem(itemNuevo);
+			}
+		}
+	}
+	
 	public Sucursal getSucursal() {
 		return this.sucursal;
 	}
@@ -32,24 +60,6 @@ public class Compra {
 		this.caracteristicas.add(new Caracteristica("MEDIODEPAGO_DESCRIPCION_ENTIDAD", medioDePago.getBanco(), CaracteristicaAplicoA.COMPRA));
 	}
 
-	public Compra(Sucursal sucursal) {
-		this.items = new ArrayList<ItemCompra>();
-		this.diaDeCompra = ServicioCalendario.getTodayDayOfTheWeekToString();
-		this.sucursal = sucursal;
-		this.caracteristicas = new ArrayList<Caracteristica>();
-		this.descuentos = new ArrayList<Descuento>();
-		this.caracteristicas.add(new Caracteristica("COMPRA_DIA", getDiaDeCompra(), CaracteristicaAplicoA.COMPRA));
-	}
-
-	public double getTotalCompraConDescuentos() {
-		this.totalCompra = 0;
-		Iterator<ItemCompra> it = this.items.iterator();
-		while (it.hasNext()) {
-			this.totalCompra += it.next().getPrecioFinal();
-		}
-		return this.totalCompra;
-	}
-
 	public double getTotalCompraSinDescuentos() {
 		this.totalCompra = 0;
 		Iterator<ItemCompra> it = this.items.iterator();
@@ -60,7 +70,7 @@ public class Compra {
 	}
 
 	// Calcula monto total descontado en la compra
-	public double getTotalDescuentosEnCompra() {
+	public double getTotalDescuentosCompra() {
 		double totalDescuentos = 0;
 		Iterator<Descuento> it = this.descuentos.iterator();
 		while (it.hasNext()) {
@@ -103,12 +113,21 @@ public class Compra {
 
 	public double CalcularTotal() {
 		this.sucursal.CalcularDescuentos(this);
-		this.totalCompra = this.getTotalCompraConDescuentos(); 
-		return this.totalCompra;
+		Iterator<ItemCompra> it = this.items.iterator();
+		double total = 0;
+		while (it.hasNext()) {
+			total += it.next().getPrecioFinal();
+		}
+		return total;
 	}
 
 	public ArrayList<Caracteristica> getCaracteristicas() {
 		return caracteristicas;
+	}
+	
+	public double getTotalCompra() {
+		if (this.totalCompra == 0) return CalcularTotal();
+		else return this.totalCompra;
 	}
 
 }

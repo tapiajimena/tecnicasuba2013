@@ -35,7 +35,8 @@ public class VerTotalCajaPorMediosDePagoTest {
 		
 		ICommand command = new VerTotalCajaPorMediosDePagoCommand();
 
-		assertEquals("Los totales calculados por medio de pago son: [TARJETA=40.0, DEBITO=0.0, EFECTIVO=10.0]",command.execute("").getMensaje());
+		//Aplica la oferta del 10% con tarjeta
+		assertEquals("Los totales calculados por medio de pago son: [TARJETA=36.0, DEBITO=0.0, EFECTIVO=10.0]",command.execute("").getMensaje());
 		
 		
 	}

@@ -8,6 +8,7 @@ import java.util.Calendar;
 import org.junit.Test;
 
 import fiuba.tecnicas.modelo.general.Caja;
+import fiuba.tecnicas.modelo.general.SucursalFactory;
 import fiuba.tecnicas.modelo.general.command.AbrirCajaCommand;
 import fiuba.tecnicas.modelo.general.command.ICommand;
 
@@ -17,7 +18,7 @@ public class AbrirCajaCommandTest {
 	public void testCommandAbrirCajaInicializaFechaDeCaja() 
 	{
 		ICommand command = new AbrirCajaCommand();
-		command.execute("SucursalConCadenaUno");
+		command.execute("uno");
 		
     	Calendar cal = Calendar.getInstance();
     	SimpleDateFormat format1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -31,9 +32,9 @@ public class AbrirCajaCommandTest {
 	public void testCommandAbrirCajaSeteaSucursal() 
 	{
 		ICommand command = new AbrirCajaCommand();
-		command.execute("SucursalConCadenaUno");
+		command.execute("uno");
 		
-		assertEquals(Caja.getInstance().getSucursal().getDescripcion(),"SucursalUNO");
+		assertEquals(Caja.getInstance().getSucursal().getDescripcion(),SucursalFactory.SucursalUno().getDescripcion());
 	
 	}
 

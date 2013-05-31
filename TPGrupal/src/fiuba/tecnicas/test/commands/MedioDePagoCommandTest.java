@@ -17,15 +17,16 @@ public class MedioDePagoCommandTest {
 	
 	@Test 
 	public void testCommandMedioDePagoEjecucionPosteriorIniciarCompra() 
-	{	
+	{	 
 		ICommand command = new MedioDePagoCommand();
 		
-		assertEquals(command.execute("").getMensaje(),Mensaje.getMensaje("error_ordenEjec_MedioPago"));
+		assertEquals(command.execute("TARJETA,ICBC").getMensaje(),Mensaje.getMensaje("error_ordenEjec_MedioPago"));
 	}
 	
 	@Test 
 	public void testCommandMedioDePagoSeteaMedioDePagoEnCompra() 
 	{
+		Caja.getInstance().abrir();
 		Sucursal sucursal = SucursalFactory.SucursalUno();
 		Caja.getInstance().addNuevaCompraActiva(sucursal);		
 		ICommand command = new MedioDePagoCommand();
@@ -40,6 +41,7 @@ public class MedioDePagoCommandTest {
 	@Test 
 	public void testCommandMedioDePagoNoIndicaMedioEnInput() 
 	{
+		Caja.getInstance().abrir();
 		Sucursal sucursal = SucursalFactory.SucursalUno();
 		Caja.getInstance().addNuevaCompraActiva(sucursal);		
 		ICommand command = new MedioDePagoCommand();

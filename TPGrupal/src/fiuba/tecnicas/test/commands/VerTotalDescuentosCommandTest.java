@@ -23,14 +23,16 @@ public class VerTotalDescuentosCommandTest {
 		
 		Caja.getInstance().abrir();
 		Sucursal sucursal = SucursalFactory.SucursalUno();
+		Caja.getInstance().setSucursal(sucursal);
 		Caja.getInstance().addNuevaCompraActiva(sucursal);
 		Caja.getInstance().getCompraActiva().setMedioDePago(new MedioDePago(TipoPago.TARJETA,"ICBC"));
-		Caja.getInstance().getCompraActiva().addItem(new ItemCompra(new Producto(10.0,"COCA","COCA",Categoria.BEBIDAS),2));
+		Caja.getInstance().getCompraActiva().addItem(new ItemCompra(new Producto(10.0,"COCA","COCA",Categoria.BEBIDAS),1));
+		sucursal.CalcularDescuentos(Caja.getInstance().getCompraActiva());
 		Caja.getInstance().cerrarCompraActiva();
 
 		ICommand command = new VerTotalDescuentosCajaCommand();
 		
-		assertEquals(command.execute("").getMensaje(),"10.0");
+		assertEquals(command.execute("").getMensaje(),"1.0");
 	
 	}
 }
