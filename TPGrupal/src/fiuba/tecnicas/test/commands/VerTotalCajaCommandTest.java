@@ -2,6 +2,9 @@ package fiuba.tecnicas.test.commands;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
+
+import java.security.Provider.Service;
+
 import org.junit.Test;
 
 import fiuba.tecnicas.modelo.comun.Mensaje;
@@ -15,19 +18,19 @@ import fiuba.tecnicas.modelo.general.Sucursal;
 import fiuba.tecnicas.modelo.general.SucursalFactory;
 import fiuba.tecnicas.modelo.general.command.ICommand;
 import fiuba.tecnicas.modelo.general.command.VerTotalCajaCommand;
+import fiuba.tecnicas.modelo.servicios.ServicioCalendario;
 
 public class VerTotalCajaCommandTest {
 
 	@Test 
 	public void testCommandVerTotalCaja() 
-	{
-
+	{	
 		Sucursal sucursal = SucursalFactory.SucursalUno();
 		Caja.getInstance().abrir();
 		Caja.getInstance().addNuevaCompraActiva(sucursal);
 
 		Compra compraActiva = Caja.getInstance().getCompraActiva();
-		ItemCompra itemCoca = new ItemCompra(ProductoFactory.getInstance().getProducto("COCA"),2);
+		ItemCompra itemCoca = new ItemCompra(ProductoFactory.getInstance().getProducto("COCA"),1);
 		compraActiva.addItem(itemCoca);
 		ICommand command = new VerTotalCajaCommand();
 		

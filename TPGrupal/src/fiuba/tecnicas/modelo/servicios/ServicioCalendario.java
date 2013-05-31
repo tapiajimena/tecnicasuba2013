@@ -23,7 +23,7 @@ public class ServicioCalendario {
 	public static String getTodayDayOfTheWeekToString(){
 		int numHoy = getTodayDayOfTheWeek();
 		DiaSemana hoy = DiaSemana.values()[numHoy-1];
-		return hoy.name();		
+		return hoy.name();
 	}
 	
     public static String fechaDeHoy() {

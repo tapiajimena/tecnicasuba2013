@@ -87,7 +87,7 @@ public class Caja {
 	
 	//Solamente puede haber una compra activa por caja a la vez
 	public Compra getCompraActiva() {
-		if (this.comprasDeCaja != null && this.comprasDeCaja.get(true) != null)
+		if (this.comprasDeCaja != null && this.comprasDeCaja.get(true) != null && !this.comprasDeCaja.get(true).isEmpty())
 		return this.comprasDeCaja.get(true).get(0);
 		else return null;
 	}

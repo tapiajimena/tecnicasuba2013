@@ -20,7 +20,7 @@ public class Compra {
 	public Compra() {}
 	
 	public Compra(Sucursal sucursal) {
-		this.totalCompra = 0;
+		this.totalCompra = 0.0;
 		this.items = new ArrayList<ItemCompra>();
 		this.diaDeCompra = ServicioCalendario.getTodayDayOfTheWeekToString();
 		this.sucursal = sucursal;
@@ -61,7 +61,7 @@ public class Compra {
 	}
 
 	public double getTotalCompraSinDescuentos() {
-		this.totalCompra = 0;
+		this.totalCompra = 0.0;
 		Iterator<ItemCompra> it = this.items.iterator();
 		while (it.hasNext()) {
 			this.totalCompra += it.next().getPrecioFinal();
@@ -71,7 +71,7 @@ public class Compra {
 
 	// Calcula monto total descontado en la compra
 	public double getTotalDescuentosCompra() {
-		double totalDescuentos = 0;
+		double totalDescuentos = 0.0;
 		Iterator<Descuento> it = this.descuentos.iterator();
 		while (it.hasNext()) {
 			totalDescuentos += it.next().getValor();
@@ -112,9 +112,9 @@ public class Compra {
 	}
 
 	public double CalcularTotal() {
-		this.sucursal.CalcularDescuentos(this);
+		if(this.descuentos.isEmpty()) this.sucursal.CalcularDescuentos(this);
 		Iterator<ItemCompra> it = this.items.iterator();
-		double total = 0;
+		double total = 0.0;
 		while (it.hasNext()) {
 			total += it.next().getPrecioFinal();
 		}
@@ -126,7 +126,7 @@ public class Compra {
 	}
 	
 	public double getTotalCompra() {
-		if (this.totalCompra == 0) return CalcularTotal();
+		if (this.totalCompra == 0.0) return CalcularTotal();
 		else return this.totalCompra;
 	}
 
