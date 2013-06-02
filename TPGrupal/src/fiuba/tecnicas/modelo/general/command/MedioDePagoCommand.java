@@ -18,7 +18,7 @@ public class MedioDePagoCommand implements ICommand {
 		Compra compraActiva = Caja.getInstance().getCompraActiva();		
 		Resultado resultado = ServicioValidacion.validarEjecucionComandoMedioDePago(input, compraActiva);
 		if (resultado.getExito()) {
-			compraActiva.setMedioDePago(extraerTipoPago(input),extraerBanco(input));
+			compraActiva.setMedioDePago(extraerTipoPago(input),extraerBanco(input),"false");
 			return new Resultado(Mensaje.getMensaje("mensaje_MedioDePago") + compraActiva.getMedioDePago().toString());
 		}
 		return resultado;

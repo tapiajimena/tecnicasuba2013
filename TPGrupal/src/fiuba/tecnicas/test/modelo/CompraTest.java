@@ -29,7 +29,7 @@ public class CompraTest {
 		Sucursal sucursal = SucursalFactory.getSucursalByName("uno");
 		ItemCompra  itemCoca = new ItemCompra(ProductoFactory.getInstance().getProducto("Coca"),2);
 		Compra compra = new Compra(sucursal);
-		compra.setMedioDePago(new MedioDePago(TipoPago.TARJETA, "XYZ"));
+		compra.setMedioDePago(new MedioDePago(TipoPago.TARJETA, "XYZ", "false"));
 		compra.addItem(itemCoca);
 		
 		ItemCompra  itemCepillo = new ItemCompra(ProductoFactory.getInstance().getProducto("CepilloDientes"),1);
@@ -60,7 +60,7 @@ public class CompraTest {
 		
 		Sucursal sucursal = SucursalFactory.getSucursalByName("dos");
 		Compra compra = new Compra(sucursal);
-		compra.setMedioDePago(new MedioDePago(TipoPago.DEBITO, "XYZ"));
+		compra.setMedioDePago(new MedioDePago(TipoPago.DEBITO, "XYZ","false"));
 		
 		ItemCompra  itemVinoX = new ItemCompra(ProductoFactory.getInstance().getProducto("X"),2);
 		compra.addItem(itemVinoX);
@@ -120,16 +120,13 @@ public class CompraTest {
 		Assert.assertEquals(68.0,totalCompra);
 	}
 	
-	/*
-	 * Test promo 2x1 y 10% de descuento con tarjetas XYZ los jueves
-	 */
 	@Test
 	public void TestNxMTarjeta(){
 		
 		Sucursal sucursal = SucursalFactory.getSucursalByName("cuatro");
 		ItemCompra  itemCoca = new ItemCompra(ProductoFactory.getInstance().getProducto("Coca"),3);
 		Compra compra = new Compra(sucursal);
-		compra.setMedioDePago(new MedioDePago(TipoPago.TARJETA, "XYZ"));
+		compra.setMedioDePago(new MedioDePago(TipoPago.TARJETA, "XYZ","false"));
 		compra.addItem(itemCoca);
 		
 		ItemCompra  itemCepillo = new ItemCompra(ProductoFactory.getInstance().getProducto("CepilloDientes"),1);
@@ -150,5 +147,32 @@ public class CompraTest {
 			System.out.println(descuento.getValor()+" pesos por "+descuento.getNombre());
 		}
 	}
-	
+
+	@Test
+	public void TestJubilado(){		
+		Sucursal sucursal = SucursalFactory.getSucursalByName("cinco");
+		ItemCompra  itemCoca = new ItemCompra(ProductoFactory.getInstance().getProducto("Coca"),3);
+		Compra compra = new Compra(sucursal);
+		String isJubilado = "true";
+		compra.setMedioDePago(new MedioDePago(TipoPago.DEBITO, "XYZ", isJubilado));
+		compra.addItem(itemCoca);
+		
+		ItemCompra  itemCepillo = new ItemCompra(ProductoFactory.getInstance().getProducto("CepilloDientes"),1);
+		compra.addItem(itemCepillo);
+		
+		ItemCompra  itemMaceta = new ItemCompra(ProductoFactory.getInstance().getProducto("Maceta"),1);
+		compra.addItem(itemMaceta);
+		
+		
+		double totalCompra = compra.CalcularTotal();
+		System.out.println(totalCompra);
+		//Assert.assertEquals(12.60,totalCompra);
+		
+		Iterator<Descuento> it = compra.getDescuentos().iterator();
+		System.out.print("Descuentos aplicados: ");
+		while(it.hasNext()){
+			Descuento descuento = it.next();
+			System.out.println(descuento.getValor()+" pesos por "+descuento.getNombre());
+		}
+	}
 }

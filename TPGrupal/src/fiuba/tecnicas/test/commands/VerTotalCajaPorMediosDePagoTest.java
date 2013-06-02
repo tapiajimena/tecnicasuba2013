@@ -24,12 +24,12 @@ public class VerTotalCajaPorMediosDePagoTest {
 		Caja.getInstance().abrir();
 		Sucursal sucursal = SucursalFactory.SucursalUno();
 		Caja.getInstance().addNuevaCompraActiva(sucursal);
-		Caja.getInstance().getCompraActiva().setMedioDePago(new MedioDePago(TipoPago.TARJETA,"ICBC"));
+		Caja.getInstance().getCompraActiva().setMedioDePago(new MedioDePago(TipoPago.TARJETA,"ICBC","false"));
 		Caja.getInstance().getCompraActiva().addItem(new ItemCompra(new Producto(10.0,"desc","marca",Categoria.ALIMENTOS),3));
 		Caja.getInstance().getCompraActiva().addItem(new ItemCompra(new Producto(5.0,"desc","marca",Categoria.ALIMENTOS),2));
 		Caja.getInstance().cerrarCompraActiva();
 		Caja.getInstance().addNuevaCompraActiva(sucursal);
-		Caja.getInstance().getCompraActiva().setMedioDePago(new MedioDePago(TipoPago.EFECTIVO,""));
+		Caja.getInstance().getCompraActiva().setMedioDePago(new MedioDePago(TipoPago.EFECTIVO,"","false"));
 		Caja.getInstance().getCompraActiva().addItem(new ItemCompra(new Producto(5.0,"desc","marca",Categoria.ALIMENTOS),2));
 		Caja.getInstance().cerrarCompraActiva();
 		

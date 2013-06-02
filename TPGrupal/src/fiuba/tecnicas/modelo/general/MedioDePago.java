@@ -5,10 +5,12 @@ public class MedioDePago {
    
     private String banco;
     private TipoPago tipo;
+    private String isJubilado;
  
-    public MedioDePago(TipoPago tipo, String banco) {
+    public MedioDePago(TipoPago tipo, String banco, String isJubilado) {
         this.tipo = tipo;
         this.banco = banco;
+        this.setIsJubilado(isJubilado);
     }
  
     public String getBanco() {
@@ -22,4 +24,12 @@ public class MedioDePago {
     public String toString() {
     	return tipo + " " + banco;
     }
+
+	public void setIsJubilado(String isJubilado) {
+		this.isJubilado = isJubilado;
+	}
+
+	public String getIsJubilado() {
+		return isJubilado;
+	}
 }

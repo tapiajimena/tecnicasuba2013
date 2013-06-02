@@ -47,17 +47,18 @@ public class Compra {
 		return this.sucursal;
 	}
 
-	public void setMedioDePago(String medioDePago, String banco) {
-		this.medioDePago = new MedioDePago(TipoPago.valueOf(medioDePago), banco);
+	public void setMedioDePago(String medioDePago, String banco, String isJubilado) {
+		this.medioDePago = new MedioDePago(TipoPago.valueOf(medioDePago), banco, isJubilado);
 		this.caracteristicas.add(new Caracteristica("MEDIODEPAGO_DESCRIPCION", medioDePago, CaracteristicaAplicoA.COMPRA));
 		this.caracteristicas.add(new Caracteristica("MEDIODEPAGO_DESCRIPCION_ENTIDAD", banco, CaracteristicaAplicoA.COMPRA));
-
+		this.caracteristicas.add(new Caracteristica("IS_JUBILADO", isJubilado, CaracteristicaAplicoA.COMPRA));
 	}
 
 	public void setMedioDePago(MedioDePago medioDePago) {
 		this.medioDePago = medioDePago;
 		this.caracteristicas.add(new Caracteristica("MEDIODEPAGO_DESCRIPCION", medioDePago.getTipoPago().toString(), CaracteristicaAplicoA.COMPRA));
 		this.caracteristicas.add(new Caracteristica("MEDIODEPAGO_DESCRIPCION_ENTIDAD", medioDePago.getBanco(), CaracteristicaAplicoA.COMPRA));
+		this.caracteristicas.add(new Caracteristica("IS_JUBILADO",medioDePago.getIsJubilado(), CaracteristicaAplicoA.COMPRA));
 	}
 
 	public double getTotalCompraSinDescuentos() {

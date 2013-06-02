@@ -33,7 +33,7 @@ public class MedioDePagoCommandTest {
 		
 		command.execute("TARJETA,ICBC Bank");
 		
-		MedioDePago mediodepago = new MedioDePago(TipoPago.TARJETA, "ICBC Bank");
+		MedioDePago mediodepago = new MedioDePago(TipoPago.TARJETA, "ICBC Bank","false");
 		
 		assertEquals(Caja.getInstance().getCompraActiva().getMedioDePago().toString(),mediodepago.toString());
 	}
