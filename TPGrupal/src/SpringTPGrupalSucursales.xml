@@ -241,11 +241,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	</bean>
 		 
 		<bean id="AEslabon_SucursalConCadenaCinco" parent="Oferta10porcientoJubilado" >
-			<property name="next"><ref bean="BEslabon_SucursalConCadenaCinco"/></property> 
-		</bean>
-		 
-			<bean id="BEslabon_SucursalConCadenaCinco" parent="Oferta10porcientoDebitoLunes" >
-	   		</bean>
+		 		</bean>
 
 <!-- FIN SUCURSAL DOS -->
 

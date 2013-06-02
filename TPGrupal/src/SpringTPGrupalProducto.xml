@@ -59,6 +59,14 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 	<property name="descripcion" value="Cepillo Dientes" />
 </bean>
 
+<bean id="LAMPARITA" class="fiuba.tecnicas.modelo.general.Producto">
+	<property name="codigo_producto" value="00060" />
+	<property name="categorias" value="ELECTRICIDAD" />
+	<property name="precio" value="15" />
+	<property name="marca" value="Lamp" />
+	<property name="descripcion" value="Lamparita" />
+</bean>
+
 <bean id="MACETA" class="fiuba.tecnicas.modelo.general.Producto">
 	<property name="codigo_producto" value="00050" />
 	<property name="categorias" value="JARDINERIA" />

@@ -151,18 +151,17 @@ public class CompraTest {
 	@Test
 	public void TestJubilado(){		
 		Sucursal sucursal = SucursalFactory.getSucursalByName("cinco");
-		ItemCompra  itemCoca = new ItemCompra(ProductoFactory.getInstance().getProducto("Coca"),3);
+
 		Compra compra = new Compra(sucursal);
+
 		String isJubilado = "true";
 		compra.setMedioDePago(new MedioDePago(TipoPago.DEBITO, "XYZ", isJubilado));
-		compra.addItem(itemCoca);
-		
-		ItemCompra  itemCepillo = new ItemCompra(ProductoFactory.getInstance().getProducto("CepilloDientes"),1);
-		compra.addItem(itemCepillo);
 		
 		ItemCompra  itemMaceta = new ItemCompra(ProductoFactory.getInstance().getProducto("Maceta"),1);
 		compra.addItem(itemMaceta);
 		
+		ItemCompra  itemLamparita = new ItemCompra(ProductoFactory.getInstance().getProducto("Lamparita"),2);
+		compra.addItem(itemLamparita);
 		
 		double totalCompra = compra.CalcularTotal();
 		System.out.println(totalCompra);
