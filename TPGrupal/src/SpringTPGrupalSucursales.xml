@@ -9,13 +9,14 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		<property name="porcentaje" value="10"></property>
 </bean>
 
-<bean id="DosPorUnoStrategy" class="fiuba.tecnicas.modelo.concreto.Strategy2x1"/>
+<bean id="DosPorUnoStrategy" class="fiuba.tecnicas.modelo.concreto.NxMStrategy">
+		<property name="n" value="3"></property>
+		<property name="m" value="2"></property>
+</bean>
 
 <bean id="SegundaUnidad75PorcientoStrategy" class="fiuba.tecnicas.modelo.concreto.SegundaUnidadXPorcientoStrategy">
 	<property name="porcentaje" value="75"></property>
 </bean>
-
-
 
 <bean id="Oferta10porcientoFarmacia"
 	class="fiuba.tecnicas.modelo.general.Oferta" >
@@ -50,7 +51,6 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	<property name="nombre" value="2x1" />
 </bean>
 
-
 <bean id="Oferta10porcientoTarjeta"
 	class="fiuba.tecnicas.modelo.general.Oferta" >
 	<property name="strategy"><ref bean="DiezPorcientoStrategy"/></property>
@@ -82,7 +82,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 			</bean>
 			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
 				<property name="tipoCaracteristica" value="COMPRA_DIA" />
-				<property name="valor" value="JUEVES" />
+				<property name="valor" value="DOMINGO" />
 				<property name="objetoAlQueAplico" value="COMPRA" />
 				<property name="valorSiExisteLaCaracteristica" value="0"></property>
 			</bean>
@@ -206,4 +206,14 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 	
 <!-- FIN SUCURSAL TRES -->
 
+<!-- CADENA SUCURSAL CUATRO -->
+
+	<bean id="cuatroSucursal"
+		class="fiuba.tecnicas.modelo.general.Sucursal" >
+		<property name="next"><ref bean="AEslabon_SucursalConCadenaCuatro"/></property>
+	</bean>	
+		<bean id="AEslabon_SucursalConCadenaCuatro" parent="Oferta2x1">
+			</bean>
+
+<!-- FIN SUCURSAL UNO -->
 </beans>
