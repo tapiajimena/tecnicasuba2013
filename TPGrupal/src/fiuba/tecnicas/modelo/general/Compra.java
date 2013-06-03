@@ -14,6 +14,7 @@ public class Compra {
 	private Sucursal sucursal;
 	private double totalCompra;
 	private ArrayList<Descuento> descuentos;
+	private ArrayList<Descuento> bonos;
 	private String diaDeCompra;
 	private ArrayList<Caracteristica> caracteristicas;
 
@@ -26,6 +27,7 @@ public class Compra {
 		this.sucursal = sucursal;
 		this.caracteristicas = new ArrayList<Caracteristica>();
 		this.descuentos = new ArrayList<Descuento>();
+		this.bonos = new ArrayList<Descuento>();
 		this.caracteristicas.add(new Caracteristica("COMPRA_DIA", getDiaDeCompra(), CaracteristicaAplicoA.COMPRA));
 	}
 	
@@ -91,6 +93,10 @@ public class Compra {
 	public ArrayList<Descuento> getDescuentos() {
 		return this.descuentos;
 	}
+	
+	public ArrayList<Descuento> getBonos() {
+		return this.bonos;
+	}
 
 	public String getDiaDeCompra() {
 
@@ -110,6 +116,10 @@ public class Compra {
 
 	public void addDescuento(Descuento descuento) {
 		descuentos.add(descuento);
+	}
+	
+	public void addBono(Descuento bono){
+		bonos.add(bono);
 	}
 
 	public double CalcularTotal() {

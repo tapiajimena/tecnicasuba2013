@@ -12,6 +12,7 @@ public class Oferta {
 	private ArrayList<Caracteristica> caracteristicas;
 	private String nombre;
 	private IOfertaStrategy strategy;
+	private String isCuponeable;
 	
 	
 	public void setNext(Oferta oferta){
@@ -52,17 +53,23 @@ public class Oferta {
 		ItemCompra item;
 		double valorDescuento = 0;
 		double acumulador = 0;
-
+		
 		while(it.hasNext()){
 			item = it.next();
 			if(aplicoAEstaSerieDeCaracteristicas(item.getCaracteristicas(), 
 					this.getCaracteristicasEspecificas(CaracteristicaAplicoA.ITEM))){
 				valorDescuento = doCalcularDescuentos(item, valorDescuento);
+				if(this.isCuponeable.equals("true"))
+					item.setPrecioFinal(item.getProducto().getPrecio()*item.getCantidad());
 				acumulador += valorDescuento;
 			}
 		}
-
-		compra.addDescuento(new Descuento(acumulador,getNombre()));
+		if(this.isCuponeable.equals("false")){
+			compra.addDescuento(new Descuento(acumulador,getNombre()));
+		}
+		else {
+			compra.addBono(new Descuento(acumulador,getNombre()));
+		}
 	}
 	
 	public double doCalcularDescuentos(ItemCompra item, double valorDescuento)
@@ -122,5 +129,13 @@ public class Oferta {
 
 	public void setStrategy(IOfertaStrategy strategy) {
 		this.strategy = strategy;
+	}
+
+	public void setIsCuponeable(String isCuponeable) {
+		this.isCuponeable = isCuponeable;
+	}
+
+	public String getIsCuponeable() {
+		return isCuponeable;
 	}
 }

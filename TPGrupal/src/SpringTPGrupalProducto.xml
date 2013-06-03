@@ -35,6 +35,14 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 	<property name="descripcion" value="Coca" />
 </bean>
 
+<bean id="SPRITE" class="fiuba.tecnicas.modelo.general.Producto">
+	<property name="codigo_producto" value="00101" />
+	<property name="categorias" value="BEBIDAS" />
+	<property name="precio" value="1" />
+	<property name="marca" value="Sprite" />
+	<property name="descripcion" value="Sprite " />
+</bean>
+
 <bean id="X" class="fiuba.tecnicas.modelo.general.Producto">
 	<property name="codigo_producto" value="00015" />
 	<property name="categorias" value="VINOTECA" />

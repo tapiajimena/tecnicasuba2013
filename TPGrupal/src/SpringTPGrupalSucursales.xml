@@ -10,8 +10,8 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 </bean>
 
 <bean id="DosPorUnoStrategy" class="fiuba.tecnicas.modelo.concreto.NxMStrategy">
-		<property name="n" value="3"></property>
-		<property name="m" value="2"></property>
+		<property name="n" value="2"></property>
+		<property name="m" value="1"></property>
 </bean>
 
 <bean id="SegundaUnidad75PorcientoStrategy" class="fiuba.tecnicas.modelo.concreto.SegundaUnidadXPorcientoStrategy">
@@ -49,6 +49,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		</util:list>
 	</property>
 	<property name="nombre" value="2x1" />
+	<property name="isCuponeable" value="true" />
 </bean>
 
 <bean id="Oferta10porcientoTarjeta"
@@ -99,7 +100,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 			</bean>
 			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
 				<property name="tipoCaracteristica" value="COMPRA_DIA" />
-				<property name="valor" value="DOMINGO" />
+				<property name="valor" value="LUNES" />
 				<property name="objetoAlQueAplico" value="COMPRA" />
 				<property name="valorSiExisteLaCaracteristica" value="0"></property>
 			</bean>
@@ -145,7 +146,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 			</bean>
 			<bean class="fiuba.tecnicas.modelo.general.Caracteristica" >
 				<property name="tipoCaracteristica" value="COMPRA_DIA" />
-				<property name="valor" value="DOMINGO" />
+				<property name="valor" value="LUNES" />
 				<property name="objetoAlQueAplico" value="COMPRA" />
 				<property name="valorSiExisteLaCaracteristica" value="0"></property>
 			</bean>
@@ -244,5 +245,16 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		 		</bean>
 
 <!-- FIN SUCURSAL CINCO -->
+
+<!-- CADENA SUCURSAL SEIS -->
+	<bean id="seisSucursal"
+		class="fiuba.tecnicas.modelo.general.Sucursal" >
+		<property name="next"><ref bean="AEslabon_SucursalConCadenaSeis" /></property>
+	</bean>
+		 
+		<bean id="AEslabon_SucursalConCadenaSeis" parent="Oferta2x1" >
+		 		</bean>
+
+<!-- FIN SUCURSAL SEIS -->
 
 </beans>

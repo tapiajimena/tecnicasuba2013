@@ -138,7 +138,7 @@ public class CompraTest {
 		
 		double totalCompra = compra.CalcularTotal();
 		System.out.println(totalCompra);
-		//Assert.assertEquals(12.60,totalCompra);
+		//Assert.assertEquals(15.00,totalCompra);
 		
 		Iterator<Descuento> it = compra.getDescuentos().iterator();
 		System.out.print("Descuentos aplicados: ");
@@ -171,6 +171,36 @@ public class CompraTest {
 		while(it.hasNext()){
 			Descuento descuento = it.next();
 			System.out.println(descuento.getValor()+" pesos por "+descuento.getNombre());
+		}
+	}
+	
+	@Test
+	public void TestBono(){		
+		Sucursal sucursal = SucursalFactory.getSucursalByName("seis");
+
+		Compra compra = new Compra(sucursal);
+
+		compra.setMedioDePago(new MedioDePago(TipoPago.DEBITO, "XYZ", "true"));
+		
+		ItemCompra  itemCoca = new ItemCompra(ProductoFactory.getInstance().getProducto("Coca"),10);
+		compra.addItem(itemCoca);
+		
+		double totalCompra = compra.CalcularTotal();
+		System.out.println(totalCompra);
+		//Assert.assertEquals(36.00,totalCompra);
+		
+		Iterator<Descuento> it = compra.getDescuentos().iterator();
+		System.out.print("Descuentos aplicados: ");
+		while(it.hasNext()){
+			Descuento descuento = it.next();
+			System.out.println(descuento.getValor()+" pesos por "+descuento.getNombre());
+		}
+		
+		Iterator<Descuento> i = compra.getBonos().iterator();
+		System.out.print("Bono: ");
+		while(i.hasNext()){
+			Descuento bono = i.next();
+			System.out.println(bono.getValor()+" pesos por "+bono.getNombre());
 		}
 	}
 }
