@@ -150,12 +150,11 @@ public class CompraTest {
 
 	@Test
 	public void TestJubilado(){		
-		Sucursal sucursal = SucursalFactory.getSucursalByName("cinco");
+		Sucursal sucursal = SucursalFactory.getSucursalByName("cuatro");
 
 		Compra compra = new Compra(sucursal);
 
-		String isJubilado = "true";
-		compra.setMedioDePago(new MedioDePago(TipoPago.DEBITO, "XYZ", isJubilado));
+		compra.setMedioDePago(new MedioDePago(TipoPago.DEBITO, "XYZ", "true"));
 		
 		ItemCompra  itemMaceta = new ItemCompra(ProductoFactory.getInstance().getProducto("Maceta"),1);
 		compra.addItem(itemMaceta);
@@ -165,7 +164,7 @@ public class CompraTest {
 		
 		double totalCompra = compra.CalcularTotal();
 		System.out.println(totalCompra);
-		//Assert.assertEquals(12.60,totalCompra);
+		Assert.assertEquals(36.00,totalCompra);
 		
 		Iterator<Descuento> it = compra.getDescuentos().iterator();
 		System.out.print("Descuentos aplicados: ");

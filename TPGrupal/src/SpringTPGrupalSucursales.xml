@@ -229,7 +229,7 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		class="fiuba.tecnicas.modelo.general.Sucursal" >
 		<property name="next"><ref bean="AEslabon_SucursalConCadenaCuatro"/></property>
 	</bean>	
-		<bean id="AEslabon_SucursalConCadenaCuatro" parent="Oferta10porcientoJubilado">
+		<bean id="AEslabon_SucursalConCadenaCuatro" parent="Oferta2x1">
 			</bean>
 
 <!-- FIN SUCURSAL CUATRO -->
@@ -243,6 +243,6 @@ http://www.springframework.org/schema/util http://www.springframework.org/schema
 		<bean id="AEslabon_SucursalConCadenaCinco" parent="Oferta10porcientoJubilado" >
 		 		</bean>
 
-<!-- FIN SUCURSAL DOS -->
+<!-- FIN SUCURSAL CINCO -->
 
 </beans>
