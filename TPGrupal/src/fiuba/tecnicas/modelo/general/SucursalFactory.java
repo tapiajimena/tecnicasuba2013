@@ -32,6 +32,14 @@ public class SucursalFactory {
 		return s;
 	}
 	
+	public static Sucursal SucursalSeis()
+	{
+		Sucursal s = (Sucursal) SucursalFactory.getSucursalByName("seis");
+		s.setDescripcion(Constante.getConstante("nombre_Sucursal_Seis"));
+		
+		return s;
+	}
+	
 	public static XmlBeanFactory getBeanFactory()
 	{
 		ClassPathResource c = new ClassPathResource("SpringTPGrupalSucursales.xml");

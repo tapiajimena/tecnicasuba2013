@@ -190,7 +190,7 @@ public class CompraTest {
 		//Assert.assertEquals(36.00,totalCompra);
 		
 		Iterator<Descuento> it = compra.getDescuentos().iterator();
-		System.out.print("Descuentos aplicados: ");
+		System.out.println("Descuentos aplicados: ");
 		while(it.hasNext()){
 			Descuento descuento = it.next();
 			System.out.println(descuento.getValor()+" pesos por "+descuento.getNombre());

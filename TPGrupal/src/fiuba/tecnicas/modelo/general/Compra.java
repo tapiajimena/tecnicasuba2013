@@ -140,5 +140,9 @@ public class Compra {
 		if (this.totalCompra == 0.0) return CalcularTotal();
 		else return this.totalCompra;
 	}
+	
+	public void setTotalCompra(double totalCompra){
+		this.totalCompra = totalCompra;
+	}
 
 }

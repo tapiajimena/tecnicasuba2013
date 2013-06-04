@@ -6,6 +6,9 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
 <bean id="nullcommand"
 	class="fiuba.tecnicas.modelo.general.command.NullCommand" />
 
+<bean id="setbonocommand"
+	class="fiuba.tecnicas.modelo.general.command.SetBonoCommand" />
+
 <bean id="abrircajacommand"
 	class="fiuba.tecnicas.modelo.general.command.AbrirCajaCommand" />
 
