@@ -82,6 +82,16 @@ public class Compra {
 		return totalDescuentos;
 	}
 
+	// Calcula monto total bono en la compra
+	public double getTotalBonosCompra() {
+		double totalBonos = 0.0;
+		Iterator<Descuento> it = this.bonos.iterator();
+		while (it.hasNext()) {
+			totalBonos += it.next().getValor();
+		}
+		return totalBonos;
+	}
+	
 	public MedioDePago getMedioDePago() {
 		return this.medioDePago;
 	}

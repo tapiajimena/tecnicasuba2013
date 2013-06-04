@@ -30,8 +30,9 @@ public class SetBonoCommand implements ICommand {
 			
 			compraActiva.setTotalCompra(total);
 			String stringCosto = new Double(total).toString();
+			String stringBono = new Double(compraActiva.getTotalBonosCompra()).toString();
 			
-			resultado.setMensaje(Mensaje.getMensaje("mensaje_CalcularTotalCompra")+ " " + stringCosto);
+			resultado.setMensaje(Mensaje.getMensaje("mensaje_CalcularTotalCompra")+ " " + stringCosto+" "+Mensaje.getMensaje("mensaje_CalcularTotalBono")+ " " + stringBono);
 		}
 		return resultado;
 	}
