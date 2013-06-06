@@ -13,11 +13,7 @@ public class Aplicacion {
 	 * @param args
 	 */
 	public static void main(String[] args){
-	/*	IView consola = new ConsoleView();
-		consola.run();*/
-		CompraTest compra = new CompraTest();
-		//compra.TestSegundaUnidadLunes();
-		//compra.TestNxMTarjeta();
-		compra.TestJubilado();
+		IView consola = new ConsoleView();
+		consola.run();
 	}
 }
