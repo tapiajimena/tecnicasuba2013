@@ -6,8 +6,9 @@ import java.io.IOException;
 import org.junit.Test;
 
 import fiuba.tecnicas.modelo.comun.Mensaje;
+import fiuba.tecnicas.modelo.general.Caja;
+import fiuba.tecnicas.modelo.general.SucursalFactory;
 import fiuba.tecnicas.modelo.general.command.AbrirCajaCommand;
-import fiuba.tecnicas.modelo.general.command.AgregarProductosCommand;
 import fiuba.tecnicas.modelo.general.command.ICommand;
 import fiuba.tecnicas.modelo.general.command.IniciarCompraCommand;
 import fiuba.tecnicas.presentacion.ConsoleView;
@@ -19,7 +20,7 @@ public class ViewTest {
 	@Test
 	public void testGetCommandFromInput() throws IOException {
 		//Mockeo la consola
-		ConsoleView consola = mock(ConsoleView.class);		
+		ConsoleView consola = mock(ConsoleView.class);	
 		when(consola.getInput()).thenReturn("comandoIngresado / p0001,p0002");
 		when(consola.getCommandFromInput(consola.getInput())).thenCallRealMethod();
 		
@@ -29,7 +30,7 @@ public class ViewTest {
 	@Test
 	public void testGetParametersFromInput() throws IOException {
 		//Mockeo la consola
-		ConsoleView consola = mock(ConsoleView.class);		
+		ConsoleView consola = mock(ConsoleView.class);	
 		when(consola.getInput()).thenReturn("comandoIngresado / p0001,p0002");
 		when(consola.getParametersFromInput(consola.getInput())).thenCallRealMethod();
 		
@@ -39,7 +40,7 @@ public class ViewTest {
 	@Test
 	public void testInputCommandInexistente() throws IOException {
 		//Mockeo la consola
-		IConsoleView consola = mock(IConsoleView.class);		
+		IConsoleView consola = mock(IConsoleView.class);
 		when(consola.getPresenter()).thenReturn(new DomainPresenter(consola));
 		when(consola.getCommandFromInput("")).thenReturn("comandoInvalido");
 		
@@ -56,25 +57,25 @@ public class ViewTest {
 		
 		DomainPresenter presenter = consola.getPresenter();
 		
-		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute("").getMensaje(),Mensaje.getMensaje("mensaje_AbrirCaja"));
+		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute("uno").getMensaje(),Mensaje.getMensaje("mensaje_AbrirCaja"));
 	}
 	
 	@Test
 	public void testInputCommandAgregarProductos() throws IOException {
 		//Mockeo la consola
-		IConsoleView consola = mock(IConsoleView.class);		
+		IConsoleView consola = mock(IConsoleView.class);	
 		when(consola.getPresenter()).thenReturn(new DomainPresenter(consola));
 		when(consola.getCommandFromInput("")).thenReturn("Agregar productos");
-		when(consola.getParametersFromInput("")).thenReturn("BGAA");
+		when(consola.getParametersFromInput("")).thenReturn("COCA");
 		
 		ICommand abrirCaja = new AbrirCajaCommand();
 		ICommand iniciarCompra = new IniciarCompraCommand();
-		abrirCaja.execute("");
+		abrirCaja.execute("uno");
 		iniciarCompra.execute("");
 		
 		DomainPresenter presenter = consola.getPresenter();
 		
-		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute(consola.getParametersFromInput("")).getMensaje(),Mensaje.getMensaje("mensaje_AgregarProductos"));
+		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute(consola.getParametersFromInput("")).getMensaje(),Mensaje.getMensaje("mensaje_AgregarProducto"));
 	}
 	
 	@Test
@@ -83,24 +84,29 @@ public class ViewTest {
 		IConsoleView consola = mock(IConsoleView.class);		
 		when(consola.getPresenter()).thenReturn(new DomainPresenter(consola));
 		when(consola.getCommandFromInput("")).thenReturn("medio de pago");
-		when(consola.getParametersFromInput("")).thenReturn("visa");
+		when(consola.getParametersFromInput("")).thenReturn("TARJETA,banco");
+		Caja.getInstance().abrir();
+		Caja.getInstance().addNuevaCompraActiva(SucursalFactory.SucursalUno());
 		
 		DomainPresenter presenter = consola.getPresenter();
 		
-		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute(consola.getParametersFromInput("")).getMensaje(),Mensaje.getMensaje("mensaje_MedioDePago"));
+		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute(consola.getParametersFromInput("")).getMensaje(),Mensaje.getMensaje("mensaje_MedioDePago")+ "TARJETA banco");
 	}
 
 	@Test 
 	public void testCommandAgregarProductosValidaIniciacionDeCompra() 
 	{
+		//Mockeo la consola
 		IConsoleView consola = mock(IConsoleView.class);		
 		when(consola.getPresenter()).thenReturn(new DomainPresenter(consola));
 		when(consola.getCommandFromInput("")).thenReturn("agregar productos");
-		when(consola.getParametersFromInput("")).thenReturn("BGAA");
-
-		DomainPresenter presenter = consola.getPresenter();
+		when(consola.getParametersFromInput("")).thenReturn("COCA");
+		Caja.getInstance().abrir();
 		
-		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute(consola.getParametersFromInput("")).getMensaje(),Mensaje.getMensaje("mensaje_inicializar_compra"));
+		DomainPresenter presenter = consola.getPresenter();
+				
+		
+		assertEquals(presenter.getCommand(consola.getCommandFromInput("")).execute(consola.getParametersFromInput("")).getMensaje(),Mensaje.getMensaje("error_ordenEjec_AgregarProducto"));
 	}
 
 

@@ -11,12 +11,14 @@ import fiuba.tecnicas.modelo.general.Caja;
 import fiuba.tecnicas.modelo.general.SucursalFactory;
 import fiuba.tecnicas.modelo.general.command.AbrirCajaCommand;
 import fiuba.tecnicas.modelo.general.command.ICommand;
+import fiuba.tecnicas.modelo.servicios.ServicioCalendario;
 
 public class AbrirCajaCommandTest {
 
 	@Test 
 	public void testCommandAbrirCajaInicializaFechaDeCaja() 
 	{
+		ServicioCalendario.getInstancia().setNameDay("JUEVES");
 		ICommand command = new AbrirCajaCommand();
 		command.execute("uno");
 		
@@ -31,8 +33,9 @@ public class AbrirCajaCommandTest {
 	@Test 
 	public void testCommandAbrirCajaSeteaSucursal() 
 	{
+		ServicioCalendario.getInstancia().setNameDay("JUEVES");
 		ICommand command = new AbrirCajaCommand();
-		command.execute("uno");
+		command.execute("SucursalUNO");
 		
 		assertEquals(Caja.getInstance().getSucursal().getDescripcion(),SucursalFactory.SucursalUno().getDescripcion());
 	

@@ -27,7 +27,7 @@ public class AgregarProductosCommand implements ICommand {
 		if (input.isEmpty()) return new Resultado(Mensaje.getMensaje("error_param_AgregarProducto"));
 		
 		Compra compra = Caja.getInstance().getCompraActiva();
-		if (compra == null) return new Resultado(Mensaje.getMensaje("mensaje_inicializar_compra"));
+		if (compra == null) return new Resultado(Mensaje.getMensaje("error_ordenEjec_AgregarProducto"));
 		
 		if (compra != null) {
 			String[] listaCodigosNuevos = input.split(Constante.getConstante("separador_parametros"));

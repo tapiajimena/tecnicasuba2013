@@ -15,13 +15,14 @@ import fiuba.tecnicas.modelo.general.SucursalFactory;
 import fiuba.tecnicas.modelo.general.TipoPago;
 import fiuba.tecnicas.modelo.general.command.ICommand;
 import fiuba.tecnicas.modelo.general.command.VerTotalDescuentosCajaCommand;
+import fiuba.tecnicas.modelo.servicios.ServicioCalendario;
 
 public class VerTotalDescuentosCommandTest {
 
 	@Test 
 	public void testCommandVerTotalDescuentosCaja() 
 	{
-	
+		ServicioCalendario.getInstancia().setNameDay("JUEVES");
 		Caja.getInstance().abrir();
 		Sucursal sucursal = SucursalFactory.SucursalUno();
 		Caja.getInstance().setSucursal(sucursal);

@@ -15,12 +15,14 @@ import fiuba.tecnicas.modelo.general.SucursalFactory;
 import fiuba.tecnicas.modelo.general.TipoPago;
 import fiuba.tecnicas.modelo.general.command.ICommand;
 import fiuba.tecnicas.modelo.general.command.VerTotalCajaPorMediosDePagoCommand;
+import fiuba.tecnicas.modelo.servicios.ServicioCalendario;
 
 public class VerTotalCajaPorMediosDePagoTest {
 
 	@Test
 	public void testCommandVerTotalCajaXMedioPagoCalculaTotal() {
 		
+		ServicioCalendario.getInstancia().setNameDay("JUEVES");
 		Caja.getInstance().abrir();
 		Sucursal sucursal = SucursalFactory.SucursalUno();
 		Caja.getInstance().addNuevaCompraActiva(sucursal);

@@ -25,6 +25,7 @@ public class VerTotalCajaCommandTest {
 	@Test 
 	public void testCommandVerTotalCaja() 
 	{	
+		ServicioCalendario.getInstancia().setNameDay("JUEVES");
 		Sucursal sucursal = SucursalFactory.SucursalUno();
 		Caja.getInstance().abrir();
 		Caja.getInstance().addNuevaCompraActiva(sucursal);
