@@ -26,6 +26,8 @@ public class CompraTest {
 	@Test
 	public void Test2x1Tarjeta(){
 		
+		ServicioCalendario.getInstancia().setNameDay("JUEVES");
+		
 		Sucursal sucursal = SucursalFactory.getSucursalByName("uno");
 		ItemCompra  itemCoca = new ItemCompra(ProductoFactory.getInstance().getProducto("Coca"),2);
 		Compra compra = new Compra(sucursal);
@@ -57,7 +59,7 @@ public class CompraTest {
 	@Test
 	public void TestSegundaUnidadLunes(){
 		
-		
+		ServicioCalendario.getInstancia().setNameDay("LUNES");
 		Sucursal sucursal = SucursalFactory.getSucursalByName("dos");
 		Compra compra = new Compra(sucursal);
 		compra.setMedioDePago(new MedioDePago(TipoPago.DEBITO, "XYZ","false"));
@@ -93,6 +95,7 @@ public class CompraTest {
 	@Test
 	public void MarcaXYZ(){
 		
+		ServicioCalendario.getInstancia().setNameDay("LUNES");
 		Sucursal sucursal = SucursalFactory.getSucursalByName("tres");
 		Compra compra = new Compra(sucursal);
 		
@@ -150,7 +153,7 @@ public class CompraTest {
 
 	@Test
 	public void TestJubilado(){		
-		Sucursal sucursal = SucursalFactory.getSucursalByName("cuatro");
+		Sucursal sucursal = SucursalFactory.getSucursalByName("cinco");
 
 		Compra compra = new Compra(sucursal);
 
