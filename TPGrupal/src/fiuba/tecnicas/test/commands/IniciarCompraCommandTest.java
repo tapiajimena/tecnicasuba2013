@@ -14,15 +14,6 @@ import fiuba.tecnicas.modelo.general.command.IniciarCompraCommand;
 public class IniciarCompraCommandTest {
 
 	@Test 
-	public void testCommandIniciarCompraAgregaCompraValidaAperturaDeCaja() 
-	{
-		
-		ICommand command = new IniciarCompraCommand();
-		
-		assertEquals(command.execute("").getMensaje(),Mensaje.getMensaje("error_ordenEjec_IniciarCompra"));
-	}
-	
-	@Test 
 	public void testCommandIniciarCompraAgregaCompraNuevaALaCaja() 
 	{
 		Caja.getInstance().abrir();

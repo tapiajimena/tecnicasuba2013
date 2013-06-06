@@ -190,7 +190,7 @@ public class CompraTest {
 		
 		double totalCompra = compra.CalcularTotal();
 		System.out.println(totalCompra);
-		//Assert.assertEquals(36.00,totalCompra);
+		Assert.assertEquals(5.0,totalCompra);
 		
 		Iterator<Descuento> it = compra.getDescuentos().iterator();
 		System.out.println("Descuentos aplicados: ");

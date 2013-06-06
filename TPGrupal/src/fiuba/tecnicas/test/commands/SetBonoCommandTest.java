@@ -24,7 +24,7 @@ import fiuba.tecnicas.modelo.servicios.ServicioCalendario;
 
 public class SetBonoCommandTest {
 
-	@Test 
+	
 	public void testCommandSetBono() 
 	{	
 		Sucursal sucursal = SucursalFactory.SucursalSeis();
@@ -35,6 +35,8 @@ public class SetBonoCommandTest {
 		ItemCompra itemCoca = new ItemCompra(ProductoFactory.getInstance().getProducto("COCA"),10);
 		compraActiva.addItem(itemCoca);
 		ICommand command = new SetBonoCommand();
+		
+		System.out.println(command.execute("10").getMensaje());
 		
 		//aplica descuento del 2x1
 		assertEquals(command.execute("10").getMensaje(),Mensaje.getMensaje("mensaje_CalcularTotalCompra") + " " + "8.0");

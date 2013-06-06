@@ -18,6 +18,7 @@ public class MedioDePagoCommandTest {
 	@Test 
 	public void testCommandMedioDePagoEjecucionPosteriorIniciarCompra() 
 	{	 
+		Caja.getInstance().abrir();
 		ICommand command = new MedioDePagoCommand();
 		
 		assertEquals(command.execute("TARJETA,ICBC").getMensaje(),Mensaje.getMensaje("error_ordenEjec_MedioPago"));
